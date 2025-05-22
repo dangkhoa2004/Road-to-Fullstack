@@ -121,11 +121,20 @@ cd ROAD-TO-FULLSTACK
       * Mở `src/main/resources/application.properties` (hoặc `application.yml`).
       * Cập nhật các thuộc tính kết nối cơ sở dữ liệu:
         ```properties
-        spring.datasource.url=jdbc:mysql://localhost:3306/pos_app_db?useSSL=false&serverTimezone=UTC
-        spring.datasource.username=your_db_username
-        spring.datasource.password=your_db_password
+        spring.application.name=pos-backend
+        server.port=8080
+        spring.datasource.url=jdbc:mysql://localhost:3306/pos_app?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+        spring.datasource.username=root
+        spring.datasource.password=
+        spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
         spring.jpa.hibernate.ddl-auto=update
-        spring.jpa.show-sql=true
+        spring.jpa.show-sql=false
+        spring.jpa.properties.hibernate.format_sql=false
+        logging.level.org.hibernate.SQL=WARN
+        logging.level.org.hibernate.type.descriptor.sql=WARN
+        spring.web.resources.add-mappings=false
+        jwt.secret=Jg7KaDIbkEP+0RaMPoYz91Lo4hsRT7W2oHAfvZV5qL+JdngIFK5bKKg0RzP6KnPjmhxaVoiTDvp6bcT9s+PzwA==
+        jwt.expiration=86400000
         ```
 3.  **Build và chạy ứng dụng Backend:**
     ```bash
