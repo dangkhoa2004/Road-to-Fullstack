@@ -79,7 +79,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Không tạo session
                 .authorizeHttpRequests(authorize -> {
                     authorize
-                            .requestMatchers("/api/v1/auth/**").permitAll() // Cho phép truy cập không cần xác thực
+                            .requestMatchers("/api/auth/**").permitAll() // <-- THAY ĐỔI TẠI ĐÂY
                             .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Cho phép truy cập Swagger UI
                             .anyRequest().authenticated(); // Tất cả các request khác đều cần xác thực
                 });

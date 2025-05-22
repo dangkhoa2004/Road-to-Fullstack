@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TestPasswordHash",
+            "request": "launch",
+            "mainClass": "com.pos.backend.config.TestPasswordHash",
+            "projectName": "pos-backend"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PosBackendApplication<pos-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.pos.backend.PosBackendApplication",
+            "projectName": "pos-backend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

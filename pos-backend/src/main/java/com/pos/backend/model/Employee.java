@@ -9,11 +9,17 @@ package com.pos.backend.model;
  * @author 04dkh
  */
 import com.pos.backend.model.base.BaseEntity;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+
+import jakarta.persistence.Column; // Đảm bảo import FetchType từ đây
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "employees")
@@ -32,7 +38,7 @@ public class Employee extends BaseEntity {
     @Column(name = "password_hash", nullable = false, length = 255) // Lưu trữ mật khẩu đã hash
     private String passwordHash;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Mối quan hệ Many-to-One với Role
+    @ManyToOne(fetch = FetchType.EAGER) // <-- THAY ĐỔI TẠI ĐÂY: từ LAZY sang EAGER
     @JoinColumn(name = "role_id", nullable = false) // Khóa ngoại `role_id`
     private Role role;
 

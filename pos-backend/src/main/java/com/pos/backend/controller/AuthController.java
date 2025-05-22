@@ -8,15 +8,23 @@ package com.pos.backend.controller;
  *
  * @author 04dkh
  */
-import com.pos.backend.dto.auth.LoginRequest;
-import com.pos.backend.dto.auth.AuthResponse;
-import com.pos.backend.service.AuthService;
-import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping; // Import RegisterRequest DTO
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pos.backend.dto.auth.AuthResponse; // Import HttpStatus
+import com.pos.backend.dto.auth.LoginRequest;
+import com.pos.backend.dto.auth.RegisterRequest;
+import com.pos.backend.dto.employee.EmployeeResponse;
+import com.pos.backend.service.AuthService;
+
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthService authService;
@@ -31,6 +39,12 @@ public class AuthController {
         return ResponseEntity.ok(authResponse);
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<EmployeeResponse> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
+        EmployeeResponse employeeResponse = authService.registerUser(registerRequest); // Assign to EmployeeResponse
+        return new ResponseEntity<>(employeeResponse, HttpStatus.CREATED); // Return 201 Created status
+    }
+
     // Logout endpoint (sẽ được xử lý ở phía client bằng cách xóa token, hoặc thêm vào blacklist ở backend)
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser() {
@@ -40,10 +54,4 @@ public class AuthController {
         return ResponseEntity.ok("Logged out successfully");
     }
 
-    // Endpoint để lấy thông tin người dùng hiện tại (sẽ cần Spring Security để lấy Principal)
-    // Sẽ được thêm vào sau khi cấu hình Spring Security hoàn chỉnh
-    // @GetMapping("/me")
-    // public ResponseEntity<EmployeeResponse> getCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
-    //    // Logic để lấy thông tin người dùng từ userDetails và trả về DTO
-    // }
 }
