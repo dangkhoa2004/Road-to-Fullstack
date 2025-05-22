@@ -1,34 +1,29 @@
 <template>
-  <div class="login-container">
-    <h2>Đăng nhập</h2>
-    <form @submit.prevent="handleLogin">
-      <div class="form-group">
-        <label for="username">Tên đăng nhập:</label>
-        <input
-          type="text"
-          id="username"
-          v-model="username"
-          required
-          aria-label="Tên đăng nhập"
-        />
-      </div>
+  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+      <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Đăng nhập</h2>
+      <form @submit.prevent="handleLogin">
+        <div class="mb-4">
+          <label for="username" class="block text-gray-700 text-sm font-semibold mb-2">Tên đăng nhập:</label>
+          <input type="text" id="username" v-model="username" required aria-label="Tên đăng nhập"
+            class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+        </div>
 
-      <div class="form-group">
-        <label for="password">Mật khẩu:</label>
-        <input
-          type="password"
-          id="password"
-          v-model="password"
-          required
-          aria-label="Mật khẩu"
-        />
-      </div>
+        <div class="mb-6">
+          <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Mật khẩu:</label>
+          <input type="password" id="password" v-model="password" required aria-label="Mật khẩu"
+            class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+        </div>
 
-      <button type="submit" class="login-button">Đăng nhập</button>
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out">
+          Đăng nhập
+        </button>
 
-      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-      <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-    </form>
+        <p v-if="errorMessage" class="text-red-500 text-center mt-4 text-sm">{{ errorMessage }}</p>
+        <p v-if="successMessage" class="text-green-500 text-center mt-4 text-sm">{{ successMessage }}</p>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -110,71 +105,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Basic styling for the login form */
-.login-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
-}
-
-.form-group input[type="text"],
-.form-group input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box; /* Ensures padding doesn't increase width */
-  font-size: 1rem;
-}
-
-.login-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
-}
-
-.error-message {
-  color: #dc3545;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.success-message {
-  color: #28a745;
-  margin-top: 10px;
-  text-align: center;
-}
-</style>

@@ -4,7 +4,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store'; // Nếu bạn dùng Vuex
 import axios from 'axios'; // Import axios
-
+import './assets/styles/global.css'
 // Cấu hình Axios interceptor để thêm Authorization header
 axios.interceptors.request.use(
     config => {

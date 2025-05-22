@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'; // Import các hàm cần thiết từ vue-router
-import LoginForm from '../views/LoginForm.vue'; // Import component LoginForm
-import HomeView from '../views/HomeView.vue'; // Import component HomeView (nếu bạn vẫn muốn giữ trang Home mặc định)
+import LoginForm from '../views/Auth/LoginForm.vue'; // Import component LoginForm
+import HomeView from '../views/Home/HomeView.vue'; // Import component HomeView (nếu bạn vẫn muốn giữ trang Home mặc định)
 
 const routes = [
     {
@@ -17,7 +17,7 @@ const routes = [
         path: '/dashboard', // Route cho trang dashboard
         name: 'Dashboard',
         // Sử dụng lazy-loading cho DashboardView để tối ưu hiệu suất
-        component: () => import(/* webpackChunkName: "dashboard" */ '../views/DashboardView.vue'),
+        component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard/DashboardView.vue'),
         meta: { requiresAuth: true } // Đánh dấu route này cần xác thực
     },
     // Thêm các route khác của bạn ở đây
