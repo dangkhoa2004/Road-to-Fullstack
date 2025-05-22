@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'; // Import các hàm cần thiết từ vue-router
 import LoginForm from '../views/LoginForm.vue'; // Import component LoginForm
+import HomeView from '../views/HomeView.vue'; // Import component HomeView (nếu bạn vẫn muốn giữ trang Home mặc định)
 
 const routes = [
+    {
+        path: '/',
+        name: 'Home',
+        component: HomeView, // Trang chủ mặc định
+    },
     {
         path: '/login', // Route cho trang đăng nhập
         name: 'Login',
