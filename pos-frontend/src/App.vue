@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="font-sans antialiased text-center text-gray-700 mt-16">
-    <nav class="p-8 bg-gray-100 border-b border-gray-200">
+  <div id="app" class="font-sans antialiased text-center text-gray-700">
+    <nav class="p-4 bg-gray-100 border-b border-gray-200">
       <router-link to="/" class="font-bold text-gray-700 no-underline mx-4 hover:underline">Trang chủ</router-link> |
       <router-link v-if="!isLoggedIn" to="/login" class="font-bold text-gray-700 no-underline mx-4 hover:underline">Đăng
         nhập</router-link>

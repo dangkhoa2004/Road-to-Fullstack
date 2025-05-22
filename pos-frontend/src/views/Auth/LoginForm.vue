@@ -1,54 +1,84 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
-      <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Đăng nhập</h2>
-      <form @submit.prevent="handleLogin">
-        <div class="mb-4">
-          <label for="username" class="block text-gray-700 text-sm font-semibold mb-2">Tên đăng nhập:</label>
-          <input type="text" id="username" v-model="username" required aria-label="Tên đăng nhập"
-            class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+        Flowbite
+      </a>
+      <div
+        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            Sign in to your account
+          </h1>
+          <form class="space-y-4 md:space-y-6" @submit.prevent="handleLogin">
+            <div>
+              <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                username</label>
+              <input type="text" name="username" id="username" v-model="username"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe" required="" aria-label="Tên đăng nhập">
+            </div>
+            <div>
+              <label for="password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+              <input type="password" name="password" id="password" placeholder="••••••••" v-model="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required="" aria-label="Mật khẩu">
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="remember" aria-describedby="remember" type="checkbox"
+                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                </div>
+                <div class="ml-3 text-sm">
+                  <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                </div>
+              </div>
+              <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Forgot
+                password?</a>
+            </div>
+            <button type="submit"
+              class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Sign in
+            </button>
+            <p v-if="errorMessage" class="text-red-500 text-center text-sm">{{ errorMessage }}</p>
+            <p v-if="successMessage" class="text-green-500 text-center text-sm">{{ successMessage }}</p>
+
+            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+              Don’t have an account yet? <a href="#"
+                class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
+            </p>
+          </form>
         </div>
-
-        <div class="mb-6">
-          <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Mật khẩu:</label>
-          <input type="password" id="password" v-model="password" required aria-label="Mật khẩu"
-            class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-        </div>
-
-        <button type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out">
-          Đăng nhập
-        </button>
-
-        <p v-if="errorMessage" class="text-red-500 text-center mt-4 text-sm">{{ errorMessage }}</p>
-        <p v-if="successMessage" class="text-green-500 text-center mt-4 text-sm">{{ successMessage }}</p>
-      </form>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import axios from 'axios'; // Import axios
+import axios from 'axios';
 
 export default {
-  name: 'LoginForm',
+  name: 'LoginCard',
   data() {
     return {
       username: '',
       password: '',
       errorMessage: '',
       successMessage: '',
-      backendLoginUrl: 'http://localhost:8080/api/auth/login' // URL API của bạn
+      backendLoginUrl: 'http://localhost:8080/api/auth/login' // Your API URL
     };
   },
   methods: {
     async handleLogin() {
-      // Reset thông báo lỗi/thành công
+      // Reset messages
       this.errorMessage = '';
       this.successMessage = '';
 
       if (!this.username || !this.password) {
-        this.errorMessage = 'Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.';
+        this.errorMessage = 'Please enter both username and password.';
         return;
       }
 
@@ -62,43 +92,41 @@ export default {
           },
         });
 
-        // Xử lý khi đăng nhập thành công (HTTP Status 200 OK)
+        // Handle successful login (HTTP Status 200 OK)
         if (response.status === 200) {
           const data = response.data;
-          this.successMessage = data.message || 'Đăng nhập thành công!';
-          console.log('Phản hồi từ backend:', data);
+          this.successMessage = data.message || 'Login successful!';
+          console.log('Response from backend:', data);
 
-          // Lưu JWT token vào localStorage
+          // Save JWT token to localStorage
           localStorage.setItem('jwtToken', data.token);
 
-          // Lưu thông tin người dùng (ví dụ: employee object)
-          // Đảm bảo rằng backend của bạn trả về một cấu trúc `employee` trong `AuthResponse`
+          // Save user info (e.g., employee object)
           if (data.employee) {
             localStorage.setItem('user', JSON.stringify(data.employee));
           }
 
-          // Chuyển hướng người dùng đến trang khác (ví dụ: trang dashboard)
-          // Dùng Vue Router đã được cài đặt khi khởi tạo dự án
-          this.$router.push('/dashboard'); // Thay '/dashboard' bằng route của trang chính
+          // Redirect to the dashboard or main page
+          this.$router.push('/dashboard'); // Replace '/dashboard' with your actual main route
         } else {
-          // Xử lý các mã trạng thái HTTP khác ngoài 200 OK nếu backend có trả về
-          this.errorMessage = response.data.message || 'Đăng nhập thất bại với trạng thái: ' + response.status;
+          // Handle other HTTP status codes if your backend returns them
+          this.errorMessage = response.data.message || 'Login failed with status: ' + response.status;
         }
 
       } catch (error) {
-        // Xử lý lỗi từ API (ví dụ: 401 Unauthorized, 400 Bad Request, v.v.)
+        // Handle API errors (e.g., 401 Unauthorized, 400 Bad Request)
         if (error.response) {
-          // Lỗi từ phản hồi của server (status code không phải 2xx)
-          console.error('Lỗi phản hồi từ backend:', error.response.data);
-          this.errorMessage = error.response.data.message || 'Tên đăng nhập hoặc mật khẩu không đúng.';
+          // Error from server response (status code not 2xx)
+          console.error('Error response from backend:', error.response.data);
+          this.errorMessage = error.response.data.message || 'Incorrect username or password.';
         } else if (error.request) {
-          // Yêu cầu đã được gửi nhưng không nhận được phản hồi
-          console.error('Không nhận được phản hồi từ backend:', error.request);
-          this.errorMessage = 'Không thể kết nối đến máy chủ. Vui lòng thử lại sau.';
+          // Request was made but no response received
+          console.error('No response from backend:', error.request);
+          this.errorMessage = 'Cannot connect to the server. Please try again later.';
         } else {
-          // Lỗi trong quá trình thiết lập yêu cầu
-          console.error('Lỗi khi thiết lập yêu cầu:', error.message);
-          this.errorMessage = 'Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.';
+          // Error in setting up the request
+          console.error('Error setting up request:', error.message);
+          this.errorMessage = 'An unexpected error occurred. Please try again.';
         }
       }
     },
