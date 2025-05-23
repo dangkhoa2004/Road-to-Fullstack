@@ -1,13 +1,12 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}", // RẤT QUAN TRỌNG: Đảm bảo bao gồm file .vue của bạn
+    "./src/**/*.{vue,js,ts,jsx,tsx}", // Adjust this based on your project structure
   ],
   theme: {
     extend: {},
   },
-  plugins: [
-   
-  ],
+  plugins: [],
 }
