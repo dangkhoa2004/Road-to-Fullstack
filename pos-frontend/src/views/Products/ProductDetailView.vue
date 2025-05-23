@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto p-5">
+    <div class="container mx-auto pl-5 pr-5">
         <div v-if="productLoading" class="flex justify-center items-center h-64">
             <p class="text-lg text-gray-600">Loading product details...</p>
         </div>
@@ -9,10 +9,8 @@
             <span class="block sm:inline"> {{ productError }}</span>
         </div>
         <div v-else-if="product" class="bg-white shadow-lg rounded-lg overflow-hidden md:flex">
-            <div class="md:w-1/2 p-4 flex justify-center items-center bg-gray-50">
-                <img class="max-h-96 object-contain rounded-lg shadow-md"
-                    :src="product.imagePath || 'https://placehold.co/400x400/E0E0E0/333333?text=No+Image'"
-                    :alt="product.name" />
+            <div class="md:w-1/2 p-4 flex justify-center items-center ">
+                <img class="max-h-96 object-contain" :src="product.imagePath || 'No+Image'" :alt="product.name" />
             </div>
             <div class="md:w-1/2 p-6">
                 <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ product.name }}</h1>

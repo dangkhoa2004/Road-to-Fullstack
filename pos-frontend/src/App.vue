@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="font-sans antialiased text-gray-700 flex flex-col min-h-screen">
+  <div id="app" class="antialiased text-gray-700 flex flex-col min-h-screen">
 
     <AppNavbar />
 
-    <main class="flex-grow container mx-auto p-4">
+    <main class="flex-grow container mx-auto pl-4 pr-4">
       <router-view />
     </main>
 

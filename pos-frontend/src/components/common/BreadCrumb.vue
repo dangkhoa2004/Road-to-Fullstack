@@ -53,12 +53,10 @@ export default {
 
             pathSegments.forEach((segment) => {
                 currentPath += `/${segment}`;
-                if (!segment.match(/^\d+$/)) {
-                    crumbs.push({
-                        label: formatCrumbLabel(segment),
-                        to: currentPath
-                    });
-                }
+                crumbs.push({
+                    label: formatCrumbLabel(segment),
+                    to: currentPath
+                });
             });
 
             return crumbs;

@@ -6,7 +6,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import * as types from '@/store/types';
-import ItemTableComponent from '@/components/common/ItemTableComponent.vue'; // Import the new component
+import ItemTableComponent from '@/components/common/ItemTableComponent.vue';
 
 export default {
     name: 'ProductView',

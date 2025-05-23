@@ -24,9 +24,6 @@
               class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               active-class="text-blue-700 dark:text-blue-500 font-bold" aria-current="page">Trang chủ</router-link>
           </li>
-
-
-
           <li v-if="isLoggedIn">
             <router-link to="/products" @click="closeMobileMenu"
               class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -43,13 +40,12 @@
               active-class="text-blue-700 dark:text-blue-500 font-bold">Liên hệ</router-link>
           </li>
           <li v-if="!isLoggedIn">
-            <router-link to="" @click="closeMobileMenu"
+            <router-link to="/login" @click="closeMobileMenu"
               class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               active-class="text-blue-700 dark:text-blue-500 font-bold">Đăng nhập</router-link>
           </li>
-
           <li v-if="isLoggedIn" class="relative">
-            <button @click="toggleUserDropdown"
+            <button @click="toggleUserDropdown" id="user-dropdown-button"
               class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
               Tài khoản
               <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -58,32 +54,14 @@
                   d="m1 1 4 4 4-4" />
               </svg>
             </button>
-
-            <div :class="{ 'hidden': !isUserDropdownOpen }"
-              class="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 md:origin-top-right md:right-0 md:mt-2">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400">
-                <li>
-                  <router-link to="" @click="closeAllMenus"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    active-class="text-blue-700 dark:text-blue-500 font-bold">Dashboard</router-link>
-                </li>
-                <li>
-                  <router-link to="" @click="closeAllMenus"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    active-class="text-blue-700 dark:text-blue-500 font-bold">Cài đặt hồ sơ</router-link>
-                </li>
-                <li>
-                  <a href="#" @click.prevent="handleLogoutAndClose"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Đăng xuất</a>
-                </li>
-              </ul>
-            </div>
+            <UserDropdown :is-open="isUserDropdownOpen" @close-all-menus="closeAllMenus"
+              @logout="handleLogoutAndClose" />
           </li>
         </ul>
       </div>
+      <BreadCrumb />
     </div>
   </nav>
-  <BreadCrumb />
 </template>
 
 <script>
@@ -91,13 +69,15 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useStore } from 'vuex';
 import * as types from '@/store/types';
 import BreadCrumb from '@/components/common/BreadCrumb.vue';
+import UserDropdown from '@/components/common/UserDropdown.vue'; // Import the new component
+
 export default {
   name: 'AppNavbar',
   components: {
-    BreadCrumb
+    BreadCrumb,
+    UserDropdown, // Register the new component
   },
   setup() {
-
     const store = useStore();
 
     const isMobileMenuOpen = ref(false);
@@ -138,17 +118,29 @@ export default {
       store.dispatch('auth/' + types.LOGOUT);
     };
 
+    // This function will now be called by the UserDropdown component via emit
     const handleLogoutAndClose = () => {
       handleLogout();
       closeAllMenus();
     };
+
     const handleClickOutside = (event) => {
-      if (isUserDropdownOpen.value) {
-        const dropdown = document.getElementById('dropdownNavbar');
-        const button = document.getElementById('dropdownNavbarLink');
-        if (dropdown && !dropdown.contains(event.target) && button && !button.contains(event.target)) {
-          closeUserDropdown();
-        }
+      // Logic for user dropdown
+      const userDropdownButton = document.getElementById('user-dropdown-button');
+      const userDropdownMenu = document.getElementById('user-dropdown-menu');
+
+      if (isUserDropdownOpen.value && userDropdownMenu && userDropdownButton &&
+        !userDropdownMenu.contains(event.target) && !userDropdownButton.contains(event.target)) {
+        closeUserDropdown();
+      }
+
+      // Logic for mobile menu
+      const mobileMenuButton = document.querySelector('[aria-controls="navbar-menu"]');
+      const mobileMenu = document.getElementById('navbar-menu');
+
+      if (isMobileMenuOpen.value && mobileMenu && mobileMenuButton &&
+        !mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+        closeMobileMenu();
       }
     };
 
