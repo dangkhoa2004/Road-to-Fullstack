@@ -8,6 +8,20 @@ package com.pos.backend.service;
  *
  * @author 04dkh
  */
-public class ProductService {
-    
+import com.pos.backend.dto.product.ProductRequest;
+import com.pos.backend.dto.product.ProductResponse;
+
+import java.util.List;
+
+public interface ProductService {
+
+    List<ProductResponse> getAllProducts();
+
+    ProductResponse getProductById(Long id);
+
+    ProductResponse createProduct(ProductRequest productRequest);
+
+    ProductResponse updateProduct(Long id, ProductRequest productRequest);
+
+    void deleteProduct(Long id);
 }

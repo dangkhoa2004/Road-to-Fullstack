@@ -1,20 +1,18 @@
-// src/store/index.js
 import { createStore } from 'vuex';
+import auth from './modules/auth';
+import user from './modules/user';
+import product from './modules/product';
 
-export default createStore({ // <-- Đảm bảo là export default
-    state: {
-        // your state
-    },
-    getters: {
-        // your getters
-    },
-    mutations: {
-        // your mutations
-    },
-    actions: {
-        // your actions
-    },
-    modules: {
-        // your modules
-    }
+export default createStore({
+  modules: {
+    auth,
+    user,
+    product
+  },
+  state: {
+  },
+  mutations: {
+  },
+  actions: {
+  }
 });

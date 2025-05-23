@@ -8,6 +8,13 @@ package com.pos.backend.repository;
  *
  * @author 04dkh
  */
-public class ProductRepository {
-    
+import com.pos.backend.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    // You can add custom query methods here if needed, e.g., findByBarcode
+    Product findByBarcode(String barcode);
 }

@@ -43,9 +43,7 @@
               class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Sign in
             </button>
-            <p v-if="errorMessage" class="text-red-500 text-center text-sm">{{ errorMessage }}</p>
-            <p v-if="successMessage" class="text-green-500 text-center text-sm">{{ successMessage }}</p>
-
+            <p v-if="authError" class="text-red-500 text-center text-sm">{{ authError }}</p>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
               Don’t have an account yet? <a href="#"
                 class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
@@ -58,7 +56,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapActions, mapGetters } from 'vuex';
+import * as types from '@/store/types'; // Đảm bảo đường dẫn này đúng
 
 export default {
   name: 'LoginCard',
@@ -66,68 +65,49 @@ export default {
     return {
       username: '',
       password: '',
-      errorMessage: '',
-      successMessage: '',
-      backendLoginUrl: 'http://localhost:8080/api/auth/login' // Your API URL
+      // errorMessage: '', // Không cần trực tiếp quản lý ở đây nữa, dùng Vuex
+      // successMessage: '', // Không cần trực tiếp quản lý ở đây nữa, Vuex sẽ điều hướng
     };
   },
+  computed: {
+    ...mapGetters('auth', { // Ánh xạ getter từ module 'auth'
+      authError: types.GET_AUTH_ERROR
+    })
+  },
   methods: {
+    ...mapActions('auth', { // Ánh xạ action từ module 'auth'
+      loginAction: types.LOGIN
+    }),
     async handleLogin() {
-      // Reset messages
-      this.errorMessage = '';
-      this.successMessage = '';
+      // Không cần reset errorMessage và successMessage ở đây nữa, Vuex action sẽ lo
+      // this.errorMessage = '';
+      // this.successMessage = '';
 
       if (!this.username || !this.password) {
-        this.errorMessage = 'Please enter both username and password.';
+        // Bạn có thể xử lý lỗi cục bộ này nếu muốn, hoặc để Vuex action xử lý
+        // Hiện tại, action của chúng ta chưa kiểm tra rỗng, nên để ở đây là tốt
+        this.$store.commit(`auth/${types.SET_AUTH_ERROR}`, 'Vui lòng nhập cả tên người dùng và mật khẩu.');
         return;
       }
 
       try {
-        const response = await axios.post(this.backendLoginUrl, {
+        // Gọi action Vuex thay vì gọi axios trực tiếp
+        // Action `loginAction` của Vuex đã nhận `credentials` là đối tượng
+        await this.loginAction({
           username: this.username,
           password: this.password,
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
         });
 
-        // Handle successful login (HTTP Status 200 OK)
-        if (response.status === 200) {
-          const data = response.data;
-          this.successMessage = data.message || 'Login successful!';
-          console.log('Response from backend:', data);
-
-          // Save JWT token to localStorage
-          localStorage.setItem('jwtToken', data.token);
-
-          // Save user info (e.g., employee object)
-          if (data.employee) {
-            localStorage.setItem('user', JSON.stringify(data.employee));
-          }
-
-          // Redirect to the dashboard or main page
-          this.$router.push('/dashboard'); // Replace '/dashboard' with your actual main route
-        } else {
-          // Handle other HTTP status codes if your backend returns them
-          this.errorMessage = response.data.message || 'Login failed with status: ' + response.status;
-        }
+        // Sau khi action `loginAction` thành công, nó sẽ tự động điều hướng
+        // nên không cần code điều hướng ở đây.
+        // Các thông báo thành công cũng được quản lý bởi quá trình điều hướng
+        // (ví dụ: hiển thị tin nhắn chào mừng trên trang dashboard)
 
       } catch (error) {
-        // Handle API errors (e.g., 401 Unauthorized, 400 Bad Request)
-        if (error.response) {
-          // Error from server response (status code not 2xx)
-          console.error('Error response from backend:', error.response.data);
-          this.errorMessage = error.response.data.message || 'Incorrect username or password.';
-        } else if (error.request) {
-          // Request was made but no response received
-          console.error('No response from backend:', error.request);
-          this.errorMessage = 'Cannot connect to the server. Please try again later.';
-        } else {
-          // Error in setting up the request
-          console.error('Error setting up request:', error.message);
-          this.errorMessage = 'An unexpected error occurred. Please try again.';
-        }
+        // Lỗi sẽ được bắt và commit vào state.auth.authError bởi Vuex action
+        // và sẽ tự động hiển thị qua computed property `authError`
+        console.error("Login form submission failed in component:", error);
+        // Không cần `this.errorMessage = ...` ở đây nữa
       }
     },
   },

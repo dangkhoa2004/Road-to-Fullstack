@@ -1,46 +1,38 @@
 <template>
-  <div id="app" class="font-sans antialiased text-center text-gray-700">
-    <nav class="p-4 bg-gray-100 border-b border-gray-200">
-      <router-link to="/" class="font-bold text-gray-700 no-underline mx-4 hover:underline">Trang chủ</router-link> |
-      <router-link v-if="!isLoggedIn" to="/login" class="font-bold text-gray-700 no-underline mx-4 hover:underline">Đăng
-        nhập</router-link>
-      <span v-if="isLoggedIn" class="text-gray-500"> | <router-link to="/dashboard"
-          class="font-bold text-gray-700 no-underline mx-4 hover:underline">Dashboard</router-link></span>
-      <span v-if="isLoggedIn" class="text-gray-500"> | <a @click.prevent="logout" href="#"
-          class="font-bold text-red-600 no-underline mx-4 cursor-pointer hover:underline">Đăng xuất</a></span>
-    </nav>
-    <router-view />
+  <div id="app" class="font-sans antialiased text-gray-700 flex flex-col min-h-screen">
+
+    <AppNavbar />
+
+    <main class="flex-grow container mx-auto p-4">
+      <router-view />
+    </main>
+
+    <AppFooter />
   </div>
 </template>
 
 <script>
-import { computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import AppNavbar from './components/layout/AppNavbar.vue';
+import AppFooter from './components/layout/AppFooter.vue';
 
 export default {
   name: 'App',
-  setup() {
-    const router = useRouter();
-    const route = useRoute(); // route is not used in the template, consider removing if not needed.
-
-    const isLoggedIn = computed(() => {
-      // For a more robust solution, consider moving JWT handling to a dedicated auth service
-      // and checking token validity (e.g., expiry) instead of just existence.
-      return localStorage.getItem('jwtToken') !== null;
-    });
-
-    const logout = () => {
-      localStorage.removeItem('jwtToken');
-      localStorage.removeItem('user'); // Assuming 'user' is also stored in localStorage
-      router.push('/login');
-    };
-
-    return {
-      isLoggedIn,
-      logout,
-      // If 'route' is not used in the template, you can remove it from here.
-      // route,
-    };
-  }
+  components: {
+    AppNavbar,
+    AppFooter,
+  },
 };
 </script>
+
+<style>
+/* CSS toàn cục có thể ở đây */
+/* Ví dụ: để đảm bảo footer luôn ở cuối trang */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1; /* Đảm bảo nội dung chính chiếm không gian còn lại */
+}
+</style>
