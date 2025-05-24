@@ -1,6 +1,6 @@
 <template>
-  <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <header class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Ứng dụng của tôi</span>
@@ -8,7 +8,7 @@
       <button @click="toggleMobileMenu" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         aria-controls="navbar-menu" :aria-expanded="isMobileMenuOpen ? 'true' : 'false'">
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Mở menu chính</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M1 1h15M1 7h15M1 13h15" />
@@ -58,9 +58,8 @@
           </li>
         </ul>
       </div>
-
     </div>
-  </nav>
+  </header>
   <div class="p-4">
     <BreadCrumb />
   </div>
@@ -71,89 +70,69 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useStore } from 'vuex';
 import * as types from '@/store/types';
 import BreadCrumb from '@/components/common/BreadCrumb.vue';
-import UserDropdown from '@/components/common/UserDropdown.vue'; // Import the new component
-
+import UserDropdown from '@/components/common/UserDropdown.vue';
 export default {
   name: 'AppNavbar',
   components: {
     BreadCrumb,
-    UserDropdown, // Register the new component
+    UserDropdown,
   },
   setup() {
     const store = useStore();
-
     const isMobileMenuOpen = ref(false);
     const isUserDropdownOpen = ref(false);
-
     const isLoggedIn = computed(() => {
       return store.getters['auth/' + types.IS_LOGGED_IN];
     });
-
     const toggleMobileMenu = () => {
       isMobileMenuOpen.value = !isMobileMenuOpen.value;
       if (isMobileMenuOpen.value) {
         isUserDropdownOpen.value = false;
       }
     };
-
     const closeMobileMenu = () => {
       isMobileMenuOpen.value = false;
     };
-
     const toggleUserDropdown = () => {
       isUserDropdownOpen.value = !isUserDropdownOpen.value;
       if (isUserDropdownOpen.value) {
         isMobileMenuOpen.value = false;
       }
     };
-
     const closeUserDropdown = () => {
       isUserDropdownOpen.value = false;
     };
-
     const closeAllMenus = () => {
       closeMobileMenu();
       closeUserDropdown();
     };
-
     const handleLogout = () => {
       store.dispatch('auth/' + types.LOGOUT);
     };
-
-    // This function will now be called by the UserDropdown component via emit
     const handleLogoutAndClose = () => {
       handleLogout();
       closeAllMenus();
     };
-
     const handleClickOutside = (event) => {
-      // Logic for user dropdown
       const userDropdownButton = document.getElementById('user-dropdown-button');
       const userDropdownMenu = document.getElementById('user-dropdown-menu');
-
       if (isUserDropdownOpen.value && userDropdownMenu && userDropdownButton &&
         !userDropdownMenu.contains(event.target) && !userDropdownButton.contains(event.target)) {
         closeUserDropdown();
       }
-
-      // Logic for mobile menu
       const mobileMenuButton = document.querySelector('[aria-controls="navbar-menu"]');
       const mobileMenu = document.getElementById('navbar-menu');
-
       if (isMobileMenuOpen.value && mobileMenu && mobileMenuButton &&
         !mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
         closeMobileMenu();
       }
     };
-
     onMounted(() => {
       document.addEventListener('click', handleClickOutside);
     });
-
     onUnmounted(() => {
       document.removeEventListener('click', handleClickOutside);
     });
-
     return {
       isLoggedIn,
       isMobileMenuOpen,

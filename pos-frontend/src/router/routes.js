@@ -3,11 +3,7 @@ import LoginForm from '../views/Auth/LoginForm.vue';
 import HomeView from '../views/Home/HomeView.vue';
 import Dashboard from '../views/Dashboard/DashboardView.vue';
 import { authGuard } from './guard';
-
-// Import individual route modules
 import productRoutes from './modules/product';
-// import categoryRoutes from './modules/category'; // Example for other modules
-// import userRoutes from './modules/user'; // Example for other modules
 
 const routes = [
     {
@@ -35,5 +31,4 @@ const router = createRouter({
 });
 
 router.beforeEach(authGuard);
-
 export default router;

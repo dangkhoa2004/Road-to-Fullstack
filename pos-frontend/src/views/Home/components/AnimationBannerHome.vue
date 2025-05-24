@@ -12,7 +12,6 @@
                     class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             </div>
         </div>
-
         <button type="button" @click="prevSlide"
             class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <span

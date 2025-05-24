@@ -1,4 +1,5 @@
 <template>
+  <CustomLoading v-if="loadingStore.isLoading" />
   <div id="app" class="antialiased text-gray-700 flex flex-col min-h-screen">
 
     <AppNavbar />
@@ -12,27 +13,34 @@
 </template>
 
 <script>
+import CustomLoading from "@/components/specific/CustomLoading.vue";
+import { useLoadingStore } from "@/utils/helpers";
 import AppNavbar from './components/layout/AppNavbar.vue';
 import AppFooter from './components/layout/AppFooter.vue';
 
 export default {
   name: 'App',
   components: {
+    CustomLoading,
     AppNavbar,
     AppFooter,
+  },
+  data() {
+    return {
+      loadingStore: useLoadingStore(),
+    };
   },
 };
 </script>
 
 <style>
-/* CSS toàn cục có thể ở đây */
-/* Ví dụ: để đảm bảo footer luôn ở cuối trang */
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 main {
-  flex-grow: 1; /* Đảm bảo nội dung chính chiếm không gian còn lại */
+  flex-grow: 1;
 }
 </style>
