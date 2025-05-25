@@ -16,14 +16,14 @@ export default {
     data() {
         return {
             productHeaders: [
-                { text: 'Name', value: 'name' },
-                { text: 'Barcode', value: 'barcode' },
-                { text: 'State', value: 'isActive' },
-                { text: 'Category', value: 'categoryName' },
-                { text: 'Price', value: 'price' },
-                { text: 'Quantity', value: 'quantity' },
-                { text: 'Created At', value: 'createdAt' },
-                { text: 'Updated At', value: 'updatedAt' },
+                { text: 'Tên sản phẩm', value: 'name' },
+                { text: 'Mã vạch', value: 'barcode' },
+                { text: 'Trạng thái', value: 'isActive' },
+                { text: 'Danh mục', value: 'categoryName' },
+                { text: 'Giá', value: 'price' },
+                { text: 'Số lượng', value: 'quantity' },
+                { text: 'Được tạo ra tại', value: 'createdAt' },
+                { text: 'Đã cập nhật tại', value: 'updatedAt' },
             ],
         };
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-overlay">
+  <div class="loading-overlay bg-white dark:bg-black">
     <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
       <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20"
         stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
@@ -22,7 +22,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #eff0f2;
   z-index: 9999;
   display: flex;
   justify-content: center;

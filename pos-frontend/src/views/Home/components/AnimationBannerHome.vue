@@ -15,8 +15,8 @@
         <button type="button" @click="prevSlide"
             class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 focus:ring-4 focus:ring-white dark:focus:ring-gray-800/70">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/30 dark:bg-white hover:bg-black dark:hover:bg-gray-200 focus:ring-4 focus:ring-black dark:focus:ring-gray-800/70">
+                <svg class="w-4 h-4 text-white dark:text-black rtl:rotate-180" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M5 1 1 5l4 4" />
@@ -27,8 +27,8 @@
         <button type="button" @click="nextSlide"
             class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 focus:ring-4 focus:ring-white dark:focus:ring-gray-800/70">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/30 dark:bg-white hover:bg-black dark:hover:bg-gray-200 focus:ring-4 focus:ring-black dark:focus:ring-gray-800/70">
+                <svg class="w-4 h-4 text-white dark:text-black rtl:rotate-180" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m1 9 4-4-4-4" />
@@ -39,7 +39,7 @@
 
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
             <button v-for="(image, index) in images" :key="image.id" @click="currentIndex = index"
-                class="cursor-pointer w-3 h-3 rounded-full bg-white/50 dark:bg-gray-800/50"
+                class="cursor-pointer w-3 h-3 rounded-full bg-white/50 dark:bg-white"
                 :class="{ '!bg-white dark:!bg-gray-800': index === currentIndex }"></button>
         </div>
     </div>

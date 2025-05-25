@@ -9,6 +9,9 @@ export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 // --- Auth Actions ---
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const GET_AUTH_USER = 'getAuthUser';
+export const REGISTER = 'register';
+export const SET_USER_ERROR = 'setUserError';
 
 // --- Auth Getters ---
 export const IS_LOGGED_IN = 'IS_LOGGED_IN';

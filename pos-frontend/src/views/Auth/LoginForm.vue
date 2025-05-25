@@ -42,7 +42,7 @@
             </button>
             <p v-if="authError" class="text-red-500 text-center text-sm">{{ authError }}</p>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-              Bạn chưa có tài khoản? <a href="#"
+              Bạn chưa có tài khoản? <a href="/register"
                 class="font-medium text-blue-600 hover:underline dark:text-blue-500">Đăng ký</a>
             </p>
           </form>
