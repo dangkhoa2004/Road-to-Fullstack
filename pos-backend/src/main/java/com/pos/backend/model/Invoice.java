@@ -5,9 +5,8 @@
 package com.pos.backend.model;
 
 /**
- *
  * @author 04dkh
  */
 public class Invoice {
-    
+
 }

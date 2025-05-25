@@ -5,15 +5,16 @@
 package com.pos.backend.dto.product;
 
 /**
- *
  * @author 04dkh
  */
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Setter

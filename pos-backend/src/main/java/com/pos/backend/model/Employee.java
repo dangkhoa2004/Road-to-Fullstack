@@ -5,17 +5,11 @@
 package com.pos.backend.model;
 
 /**
- *
  * @author 04dkh
  */
-import com.pos.backend.model.base.BaseEntity;
 
-import jakarta.persistence.Column; // Đảm bảo import FetchType từ đây
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.pos.backend.model.base.BaseEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

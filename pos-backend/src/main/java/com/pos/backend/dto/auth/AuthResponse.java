@@ -5,10 +5,10 @@
 package com.pos.backend.dto.auth;
 
 /**
- *
  * @author 04dkh
  */
-import com.pos.backend.dto.employee.EmployeeResponse; // Tái sử dụng EmployeeResponse
+
+import com.pos.backend.dto.employee.EmployeeResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

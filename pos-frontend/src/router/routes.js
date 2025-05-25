@@ -1,8 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import LoginForm from '../views/Auth/LoginForm.vue';
+import {createRouter, createWebHistory} from 'vue-router';
 import HomeView from '../views/Home/HomeView.vue';
 import Dashboard from '../views/Dashboard/DashboardView.vue';
-import { authGuard } from './guard';
+import {authGuard} from './guard';
 import productRoutes from './modules/product';
 import userRoutes from './modules/user';
 
@@ -16,7 +15,7 @@ const routes = [
         path: '/dashboard',
         name: 'Dashboard',
         component: Dashboard,
-        meta: { requiresAuth: true }
+        meta: {requiresAuth: true}
     },
     ...productRoutes,
     ...userRoutes,

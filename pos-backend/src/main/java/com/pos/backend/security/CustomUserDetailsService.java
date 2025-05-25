@@ -5,9 +5,9 @@
 package com.pos.backend.security;
 
 /**
- *
  * @author 04dkh
  */
+
 import com.pos.backend.model.Employee;
 import com.pos.backend.repository.EmployeeRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

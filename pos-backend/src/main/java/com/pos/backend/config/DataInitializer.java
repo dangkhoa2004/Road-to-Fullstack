@@ -5,9 +5,9 @@
 package com.pos.backend.config;
 
 /**
- *
  * @author 04dkh
  */
+
 import com.pos.backend.model.Role;
 import com.pos.backend.repository.RoleRepository;
 import org.springframework.boot.CommandLineRunner;

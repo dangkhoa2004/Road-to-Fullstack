@@ -5,9 +5,8 @@
 package com.pos.backend.dto.common;
 
 /**
- *
  * @author 04dkh
  */
 public class ErrorResponse {
-    
+
 }

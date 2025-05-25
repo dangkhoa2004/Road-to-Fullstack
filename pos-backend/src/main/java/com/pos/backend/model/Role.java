@@ -5,16 +5,17 @@
 package com.pos.backend.model;
 
 /**
- *
  * @author 04dkh
  */
+
 import com.pos.backend.model.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import java.util.Set; // Dùng Set để tránh trùng lặp
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "roles")

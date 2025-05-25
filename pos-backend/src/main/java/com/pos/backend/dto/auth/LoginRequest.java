@@ -5,9 +5,9 @@
 package com.pos.backend.dto.auth;
 
 /**
- *
  * @author 04dkh
  */
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;

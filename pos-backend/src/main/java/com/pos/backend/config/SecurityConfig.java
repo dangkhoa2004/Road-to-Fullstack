@@ -5,9 +5,9 @@
 package com.pos.backend.config;
 
 /**
- *
  * @author 04dkh
  */
+
 import com.pos.backend.security.CustomUserDetailsService;
 import com.pos.backend.security.JwtAuthenticationFilter;
 import com.pos.backend.security.JwtTokenProvider;

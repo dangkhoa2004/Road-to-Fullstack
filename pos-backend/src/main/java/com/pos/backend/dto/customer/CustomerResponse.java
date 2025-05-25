@@ -5,9 +5,8 @@
 package com.pos.backend.dto.customer;
 
 /**
- *
  * @author 04dkh
  */
 public class CustomerResponse {
-    
+
 }

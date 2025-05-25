@@ -5,15 +5,15 @@
 package com.pos.backend.dto.auth;
 
 /**
- *
  * @author 04dkh
  */
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor; // Add this if you want all-args constructor
-import lombok.Data; // Add this for automatic getters/setters/etc.
-import lombok.NoArgsConstructor; // Add this for no-args constructor
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data // This Lombok annotation will generate getters and setters for all fields
 @NoArgsConstructor // Lombok constructor

@@ -5,9 +5,8 @@
 package com.pos.backend.dto.category;
 
 /**
- *
  * @author 04dkh
  */
 public class CategoryCreateRequest {
-    
+
 }

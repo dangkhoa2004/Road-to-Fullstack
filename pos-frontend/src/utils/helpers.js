@@ -1,5 +1,5 @@
 // utils/helper.js
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 
 export const useLoadingStore = defineStore('loading', {
     state: () => ({

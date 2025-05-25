@@ -6,13 +6,13 @@ const userRoutes = [
         path: '/login',
         name: 'LoginForm',
         component: LoginForm,
-        meta: { requiresAuth: false },
+        meta: {requiresAuth: false},
     },
     {
         path: '/register',
         name: 'RegisterForm',
         component: RegisterForm,
-        meta: { requiresAuth: false },
+        meta: {requiresAuth: false},
     },
 ];
 

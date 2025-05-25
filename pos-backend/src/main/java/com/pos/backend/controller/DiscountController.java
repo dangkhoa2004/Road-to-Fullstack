@@ -5,9 +5,8 @@
 package com.pos.backend.controller;
 
 /**
- *
  * @author 04dkh
  */
 public class DiscountController {
-    
+
 }

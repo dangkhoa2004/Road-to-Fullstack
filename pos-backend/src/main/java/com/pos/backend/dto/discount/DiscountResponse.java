@@ -5,9 +5,8 @@
 package com.pos.backend.dto.discount;
 
 /**
- *
  * @author 04dkh
  */
 public class DiscountResponse {
-    
+
 }

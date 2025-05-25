@@ -4,6 +4,16 @@
  */
 package com.pos.backend.service;
 
+import com.pos.backend.dto.auth.AuthResponse;
+import com.pos.backend.dto.auth.LoginRequest;
+import com.pos.backend.dto.auth.RegisterRequest;
+import com.pos.backend.dto.employee.EmployeeResponse;
+import com.pos.backend.dto.role.RoleResponse;
+import com.pos.backend.model.Employee;
+import com.pos.backend.model.Role;
+import com.pos.backend.repository.EmployeeRepository;
+import com.pos.backend.repository.RoleRepository;
+import com.pos.backend.security.JwtTokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,18 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional; // Import Transactional
-
-import com.pos.backend.dto.auth.AuthResponse;
-import com.pos.backend.dto.auth.LoginRequest;
-import com.pos.backend.dto.auth.RegisterRequest; // Import RegisterRequest
-import com.pos.backend.dto.employee.EmployeeResponse;
-import com.pos.backend.dto.role.RoleResponse;
-import com.pos.backend.model.Employee;
-import com.pos.backend.model.Role; // Import Role
-import com.pos.backend.repository.EmployeeRepository;
-import com.pos.backend.repository.RoleRepository;
-import com.pos.backend.security.JwtTokenProvider;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthService {
@@ -34,7 +33,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider,
-            EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+                       EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.employeeRepository = employeeRepository;

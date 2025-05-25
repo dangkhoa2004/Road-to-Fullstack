@@ -5,7 +5,6 @@
 package com.pos.backend.model.base;
 
 /**
- *
  * @author 04dkh
  */
 

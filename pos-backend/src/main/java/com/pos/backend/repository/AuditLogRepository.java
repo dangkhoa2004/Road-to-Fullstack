@@ -5,9 +5,8 @@
 package com.pos.backend.repository;
 
 /**
- *
  * @author 04dkh
  */
 public class AuditLogRepository {
-    
+
 }

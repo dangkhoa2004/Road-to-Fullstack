@@ -1,9 +1,9 @@
 <template>
   <div>
-    <AnimationBannerHome />
-    <GalleryFillter v-animate-on-scroll class="animate-item" />
-    <CTACard v-animate-on-scroll class="animate-item" />
-    <GooglePixelMockUp v-animate-on-scroll class="animate-item" />
+    <AnimationBannerHome/>
+    <GalleryFillter v-animate-on-scroll class="animate-item"/>
+    <CTACard v-animate-on-scroll class="animate-item"/>
+    <GooglePixelMockUp v-animate-on-scroll class="animate-item"/>
   </div>
 </template>
 

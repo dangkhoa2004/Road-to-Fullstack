@@ -5,9 +5,9 @@
 package com.pos.backend.security;
 
 /**
- *
  * @author 04dkh
  */
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

@@ -5,9 +5,8 @@
 package com.pos.backend.dto.invoice;
 
 /**
- *
  * @author 04dkh
  */
 public class InvoiceResponse {
-    
+
 }

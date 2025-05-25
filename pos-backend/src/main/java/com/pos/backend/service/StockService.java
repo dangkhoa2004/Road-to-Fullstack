@@ -5,9 +5,8 @@
 package com.pos.backend.service;
 
 /**
- *
  * @author 04dkh
  */
 public class StockService {
-    
+
 }

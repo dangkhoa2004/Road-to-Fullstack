@@ -5,9 +5,9 @@
 package com.pos.backend.config;
 
 /**
- *
  * @author 04dkh
  */
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

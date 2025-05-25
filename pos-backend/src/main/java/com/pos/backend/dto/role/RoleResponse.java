@@ -5,9 +5,9 @@
 package com.pos.backend.dto.role;
 
 /**
- *
  * @author 04dkh
  */
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

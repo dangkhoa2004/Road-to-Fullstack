@@ -5,9 +5,8 @@
 package com.pos.backend.dto.employee;
 
 /**
- *
  * @author 04dkh
  */
 public class EmployeeCreateRequest {
-    
+
 }

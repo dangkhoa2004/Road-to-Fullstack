@@ -8,7 +8,8 @@
       </p>
 
       <p v-if="user && user.role" class="text-lg text-gray-700 mb-4">
-        Bạn đã đăng nhập với vai trò: <strong class="text-blue-600">{{ user.role.name ? user.role.name : 'N/A'
+        Bạn đã đăng nhập với vai trò: <strong class="text-blue-600">{{
+          user.role.name ? user.role.name : 'N/A'
         }}</strong>
       </p>
 
@@ -35,14 +36,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {mapGetters} from 'vuex';
 import * as types from '@/store/types';
 
 export default {
   name: 'DashboardView',
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     ...mapGetters('auth', {
