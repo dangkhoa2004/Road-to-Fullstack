@@ -1,20 +1,20 @@
 <template>
-  <CustomLoading v-if="loadingStore.isLoading" />
+  <CustomLoading v-if="loadingStore.isLoading"/>
   <div id="app" class="antialiased text-gray-700 flex flex-col min-h-screen">
 
-    <AppNavbar />
+    <AppNavbar/>
 
     <main class="flex-grow container mx-auto pl-4 pr-4">
-      <router-view />
+      <router-view/>
     </main>
 
-    <AppFooter />
+    <AppFooter/>
   </div>
 </template>
 
 <script>
 import CustomLoading from "@/components/specific/CustomLoading.vue";
-import { useLoadingStore } from "@/utils/helpers";
+import {useLoadingStore} from "@/utils/helpers";
 import AppNavbar from './components/layout/AppNavbar.vue';
 import AppFooter from './components/layout/AppFooter.vue';
 

@@ -1,5 +1,5 @@
 // store/modules/product.js
-import { getAllProduct, getProductById } from '@/api/product';
+import {getAllProduct, getProductById} from '@/api/product';
 
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 export const FETCH_PRODUCT_BY_ID = 'FETCH_PRODUCT_BY_ID';
@@ -48,7 +48,7 @@ const mutations = {
 };
 
 const actions = {
-    async [FETCH_PRODUCTS]({ commit }) {
+    async [FETCH_PRODUCTS]({commit}) {
         try {
             const data = await getAllProduct();
             commit(SET_PRODUCTS, data);
@@ -62,7 +62,7 @@ const actions = {
             throw error;
         }
     },
-    async [FETCH_PRODUCT_BY_ID]({ commit }, productId) {
+    async [FETCH_PRODUCT_BY_ID]({commit}, productId) {
         commit(SET_PRODUCT_LOADING, true);
         commit(SET_PRODUCT_ERROR, null);
         try {

@@ -1,10 +1,10 @@
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './assets/styles/global.css';
 import './api/index';
-import { createPinia } from 'pinia';
+import {createPinia} from 'pinia';
 import AnimateOnScroll from './utils/v-animate-on-scroll';
 
 const app = createApp(App);

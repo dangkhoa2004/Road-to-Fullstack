@@ -6,14 +6,14 @@ const productRoutes = [
         path: '/products',
         name: 'ProductsList',
         component: Products,
-        meta: { requiresAuth: true },
+        meta: {requiresAuth: true},
     },
     {
         path: '/products/:id',
         name: 'ProductDetail',
         component: ProductDetail,
         props: true,
-        meta: { requiresAuth: true },
+        meta: {requiresAuth: true},
     },
     // ... bạn có thể thêm các route khác cho sản phẩm ở đây nếu cần, ví dụ /products/add
     // {

@@ -1,5 +1,5 @@
 import router from './routes';
-import { useLoadingStore } from '@/utils/helpers';
+import {useLoadingStore} from '@/utils/helpers';
 
 let loadingTimeout = null;
 
