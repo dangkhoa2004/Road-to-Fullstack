@@ -17,8 +17,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**") // Áp dụng cho tất cả các API endpoint bắt đầu bằng /api/
-                // Thay đổi các origins này để phản ánh địa chỉ IP và cổng của frontend của bạn
-                .allowedOrigins("http://192.168.1.7:5173", "http://192.168.1.7:8081")
+                // Thêm "http://192.168.1.7" vào đây để bao gồm cổng 80 mặc định
+                .allowedOrigins("http://192.168.1.7", "http://192.168.1.7:5173", "http://192.168.1.7:8081")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)

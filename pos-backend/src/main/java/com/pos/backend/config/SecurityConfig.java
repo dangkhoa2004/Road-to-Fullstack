@@ -8,9 +8,9 @@ package com.pos.backend.config;
  * @author 04dkh
  */
 
-import com.pos.backend.security.CustomUserDetailsService;
-import com.pos.backend.security.JwtAuthenticationFilter;
-import com.pos.backend.security.JwtTokenProvider;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,8 +28,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
-import java.util.List;
+import com.pos.backend.security.CustomUserDetailsService;
+import com.pos.backend.security.JwtAuthenticationFilter;
+import com.pos.backend.security.JwtTokenProvider;
 
 @Configuration
 @EnableWebSecurity
@@ -94,7 +95,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Cấu hình origin cụ thể hoặc "*" cho tất cả (trong dev)
-        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://localhost:8081", "http://192.168.1.7:5173", "http://192.168.1.7:8081"));
+        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://localhost:8081", "http://192.168.1.7:5173", "http://192.168.1.7:8081", "http://192.168.1.7"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "X-Requested-With"));
         configuration.setAllowCredentials(true);
