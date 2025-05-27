@@ -2,13 +2,13 @@
   <div id="controls-carousel" class="relative w-full overflow-hidden group" @mouseenter="handleMouseEnter"
        @mouseleave="handleMouseLeave">
     <div class="relative h-56 md:h-96 rounded-lg">
-      <div v-for="(image, index) in images" :key="image.id"
+      <div v-for="(imagePath, index) in imagePaths" :key="index"
            :class="{
                     'translate-x-0 opacity-100': index === currentIndex,
-                    'translate-x-full opacity-0': index === (currentIndex + 1) % images.length,
-                    '-translate-x-full opacity-0': index === (currentIndex - 1 + images.length) % images.length,
+                    'translate-x-full opacity-0': index === (currentIndex + 1) % imagePaths.length,
+                    '-translate-x-full opacity-0': index === (currentIndex - 1 + imagePaths.length) % imagePaths.length,
                 }" class="absolute inset-0 transition-all duration-700 ease-in-out transform">
-        <img :alt="image.alt" :src="image.src"
+        <img :alt="'Image ' + (index + 1)" :src="imagePath"
              class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       </div>
     </div>
@@ -38,7 +38,7 @@
     </button>
 
     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
-      <button v-for="(image, index) in images" :key="image.id" :class="{ '!bg-white dark:!bg-gray-800': index === currentIndex }"
+      <button v-for="(imagePath, index) in imagePaths" :key="index" :class="{ '!bg-white dark:!bg-gray-800': index === currentIndex }"
               class="cursor-pointer w-3 h-3 rounded-full bg-white/50 dark:bg-white"
               @click="currentIndex = index"></button>
     </div>
@@ -46,24 +46,24 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
-const images = ref([
-  {id: 1, src: ('assets/images/bg-main-1.jpg'), alt: 'Image 1'},
-  {id: 2, src: ('assets/images/bg-main-2.jpg'), alt: 'Image 2'},
-  {id: 3, src: ('assets/images/bg-main-3.jpg'), alt: 'Image 3'},
-  {id: 4, src: ('assets/images/bg-main-4.jpg'), alt: 'Image 4'},
-]);
+const imagePaths = [
+  new URL('@/assets/images/bg-main-1.jpg', import.meta.url).href,
+  new URL('@/assets/images/bg-main-2.jpg', import.meta.url).href,
+  new URL('@/assets/images/bg-main-3.jpg', import.meta.url).href,
+  new URL('@/assets/images/bg-main-4.jpg', import.meta.url).href,
+];
 
 const currentIndex = ref(0);
 let intervalId = null;
 
 const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % images.value.length;
+  currentIndex.value = (currentIndex.value + 1) % imagePaths.length;
 };
 
 const prevSlide = () => {
-  currentIndex.value = (currentIndex.value - 1 + images.value.length) % images.value.length;
+  currentIndex.value = (currentIndex.value - 1 + imagePaths.length) % imagePaths.length;
 };
 
 const startAutoplay = () => {
