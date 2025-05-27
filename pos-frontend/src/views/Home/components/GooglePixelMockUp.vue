@@ -12,7 +12,7 @@
       <div
           class="rounded-xl overflow-hidden w-[272px] h-[572px] bg-white flex items-center justify-center text-gray-400 dark:text-gray-500 text-sm">
         <img alt="App Mockup" class="w-full h-full object-cover"
-             src="https://via.placeholder.com/272x572?text=Your+App+Mockup">
+             src="">
       </div>
     </div>
 
