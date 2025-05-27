@@ -49,10 +49,10 @@
 import {onMounted, onUnmounted, ref} from 'vue';
 
 const images = ref([
-  {id: 1, src: ('/images/1.jpg'), alt: 'Image 1'},
-  {id: 2, src: ('/images/2.jpg'), alt: 'Image 2'},
-  {id: 3, src: ('/images/3.jpg'), alt: 'Image 3'},
-  {id: 4, src: ('/images/4.jpg'), alt: 'Image 4'},
+  {id: 1, src: ('./src/assets/images/1.jpg'), alt: 'Image 1'},
+  {id: 2, src: ('./src/assets/images/2.jpg'), alt: 'Image 2'},
+  {id: 3, src: ('./src/assets/images/3.jpg'), alt: 'Image 3'},
+  {id: 4, src: ('./src/assets/images/4.jpg'), alt: 'Image 4'},
 ]);
 
 const currentIndex = ref(0);
