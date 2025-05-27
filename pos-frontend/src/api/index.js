@@ -1,7 +1,7 @@
 import axios from 'axios';
 import router from '../router';
 
-axios.defaults.baseURL = 'http://192.168.1.7:8080/api';
+axios.defaults.baseURL = 'http://192.168.1.2:8080/api';
 
 axios.interceptors.request.use(
     config => {
