@@ -46,11 +46,9 @@ export default {
       }
     },
     deleteProduct(id) {
-      console.log('Deleting product with ID:', id);
       alert(`Delete product with ID: ${id}`);
     },
     viewProductDetail(id) {
-      console.log('Navigating to product detail for ID:', id);
       this.$router.push({name: 'ProductDetail', params: {id: id}});
     },
   },

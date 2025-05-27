@@ -121,7 +121,6 @@ export default {
     },
     editProduct(productId) {
       alert(`Navigate to edit product page for ID: ${productId}`);
-      console.log('Edit product with ID:', productId);
     },
     goBack() {
       this.$router.push({name: 'ProductsList'});

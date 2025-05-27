@@ -151,9 +151,6 @@ export default {
           email: this.email,
           phone: this.phone,
         });
-        console.log('Đăng ký thành công!');
-        // Bạn có thể thêm logic chuyển hướng ở đây, ví dụ:
-        // this.$router.push('/registration-success');
       } catch (error) {
         console.error("Đăng ký thất bại:", error);
         const errorMessage = error.response && error.response.data && error.response.data.message
