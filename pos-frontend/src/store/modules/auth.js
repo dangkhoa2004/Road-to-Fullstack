@@ -1,13 +1,13 @@
 // src/store/modules/auth.js
-import {login} from '../../api/auth'; // Import các hàm API
-import router from '../../router'; // Import Vue Router
-import * as types from '../types'; // Import các hằng số types
+import {login} from '../../api/auth';
+import router from '../../router';
+import * as types from '../types';
 
 const state = {
     token: localStorage.getItem('jwtToken') || null,
-    user: JSON.parse(localStorage.getItem('user')) || null, // Lưu thông tin user
+    user: JSON.parse(localStorage.getItem('user')) || null,
     authError: null,
-    isLoggedIn: !!localStorage.getItem('jwtToken') // Kiểm tra trạng thái đăng nhập ban đầu
+    isLoggedIn: !!localStorage.getItem('jwtToken')
 };
 
 const getters = {
@@ -28,7 +28,7 @@ const mutations = {
     [types.CLEAR_AUTH_DATA](state) {
         state.token = null;
         state.user = null;
-        state.authError = null; // Xóa lỗi khi logout
+        state.authError = null;
         localStorage.removeItem('jwtToken');
         localStorage.removeItem('user');
     },
@@ -40,31 +40,29 @@ const mutations = {
 const actions = {
     async [types.LOGIN]({commit}, credentials) {
         try {
-            const response = await login(credentials); // Gọi hàm login từ API service
-            const {token, user} = response; // Giả sử response có token và user
+            const response = await login(credentials);
+            const {token, user} = response;
             commit(types.SET_AUTH_TOKEN, token);
             commit(types.SET_AUTH_USER, user);
-            commit(types.SET_AUTH_ERROR, null); // Xóa lỗi nếu đăng nhập thành công
-            router.push('/'); // Điều hướng đến trang chủ
+            commit(types.SET_AUTH_ERROR, null);
+            router.push('/');
         } catch (error) {
             const errorMessage = error.response && error.response.data && error.response.data.message
                 ? error.response.data.message
                 : 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.';
             commit(types.SET_AUTH_ERROR, errorMessage);
-            throw error; // Ném lại lỗi để component có thể xử lý
+            throw error;
         }
     },
 
     [types.LOGOUT]({commit}) {
         commit(types.CLEAR_AUTH_DATA);
-        // Có thể cần clear thêm state của module user nếu thông tin profile không tự clear khi logout
-        commit(types.CLEAR_USER_PROFILE); // Gọi mutation từ module user
         router.push('/login');
     }
 };
 
 export default {
-    namespaced: true, // Đảm bảo module này có namespace để tránh xung đột tên
+    namespaced: true,
     state,
     getters,
     mutations,

@@ -7,24 +7,25 @@ package com.pos.backend.dto.employee;
 /**
  * @author 04dkh
  */
-
-import com.pos.backend.dto.role.RoleResponse;
+import com.pos.backend.dto.common.RoleDto; // Hoặc package phù hợp cho RoleDto
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeResponse {
 
-    private Long id;
+    private Long id; // Từ BaseEntity
     private String name;
     private String username;
+    // Không trả về passwordHash vì lý do bảo mật
+    private RoleDto role; // Sử dụng RoleDto
     private String phone;
     private String email;
     private Boolean isActive;
-    private RoleResponse role; // DTO của Role
+    // Có thể thêm createdAt, updatedAt nếu có trong BaseEntity và bạn muốn trả về
+    // private LocalDateTime createdAt;
+    // private LocalDateTime updatedAt;
 }

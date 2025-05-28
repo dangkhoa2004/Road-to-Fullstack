@@ -4,9 +4,14 @@
  */
 package com.pos.backend.repository;
 
+import com.pos.backend.model.StockOut;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  * @author 04dkh
  */
-public class StockOutRepository {
+@Repository
+public interface StockOutRepository extends JpaRepository<StockOut, Long>{
 
 }

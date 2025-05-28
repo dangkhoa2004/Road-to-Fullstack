@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pos.backend.service;
 
 import com.pos.backend.dto.auth.AuthResponse;
 import com.pos.backend.dto.auth.LoginRequest;
 import com.pos.backend.dto.auth.RegisterRequest;
+import com.pos.backend.dto.common.RoleDto;
 import com.pos.backend.dto.employee.EmployeeResponse;
 import com.pos.backend.dto.role.RoleResponse;
 import com.pos.backend.model.Employee;
@@ -33,7 +30,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider,
-                       EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+            EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.employeeRepository = employeeRepository;
@@ -42,7 +39,6 @@ public class AuthService {
     }
 
     public AuthResponse authenticateUser(LoginRequest loginRequest) {
-        // Authenticate user credentials
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
@@ -52,22 +48,24 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Generate JWT token
         String jwt = jwtTokenProvider.generateToken(authentication);
 
-        // Retrieve user details to return in response
         Employee employee = employeeRepository.findByUsername(loginRequest.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + loginRequest.getUsername()));
 
-        // Convert Employee entity to EmployeeResponse DTO
+        // Tạo RoleDto từ Role của Employee
+        RoleDto roleDto = new RoleDto(employee.getRole().getId(), employee.getRole().getName());
+
+        // Tạo EmployeeResponse với đúng thứ tự và kiểu dữ liệu
         EmployeeResponse employeeResponse = new EmployeeResponse(
                 employee.getId(),
                 employee.getName(),
                 employee.getUsername(),
+                roleDto, // <-- Truyền RoleDto vào đây
                 employee.getPhone(),
                 employee.getEmail(),
-                employee.getIsActive(),
-                new RoleResponse(employee.getRole().getId(), employee.getRole().getName())
+                employee.getIsActive()
+        // Không có tham số thừa ở đây nếu EmployeeResponse constructor có 7 tham số
         );
 
         return new AuthResponse(jwt, "Login successful", employeeResponse);
@@ -75,40 +73,37 @@ public class AuthService {
 
     @Transactional
     public EmployeeResponse registerUser(RegisterRequest registerRequest) {
-        // Check if username is already taken
         if (employeeRepository.findByUsername(registerRequest.getUsername()).isPresent()) {
             throw new IllegalArgumentException("Username is already taken!");
         }
 
-        // Check if email is already taken (optional, but good practice)
-//        if (employeeRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
-//            throw new IllegalArgumentException("Email is already registered!");
-//        }
-
-        // Find the default role (e.g., "USER" or "EMPLOYEE")
         Role defaultRole = roleRepository.findByName("EMPLOYEE")
                 .orElseThrow(() -> new RuntimeException("Default role 'EMPLOYEE' not found. Please create it."));
 
-        // Create new employee's account
         Employee employee = new Employee();
         employee.setName(registerRequest.getName());
         employee.setUsername(registerRequest.getUsername());
         employee.setEmail(registerRequest.getEmail());
         employee.setPhone(registerRequest.getPhone());
-        employee.setPasswordHash(passwordEncoder.encode(registerRequest.getPassword())); // <--- CHANGE THIS LINE
-        employee.setRole(defaultRole); // Assign the default role
-        employee.setIsActive(true); // Set initial active status
+        employee.setPasswordHash(passwordEncoder.encode(registerRequest.getPassword()));
+        employee.setRole(defaultRole);
+        employee.setIsActive(true);
 
         Employee savedEmployee = employeeRepository.save(employee);
 
+        // Tạo RoleDto từ Role của Employee đã lưu
+        RoleDto roleDto = new RoleDto(savedEmployee.getRole().getId(), savedEmployee.getRole().getName());
+
+        // Tạo EmployeeResponse với đúng thứ tự và kiểu dữ liệu
         return new EmployeeResponse(
                 savedEmployee.getId(),
                 savedEmployee.getName(),
                 savedEmployee.getUsername(),
+                roleDto, // <-- Truyền RoleDto vào đây
                 savedEmployee.getPhone(),
                 savedEmployee.getEmail(),
-                savedEmployee.getIsActive(),
-                new RoleResponse(savedEmployee.getRole().getId(), savedEmployee.getRole().getName())
+                savedEmployee.getIsActive()
+        // Không có tham số thừa ở đây
         );
     }
 }

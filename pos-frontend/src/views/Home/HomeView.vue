@@ -1,9 +1,9 @@
 <template>
   <div>
-    <AnimationBannerHome/>
-    <GalleryFillter v-animate-on-scroll class="animate-item"/>
-    <CTACard v-animate-on-scroll class="animate-item"/>
-    <GooglePixelMockUp v-animate-on-scroll class="animate-item"/>
+    <AnimationBannerHome />
+    <GalleryFillter />
+    <CTACard />
+    <GooglePixelMockUp />
   </div>
 </template>
 
@@ -23,15 +23,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.animate-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>

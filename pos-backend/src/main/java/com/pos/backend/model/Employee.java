@@ -7,7 +7,6 @@ package com.pos.backend.model;
 /**
  * @author 04dkh
  */
-
 import com.pos.backend.model.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,11 +28,11 @@ public class Employee extends BaseEntity {
     @Column(name = "username", nullable = false, unique = true, length = 50)
     private String username;
 
-    @Column(name = "password_hash", nullable = false, length = 255) // Lưu trữ mật khẩu đã hash
+    @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
-    @ManyToOne(fetch = FetchType.EAGER) // <-- THAY ĐỔI TẠI ĐÂY: từ LAZY sang EAGER
-    @JoinColumn(name = "role_id", nullable = false) // Khóa ngoại `role_id`
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
     @Column(name = "phone", length = 20, unique = true)
@@ -43,5 +42,8 @@ public class Employee extends BaseEntity {
     private String email;
 
     @Column(name = "is_active", nullable = false)
-    private Boolean isActive = true; // Mặc định là true
+    private Boolean isActive = true;
+
+    // No need for @Version here if it's already in BaseEntity
+    // private Long version; // Remove this line if BaseEntity handles it
 }

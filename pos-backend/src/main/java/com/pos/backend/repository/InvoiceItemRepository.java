@@ -4,9 +4,14 @@
  */
 package com.pos.backend.repository;
 
+import com.pos.backend.model.InvoiceItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  * @author 04dkh
  */
-public class InvoiceItemRepository {
+@Repository
+public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Long>{
 
 }

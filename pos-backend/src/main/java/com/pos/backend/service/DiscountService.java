@@ -7,6 +7,21 @@ package com.pos.backend.service;
 /**
  * @author 04dkh
  */
-public class DiscountService {
+import com.pos.backend.dto.discount.DiscountRequest;
+import com.pos.backend.dto.discount.DiscountResponse;
 
+import java.util.List;
+
+public interface DiscountService {
+
+    List<DiscountResponse> getAllDiscounts();
+
+    // Sửa đổi từ getDiscountById sang getDiscountByCode
+    DiscountResponse getDiscountByCode(String code);
+
+    DiscountResponse createDiscount(DiscountRequest discountRequest);
+
+    DiscountResponse updateDiscount(Long id, DiscountRequest discountRequest); // Giữ update theo ID
+
+    void deleteDiscount(Long id); // Giữ delete theo ID
 }

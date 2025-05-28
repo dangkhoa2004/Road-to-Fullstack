@@ -4,9 +4,17 @@
  */
 package com.pos.backend.repository;
 
+import com.pos.backend.model.Customer;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  * @author 04dkh
  */
-public class CustomerRepository {
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+    Optional<Customer> findByPhone(String phone);
+    Optional<Customer> findByEmail(String emmail);
 }

@@ -7,7 +7,6 @@ package com.pos.backend.dto.auth;
 /**
  * @author 04dkh
  */
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -37,25 +36,4 @@ public class RegisterRequest {
     @NotBlank(message = "Phone number is required") // Added validation for phone
     @Size(min = 10, max = 15, message = "Phone number must be between 10 and 15 digits") // Example size validation
     private String phone; // <--- ADDED THIS FIELD
-
-    // If you are NOT using Lombok, you would manually add these getters and setters:
-    /*
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    // ... (rest of your existing getters and setters)
-     */
 }

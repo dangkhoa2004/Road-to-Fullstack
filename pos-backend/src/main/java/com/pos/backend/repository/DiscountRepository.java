@@ -4,9 +4,16 @@
  */
 package com.pos.backend.repository;
 
+import com.pos.backend.model.Discount;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  * @author 04dkh
  */
-public class DiscountRepository {
+@Repository
+public interface DiscountRepository extends JpaRepository<Discount, Long>{
 
+    Optional<Discount> findByCode(String code);
 }
