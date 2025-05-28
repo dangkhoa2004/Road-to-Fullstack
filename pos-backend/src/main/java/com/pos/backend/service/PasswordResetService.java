@@ -4,12 +4,11 @@ import com.pos.backend.model.Employee;
 import com.pos.backend.model.PasswordResetToken;
 import com.pos.backend.repository.EmployeeRepository;
 import com.pos.backend.repository.PasswordResetTokenRepository;
+import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class PasswordResetService {
@@ -60,19 +59,24 @@ public class PasswordResetService {
                 .orElse(null);
     }
 
-    // Đã sửa đổi phương thức này
-    public void sendPasswordResetEmail(Employee employee, String token, String appUrl) {
+    // Đã sửa đổi để sử dụng lại template HTML và truyền token
+    public void sendPasswordResetEmail(Employee employee, String token, String appUrl) throws MessagingException {
         String recipientAddress = employee.getEmail();
         String subject = "Đặt lại mật khẩu của bạn";
 
-        // Thay vì gửi cả URL, bây giờ chỉ gửi token
-        String message = "Xin chào " + employee.getName() + ",\n\nBạn đã yêu cầu đặt lại mật khẩu. Vui lòng sử dụng mã token sau để hoàn tất quá trình:\n\n" +
-                "Mã Token: " + token +
-                "\n\nMã token này sẽ hết hạn sau 24 giờ. Vui lòng nhập mã này vào ứng dụng của chúng tôi để đặt lại mật khẩu." +
-                "\n\nNếu bạn không yêu cầu đặt lại mật khẩu, vui lòng bỏ qua email này." +
-                "\n\nTrân trọng,\nHệ thống của bạn";
+        Map<String, Object> templateVariables = new HashMap<>();
+        templateVariables.put("employeeName", employee.getName());
+        templateVariables.put("token", token); // Đảm bảo truyền token vào template variables
+        String resetUrl = appUrl + "/reset-password?token=" + token; // Giữ lại nếu bạn cần resetUrl trong template
+        templateVariables.put("resetUrl", resetUrl); // Có thể bỏ qua nếu template không dùng resetUrl
 
-        emailService.sendEmail(recipientAddress, subject, message);
+        // Các biến khác cho template HTML của bạn
+        templateVariables.put("logoUrl", "https://yourcompany.com/images/logo.png"); // Thay đổi URL logo nếu cần
+        templateVariables.put("systemName", "Hệ thống Quản lý POS"); // Thay đổi tên hệ thống
+        templateVariables.put("companyName", "Tên Công ty của bạn"); // Thay đổi tên công ty
+
+        // Gọi phương thức sendHtmlEmail để sử dụng template
+        emailService.sendHtmlEmail(recipientAddress, subject, "password_reset_email", templateVariables);
     }
 
     @Transactional

@@ -13,6 +13,7 @@ import com.pos.backend.service.AuthService;
 import com.pos.backend.service.EmployeeService;
 import com.pos.backend.service.PasswordResetService;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -85,22 +86,41 @@ public class AuthController {
         return ResponseEntity.ok(apiResponse);
     }
 
+
     @PostMapping("/forgot-password")
     public ResponseEntity<ApiResponse<ResetPasswordResponse>> forgotPassword(@Valid @RequestBody ForgotPasswordRequest requestBody, HttpServletRequest request) {
         String employeeEmail = requestBody.getEmail();
         Optional<Employee> employeeOptional = employeeService.findEmployeeByEmail(employeeEmail);
+
         if (employeeOptional.isEmpty()) {
+            // Always return a generic message for security reasons to prevent email enumeration.
             return ResponseEntity.ok(new ApiResponse<>("Nếu email của bạn tồn tại trong hệ thống, chúng tôi sẽ gửi một liên kết đặt lại mật khẩu.", "200", new ResetPasswordResponse("Email not found, but generic message sent.", true)));
         }
 
         Employee employee = employeeOptional.get();
         String token = passwordResetService.createPasswordResetTokenForEmployee(employee);
-        String appUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
 
-        passwordResetService.sendPasswordResetEmail(employee, token, appUrl);
+        // Construct the base application URL
+        // This will typically be "http://localhost:8080" or "https://yourdomain.com"
+        String appUrl = request.getScheme() + "://" + request.getServerName();
+        if (request.getServerPort() != 80 && request.getServerPort() != 443) { // Only add port if it's not standard HTTP/HTTPS ports
+            appUrl += ":" + request.getServerPort();
+        }
+
+        // Call the updated sendPasswordResetEmail method with the appUrl
+        try {
+            passwordResetService.sendPasswordResetEmail(employee, token, appUrl);
+        } catch (MessagingException e) {
+            // Log the exception and potentially return an error response,
+            // or still return the generic success message if you don't want to expose internal errors.
+            System.err.println("Error sending password reset email: " + e.getMessage());
+            return ResponseEntity.status(500).body(new ApiResponse<>("Có lỗi xảy ra khi gửi email đặt lại mật khẩu. Vui lòng thử lại sau.", "500", new ResetPasswordResponse("Failed to send password reset email.", false)));
+        }
+
 
         return ResponseEntity.ok(new ApiResponse<>("Nếu email của bạn tồn tại trong hệ thống, chúng tôi sẽ gửi một liên kết đặt lại mật khẩu.", "200", new ResetPasswordResponse("Password reset email sent.", true)));
     }
+
 
     @PostMapping("/reset-password")
     public ResponseEntity<ApiResponse<ResetPasswordResponse>> resetPassword(@RequestParam("token") String token, @Valid @RequestBody ResetPasswordRequest requestBody) {
