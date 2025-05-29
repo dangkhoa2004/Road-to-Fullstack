@@ -3,8 +3,8 @@ package com.pos.backend.service.base;
 import com.pos.backend.dto.auth.AuthResponse;
 import com.pos.backend.dto.auth.LoginRequest;
 import com.pos.backend.dto.auth.RegisterRequest;
-import com.pos.backend.dto.common.RoleDto;
 import com.pos.backend.dto.employee.EmployeeResponse;
+import com.pos.backend.dto.role.RoleResponse;
 import com.pos.backend.model.Employee;
 import com.pos.backend.model.Role;
 import com.pos.backend.repository.EmployeeRepository;
@@ -28,8 +28,7 @@ public class AuthService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider,
-            EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.employeeRepository = employeeRepository;
@@ -38,34 +37,21 @@ public class AuthService {
     }
 
     public AuthResponse authenticateUser(LoginRequest loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getUsername(),
-                        loginRequest.getPassword()
-                )
-        );
+        // Xác thực username/password
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtTokenProvider.generateToken(authentication);
 
-        Employee employee = employeeRepository.findByUsername(loginRequest.getUsername())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + loginRequest.getUsername()));
+        // Lấy thông tin nhân viên
+        Employee employee = employeeRepository.findByUsername(loginRequest.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + loginRequest.getUsername()));
 
-        // Tạo RoleDto từ Role của Employee
-        RoleDto roleDto = new RoleDto(employee.getRole().getId(), employee.getRole().getName());
+        // Tạo RoleResponse từ Role của Employee
+        RoleResponse roleResponse = new RoleResponse(employee.getRole().getId(), employee.getRole().getName());
 
-        // Tạo EmployeeResponse với đúng thứ tự và kiểu dữ liệu
-        EmployeeResponse employeeResponse = new EmployeeResponse(
-                employee.getId(),
-                employee.getName(),
-                employee.getUsername(),
-                roleDto, // <-- Truyền RoleDto vào đây
-                employee.getPhone(),
-                employee.getEmail(),
-                employee.getIsActive()
-        // Không có tham số thừa ở đây nếu EmployeeResponse constructor có 7 tham số
-        );
+        // Tạo EmployeeResponse
+        EmployeeResponse employeeResponse = new EmployeeResponse(employee.getId(), employee.getName(), employee.getUsername(), roleResponse, employee.getPhone(), employee.getEmail(), employee.getIsActive());
 
         return new AuthResponse(jwt, "Login successful", employeeResponse);
     }
@@ -76,9 +62,10 @@ public class AuthService {
             throw new IllegalArgumentException("Username is already taken!");
         }
 
-        Role defaultRole = roleRepository.findByName("EMPLOYEE")
-                .orElseThrow(() -> new RuntimeException("Default role 'EMPLOYEE' not found. Please create it."));
+        // Lấy role mặc định
+        Role defaultRole = roleRepository.findByName("EMPLOYEE").orElseThrow(() -> new RuntimeException("Default role 'EMPLOYEE' not found. Please create it."));
 
+        // Tạo nhân viên mới
         Employee employee = new Employee();
         employee.setName(registerRequest.getName());
         employee.setUsername(registerRequest.getUsername());
@@ -90,19 +77,10 @@ public class AuthService {
 
         Employee savedEmployee = employeeRepository.save(employee);
 
-        // Tạo RoleDto từ Role của Employee đã lưu
-        RoleDto roleDto = new RoleDto(savedEmployee.getRole().getId(), savedEmployee.getRole().getName());
+        // Tạo RoleResponse từ Role của Employee đã lưu
+        RoleResponse roleResponse = new RoleResponse(savedEmployee.getRole().getId(), savedEmployee.getRole().getName());
 
-        // Tạo EmployeeResponse với đúng thứ tự và kiểu dữ liệu
-        return new EmployeeResponse(
-                savedEmployee.getId(),
-                savedEmployee.getName(),
-                savedEmployee.getUsername(),
-                roleDto, // <-- Truyền RoleDto vào đây
-                savedEmployee.getPhone(),
-                savedEmployee.getEmail(),
-                savedEmployee.getIsActive()
-        // Không có tham số thừa ở đây
-        );
+        // Tạo EmployeeResponse
+        return new EmployeeResponse(savedEmployee.getId(), savedEmployee.getName(), savedEmployee.getUsername(), roleResponse, savedEmployee.getPhone(), savedEmployee.getEmail(), savedEmployee.getIsActive());
     }
 }

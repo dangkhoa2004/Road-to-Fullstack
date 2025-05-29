@@ -81,7 +81,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> {
                     authorize
                             .requestMatchers("/api/auth/**").permitAll() // <-- THAY ĐỔI TẠI ĐÂY
-                            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Cho phép truy cập Swagger UI
+                            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-ui/index.html").permitAll() // Cho phép truy cập Swagger UI
                             .anyRequest().authenticated(); // Tất cả các request khác đều cần xác thực
                 });
 

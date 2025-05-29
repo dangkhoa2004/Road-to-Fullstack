@@ -4,9 +4,16 @@
  */
 package com.pos.backend.service.base;
 
+import com.pos.backend.dto.system_setting.SystemSettingRequest;
+import com.pos.backend.dto.system_setting.SystemSettingResponse;
+
 /**
  * @author 04dkh
  */
-public class SystemSettingService {
 
+
+public interface SystemSettingService {
+    SystemSettingResponse getSetting();
+
+    SystemSettingResponse updateSetting(SystemSettingRequest request);
 }

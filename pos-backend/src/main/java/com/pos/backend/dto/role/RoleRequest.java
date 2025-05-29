@@ -5,9 +5,9 @@
 package com.pos.backend.dto.role;
 
 /**
- *
  * @author 04dkh
  */
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -23,3 +23,4 @@ public class RoleRequest {
     @Size(max = 50, message = "Tên vai trò không được quá 50 ký tự")
     private String name;
 }
+

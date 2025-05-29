@@ -7,6 +7,14 @@ package com.pos.backend.service.base;
 /**
  * @author 04dkh
  */
-public class RoleService {
 
+import com.pos.backend.model.Role;
+
+import java.util.Optional;
+
+public interface RoleService {
+    Optional<Role> findRoleById(Long id);
+
+    void saveRole(Role role);
 }
+

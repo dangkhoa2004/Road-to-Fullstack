@@ -7,6 +7,8 @@ package com.pos.backend.dto.role;
 /**
  * @author 04dkh
  */
+
+import com.pos.backend.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +18,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RoleResponse {
 
-    private Long id; // Từ BaseEntity
+    private Long id;
     private String name;
-    // Không bao gồm Set<Employee> để tránh vòng lặp và giữ DTO gọn gàng
-    // private LocalDateTime createdAt; // Nếu có trong BaseEntity và bạn muốn trả về
-    // private LocalDateTime updatedAt; // Nếu có
+
+    public RoleResponse(Role role) {
+        this.id = role.getId();
+        this.name = role.getName();
+    }
 }
+
