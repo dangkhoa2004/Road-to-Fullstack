@@ -1,220 +1,142 @@
-# TailAdmin Vue - Free Vue.js Tailwind CSS Admin Dashboard Template
+# TailAdmin Vue - Phần Của Dự Án “ROAD-TO-FULLSTACK: Hành Trình Chinh Phục Lập Trình Fullstack Từ Zero Đến Hero 🚀”
 
-TailAdmin Vue is a free, open-source admin dashboard template **built on Vue.js**, popular and progressive JavaScript
-framework, and **Tailwind CSS**. This **powerful combination** provides developers with an extensive library of
-essential components, elements, and pages to launch a comprehensive and data-centric back-end, dashboard, or admin panel
-solution for any Vue.js based web projects.
+TailAdmin Vue là một **mảnh ghép** trong dự án **ROAD-TO-FULLSTACK**, một tài liệu sống phản ánh toàn bộ hành trình tự học và thực hành của tôi trong lĩnh vực lập trình Fullstack. Đây không chỉ là một **admin dashboard template** mạnh mẽ, mà còn là **minh chứng** cho khả năng áp dụng lý thuyết vào thực tiễn, cũng như quá trình học hỏi, cải thiện và làm chủ công nghệ.
+
+TailAdmin Vue là **một dự án con** dựa trên **Vue.js 3** – một framework JavaScript hiện đại – kết hợp cùng **Tailwind CSS** để xây dựng một hệ thống quản trị (admin panel) mạnh mẽ, dễ tùy biến và tối ưu cho các ứng dụng web.
 
 ![TailAdmin Vue.js Dashboard Preview](./banner.png)
 
-With TailAdmin Vue, you can leverage **Vue.js 3** features such as declarative rendering, component-based architecture,
-Vue Router for routing, and Pinia for state management. It also utilizes the power of Tailwind CSS for rapid UI
-development with its low-level utility classes and responsive design capabilities.
+## Giới Thiệu
 
-## Overview
+TailAdmin Vue được xây dựng trên các công nghệ tiên tiến:
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and control panels. It's built on:
+* **Vue 3 (Vite)**: Framework hiệu suất cao với kiến trúc component-based và khả năng reactive tuyệt vời.
+* **TypeScript**: Mang lại sự an toàn và dễ bảo trì cho dự án.
+* **Tailwind CSS**: Framework CSS tiện lợi giúp phát triển UI nhanh chóng và chuẩn responsive.
 
-- Vue 3 (Vite)
-- TypeScript
-- Tailwind CSS
+Mục tiêu là cung cấp **một điểm khởi đầu chất lượng** cho việc xây dựng các dashboard dữ liệu phong phú, phù hợp với nhu cầu của bất kỳ dự án web nào.
 
-### Quick Links
+## Các Liên Kết Nhanh
 
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1463141366275764364)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
+* [✨ Trang chủ](https://tailadmin.com)
+* [📄 Tài liệu hướng dẫn](https://tailadmin.com/docs)
+* [⬇️ Tải xuống](https://tailadmin.com/download)
+* [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1463141366275764364)
+* [⚡ Phiên bản PRO](https://tailadmin.com/pricing)
 
 ### Demos
 
-- [Free Version](https://free-vue-demo.tailadmin.com/)
-- [Pro Version](https://vue-demo.tailadmin.com)
+* [Free Version](https://free-vue-demo.tailadmin.com/)
+* [Pro Version](https://vue-demo.tailadmin.com)
 
-### Other Versions
+### Các Phiên Bản Khác
 
-- [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [React Version](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
+* [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
+* [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
+* [React Version](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
 
-## Installation
+## Cài Đặt
 
-### Prerequisites
+### Yêu Cầu
 
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
+Trước khi bắt đầu, đảm bảo bạn đã cài đặt:
 
-- Node.js 18.x or later (recommended to use Node.js 20.x or later)
-- Recommended IDE Setup: [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+* **Node.js 18.x hoặc mới hơn** (Khuyến nghị: Node.js 20.x)
+* IDE: **[VSCode](https://code.visualstudio.com/)** + **[Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)** (và tắt Vetur)
 
-#### Type Support for `.vue` Imports in TS
+**Lưu ý:** TypeScript không xử lý tốt file `.vue` mặc định – cần dùng `vue-tsc` và cài đặt Volar để có hỗ trợ TypeScript tốt hơn.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Các Bước
 
-### Cloning the Repository
-
-Clone the repository using the following command:
+1️⃣ Clone repository:
 
 ```bash
 git clone https://github.com/TailAdmin/vue-tailwind-admin-dashboard.git
 ```
 
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
+2️⃣ Cài đặt dependencies:
 
-1. Install dependencies:
+```bash
+npm install
+# hoặc
+yarn install
+```
 
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+3️⃣ Chạy dev server:
 
-2. Start the development server:
+```bash
+npm run dev
+# hoặc
+yarn dev
+```
 
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+4️⃣ Build production:
 
-3. Production build:
-   ```bash
-   npm run build
-   # or
-   yarn build
-   ```
+```bash
+npm run build
+# hoặc
+yarn build
+```
 
-## Feature Comparison
+## So Sánh Phiên Bản
 
-### Free Version
+| Tính năng            | Free Version | Pro Version                                           |
+| -------------------- | ------------ | ----------------------------------------------------- |
+| Dashboard độc đáo    | 1            | 5 (Analytics, Ecommerce, CRM, Marketing, Stocks, ...) |
+| Thành phần dashboard | 30+          | 400+                                                  |
+| UI Elements          | 50+          | 400+                                                  |
+| Figma design         | Cơ bản       | Hoàn chỉnh                                            |
+| Hỗ trợ               | Community    | Email                                                 |
 
-- 1 Unique Dashboard
-- 30+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
+👉 Xem chi tiết: [Pricing Page](https://tailadmin.com/pricing)
 
-### Pro Version
+## Các Thành Phần Nổi Bật
 
-- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 400+ dashboard components and UI elements
-- Complete Figma design file
-- Email support
+✅ Sidebar đẹp mắt và dễ truy cập
+✅ Các biểu đồ (Line, Bar) với ApexCharts
+✅ Trang quản lý hồ sơ và trang 404 mẫu sẵn
+✅ Hỗ trợ Dark Mode 🕶️
+✅ Modal, Dropdown, Alerts, Tables, Forms...
 
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
+Mọi thành phần đều được xây dựng **với Vue.js** và **Tailwind CSS**, dễ dàng tùy biến và mở rộng.
 
-## Components
+## Tính Năng Nổi Bật
 
-TailAdmin is a pre-designed starting point for building a web-based dashboard using Vue.js and Tailwind CSS. The template includes:
+* **💎 Thiết kế hiện đại, UX/UI cao cấp:** Được hơn 10K+ ứng dụng web tin tưởng sử dụng.
+* **⚡ Vite build system:** Giúp quá trình phát triển nhanh và mượt mà.
+* **🔀 Vue Router 4:** Quản lý điều hướng hiệu quả.
+* **🗺️ JSVectorMap:** Thêm các bản đồ vector trực quan.
+* **💡 Reactive utilities (VueUse):** Tăng cường tính phản ứng của các thành phần.
+* **💫 TypeScript Support:** Code sạch, dễ bảo trì.
+* **🗃️ Pinia:** Quản lý state rõ ràng và dễ mở rộng.
 
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Prebuilt profile management and 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- Can't forget Dark Mode 🕶️
+## Nhật Ký Cập Nhật
 
-All components are built with Vue and styled using Tailwind CSS for easy customization.
+### v2.0.1 - \[27/02/2025]
 
-## Features
+* Nâng cấp lên Tailwind CSS v4
+* Tối ưu class, cập nhật cú pháp
+* Chạy `npm install` để đồng bộ dependencies mới.
 
-**💎 High-quality, Premium Modern Design:**
-A thoughtfully designed dashboard template with a deep focus on UX/UI, already trusted and utilized by over 10K+ web apps worldwide.
+### v2.0.0 - \[02/2025]
 
-**✨ Vue 3:**
-Get enhanced performance with the latest Vue version.
+* **Major update:** Chuyển sang Vue 3, nâng cấp giao diện.
+* Thêm dashboard mới (Ecommerce, CRM, ...)
+* Sidebar collapsible, real-time chat, drag-and-drop calendar...
 
-**⚡ Vite Build System:**
-Enjoy quick development with Vite, ensuring fast code compilation.
+[Chi tiết tại đây](https://tailadmin.com/docs/update-logs/vue)
 
-**🔀 Vue Router:**
-Manage app navigation with ease using Vue Router for seamless transitions.
+### v1.0.2 - \[19/06/2024]
 
-**💡 Reactive Utilities:**
-Enhance component reactivity with @vueuse/core utilities.
+* Fix hamburger icon trên mobile
 
-**📊 Charting with ApexCharts:**
-Visualize data with ApexCharts for beautiful analytics.
+### v1.0.1 - \[08/02/2024]
 
-**🗺️ Vector Maps with JSVectorMap:**
-Easily integrate interactive vector maps with JSVectorMap.
+* Cập nhật Multiselect Dropdown
+* Tái cấu trúc SelectGroup
 
-**🖌️ UI with Tailwind CSS:**
-Frontend UI built on the powerful and versatile Tailwind CSS framework.
+### v1.0.0 - Initial Release - \[22/01/2024]
 
-**💫 TypeScript Support:**
-Write safer, maintainable code with TailAdmin Vue's TypeScript Support.
+---
 
-**✅ Linting and Formatting:**
-Maintain a clean codebase with built-in linting and formatting.
-
-**🗃️ State Management with Pinia:**
-Handle your app's state with Pinia for clean, organized code.
-
-## Update Logs
-
-### Version 2.0.1 - [February 27, 2025]
-
-#### Update Overview
-
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
-
-#### Next Steps
-
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
-
-### Version 2.0.0 - [February 2025]
-
-Major update with Vue 3 migration and comprehensive redesign.
-
-#### Major Improvements
-
-- Complete migration to Vue 3 Composition API
-- Updated to Vue Router 4
-- Enhanced user interface with new Vue 3 components
-- Improved performance with Vue 3's virtual DOM
-- Better accessibility and responsive design
-
-#### New Features
-
-- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
-- Collapsible sidebar with Vue 3 integration
-- Enhanced navigation with Vue Router 4
-- Real-time chat functionality
-- Full-featured calendar with drag-and-drop
-- Advanced table components
-- Updated data visualization with ApexCharts
-
-#### Breaking Changes
-
-- Requires Vue 3 and Vue Router 4
-- Chart components migrated to ApexCharts for Vue 3
-- Modified routing implementation
-- Updated component APIs for Vue 3 compatibility
-
-[Read more](https://tailadmin.com/docs/update-logs/vue) on this release.
-
-### Version 1.0.2 - [June 19, 2024]
-
-#### Issues
-
-- Fix Mobile Menu Hamburger Icon issue.
-
-### Version 1.0.1 - [Feb 08, 2024]
-
-#### Enhancements
-
-- Make it functional [Multiselect Dropdown/Form Elements].
-- Delete SelectGroup Components then create a SelectGroup folder and create two files under this
-  folder SelectGroupOne.vue SelectGroupTwo.vue [Select Group/Form Elements & Layout].
-- Update style.css file.
-
-### Version 1.0.0 - Initial Release - [Jan 22, 2024]
-
-- Initial release of TailAdmin Vue.
+**Lưu ý:** Đây chỉ là một phần của **ROAD-TO-FULLSTACK**, tập hợp toàn bộ những bài học, kỹ năng và nỗ lực của tôi trên hành trình làm chủ lập trình fullstack. Hãy cùng khám phá, học hỏi và phát triển! 🚀
