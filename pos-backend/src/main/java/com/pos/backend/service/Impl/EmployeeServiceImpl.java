@@ -1,7 +1,8 @@
-package com.pos.backend.service;
+package com.pos.backend.service.Impl;
 
 import com.pos.backend.model.Employee;
 import com.pos.backend.repository.EmployeeRepository;
+import com.pos.backend.service.base.EmployeeService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -7,12 +7,14 @@ package com.pos.backend.model;
 /**
  * @author 04dkh
  */
+
 import com.pos.backend.model.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -51,4 +53,25 @@ public class Discount extends BaseEntity {
 
     @Column(name = "maximum_discount_amount", nullable = false, precision = 12, scale = 2)
     private BigDecimal maximumDiscountAmount = BigDecimal.ZERO;
+
+    public BigDecimal calculate(BigDecimal subTotal) {
+        if (subTotal.compareTo(minimumOrderAmount) < 0) {
+            return BigDecimal.ZERO;
+        }
+
+        BigDecimal discountAmount = BigDecimal.ZERO;
+
+        if (discountType != null && discountType.getName().equalsIgnoreCase("PERCENT")) {
+            discountAmount = subTotal.multiply(value).divide(new BigDecimal("100"));
+        } else if (discountType != null && discountType.getName().equalsIgnoreCase("FIXED")) {
+            discountAmount = value;
+        }
+
+        if (maximumDiscountAmount != null && maximumDiscountAmount.compareTo(BigDecimal.ZERO) > 0) {
+            discountAmount = discountAmount.min(maximumDiscountAmount);
+        }
+
+        return discountAmount;
+    }
+
 }

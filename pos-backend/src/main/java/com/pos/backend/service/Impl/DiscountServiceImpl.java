@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.pos.backend.service;
+package com.pos.backend.service.Impl;
 
 /**
  * @author 04dkh
@@ -15,6 +15,7 @@ import com.pos.backend.model.Discount;
 import com.pos.backend.model.DiscountType;
 import com.pos.backend.repository.DiscountRepository;
 import com.pos.backend.repository.DiscountTypeRepository;
+import com.pos.backend.service.base.DiscountService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

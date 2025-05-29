@@ -68,7 +68,4 @@ public class Invoice extends BaseEntity {
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Payment> payments;
-
-    // No need for @Version here if it's already in BaseEntity
-    // private Long version; // Remove this line if BaseEntity handles it
 }

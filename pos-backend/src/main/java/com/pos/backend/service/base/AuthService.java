@@ -1,11 +1,10 @@
-package com.pos.backend.service;
+package com.pos.backend.service.base;
 
 import com.pos.backend.dto.auth.AuthResponse;
 import com.pos.backend.dto.auth.LoginRequest;
 import com.pos.backend.dto.auth.RegisterRequest;
 import com.pos.backend.dto.common.RoleDto;
 import com.pos.backend.dto.employee.EmployeeResponse;
-import com.pos.backend.dto.role.RoleResponse;
 import com.pos.backend.model.Employee;
 import com.pos.backend.model.Role;
 import com.pos.backend.repository.EmployeeRepository;

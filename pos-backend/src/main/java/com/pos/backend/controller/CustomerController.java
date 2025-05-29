@@ -10,7 +10,7 @@ package com.pos.backend.controller;
 import com.pos.backend.dto.common.ApiResponse; // Import ApiResponse
 import com.pos.backend.dto.customer.CustomerRequest;
 import com.pos.backend.dto.customer.CustomerResponse;
-import com.pos.backend.service.CustomerService; // Import CustomerService
+import com.pos.backend.service.base.CustomerService; // Import CustomerService
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

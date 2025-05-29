@@ -1,4 +1,4 @@
-package com.pos.backend.service;
+package com.pos.backend.service.Impl;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,6 +15,7 @@ import com.pos.backend.model.Category;
 import com.pos.backend.model.Product;
 import com.pos.backend.repository.CategoryRepository;
 import com.pos.backend.repository.ProductRepository;
+import com.pos.backend.service.base.ProductService;
 import com.pos.backend.util.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -10,7 +10,7 @@ package com.pos.backend.controller;
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.discount.DiscountRequest;
 import com.pos.backend.dto.discount.DiscountResponse;
-import com.pos.backend.service.DiscountService;
+import com.pos.backend.service.base.DiscountService;
 import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

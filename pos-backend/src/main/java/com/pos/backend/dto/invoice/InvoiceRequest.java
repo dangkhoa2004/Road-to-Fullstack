@@ -4,25 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class InvoiceResponse {
-    private Long id;
+public class InvoiceRequest {
     private Long customerId;
     private Long employeeId;
     private Long tableId;
     private Long discountId;
-    private BigDecimal subTotal;
-    private BigDecimal discountAmount;
-    private BigDecimal taxAmount;
-    private BigDecimal totalAmount;
-    private String status;
+    private List<InvoiceItemRequest> items;
     private String note;
-    private List<InvoiceItemResponse> items;
 }

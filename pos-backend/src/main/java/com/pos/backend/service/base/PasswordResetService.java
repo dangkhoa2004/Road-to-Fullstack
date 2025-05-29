@@ -1,4 +1,4 @@
-package com.pos.backend.service;
+package com.pos.backend.service.base;
 
 import com.pos.backend.model.Employee;
 import com.pos.backend.model.PasswordResetToken;
@@ -71,7 +71,7 @@ public class PasswordResetService {
         templateVariables.put("resetUrl", resetUrl); // Có thể bỏ qua nếu template không dùng resetUrl
 
         // Các biến khác cho template HTML của bạn
-        templateVariables.put("logoUrl", "https://yourcompany.com/images/logo.png"); // Thay đổi URL logo nếu cần
+        templateVariables.put("logoUrl", "https://i.ibb.co/7txFXRCM/banner.jpg"); // Thay đổi URL logo nếu cần
         templateVariables.put("systemName", "Hệ thống Quản lý POS"); // Thay đổi tên hệ thống
         templateVariables.put("companyName", "Tên Công ty của bạn"); // Thay đổi tên công ty
 

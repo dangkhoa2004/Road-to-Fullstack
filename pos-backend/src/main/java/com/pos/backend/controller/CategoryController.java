@@ -7,18 +7,19 @@ package com.pos.backend.controller;
 /**
  * @author 04dkh
  */
+
 import com.pos.backend.dto.category.CategoryRequest;
 import com.pos.backend.dto.category.CategoryResponse;
-import com.pos.backend.dto.common.ApiResponse; // Import ApiResponse
-import com.pos.backend.service.CategoryService;
+import com.pos.backend.dto.common.ApiResponse;
+import com.pos.backend.service.base.CategoryService;
 import jakarta.validation.Valid;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.springframework.dao.DataIntegrityViolationException;
 
 @RestController
 @RequestMapping("/api/category")

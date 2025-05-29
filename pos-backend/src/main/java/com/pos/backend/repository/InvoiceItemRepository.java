@@ -6,12 +6,31 @@ package com.pos.backend.repository;
 
 import com.pos.backend.model.InvoiceItem;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-/**
- * @author 04dkh
- */
-@Repository
-public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Long>{
+import java.util.List;
 
+@Repository
+public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Long> {
+
+    // Tìm items theo invoice
+    List<InvoiceItem> findByInvoiceId(Long invoiceId);
+
+    // Tìm items theo product
+    List<InvoiceItem> findByProductId(Long productId);
+
+    // Tìm items theo invoice và product
+    List<InvoiceItem> findByInvoiceIdAndProductId(Long invoiceId, Long productId);
+
+    // Thống kê sản phẩm bán chạy
+    @Query("SELECT ii.product.name, SUM(ii.quantity) as totalQuantity " +
+            "FROM InvoiceItem ii JOIN ii.invoice i " +
+            "WHERE i.status = 'completed' " +
+            "GROUP BY ii.product.id, ii.product.name " +
+            "ORDER BY totalQuantity DESC")
+    List<Object[]> getTopSellingProducts();
+
+    // Xóa tất cả items của một invoice
+    void deleteByInvoiceId(Long invoiceId);
 }

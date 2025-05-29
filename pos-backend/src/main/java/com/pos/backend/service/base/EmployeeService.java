@@ -1,4 +1,4 @@
-package com.pos.backend.service;
+package com.pos.backend.service.base;
 
 import com.pos.backend.model.Employee;
 import java.util.Optional; // Import Optional
