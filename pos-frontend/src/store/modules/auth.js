@@ -1,5 +1,5 @@
 // src/store/modules/auth.js
-import {login} from '../../api/auth';
+import { login } from '../../api/auth';
 import router from '../../router';
 import * as types from '../types';
 
@@ -38,28 +38,36 @@ const mutations = {
 };
 
 const actions = {
-    async [types.LOGIN]({commit}, credentials) {
+    async [types.LOGIN]({ commit }, credentials) {
         try {
             const response = await login(credentials);
-            const {token, user} = response;
+            const { token, user } = response.data;
             commit(types.SET_AUTH_TOKEN, token);
             commit(types.SET_AUTH_USER, user);
             commit(types.SET_AUTH_ERROR, null);
             router.push('/');
         } catch (error) {
-            const errorMessage = error.response && error.response.data && error.response.data.message
-                ? error.response.data.message
-                : 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.';
+            let errorMessage = 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.';
+            if (error.response && error.response.data) {
+                if (error.response.data.string) {
+                    errorMessage = error.response.data.string;
+                }
+                else if (error.response.data.message) {
+                    errorMessage = error.response.data.message;
+                }
+            }
+
             commit(types.SET_AUTH_ERROR, errorMessage);
             throw error;
         }
     },
 
-    [types.LOGOUT]({commit}) {
+    [types.LOGOUT]({ commit }) {
         commit(types.CLEAR_AUTH_DATA);
         router.push('/login');
     }
 };
+
 
 export default {
     namespaced: true,

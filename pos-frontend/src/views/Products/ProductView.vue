@@ -1,11 +1,10 @@
 <template>
   <ItemTableComponent :error="productError" :headers="productHeaders" :items="products"
-                      loading-message="Loading products..." @delete-item="deleteProduct"
-                      @view-item-detail="viewProductDetail"/>
+    loading-message="Loading products..." @delete-item="deleteProduct" @view-item-detail="viewProductDetail" />
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import * as types from '@/store/types';
 import ItemTableComponent from '@/components/common/ItemTableComponent.vue';
 
@@ -17,14 +16,14 @@ export default {
   data() {
     return {
       productHeaders: [
-        {text: 'Tên sản phẩm', value: 'name'},
-        {text: 'Mã vạch', value: 'barcode'},
-        {text: 'Trạng thái', value: 'isActive'},
-        {text: 'Danh mục', value: 'categoryName'},
-        {text: 'Giá', value: 'price'},
-        {text: 'Số lượng', value: 'quantity'},
-        {text: 'Được tạo ra tại', value: 'createdAt'},
-        {text: 'Đã cập nhật tại', value: 'updatedAt'},
+        { text: 'Tên sản phẩm', value: 'name' },
+        { text: 'Mã vạch', value: 'barcode' },
+        { text: 'Trạng thái', value: 'isActive' },
+        { text: 'Danh mục', value: 'categoryName' },
+        { text: 'Giá', value: 'price' },
+        { text: 'Số lượng', value: 'quantity' },
+        { text: 'Được tạo ra tại', value: 'createdAt' },
+        { text: 'Đã cập nhật tại', value: 'updatedAt' },
       ],
     };
   },
@@ -49,7 +48,7 @@ export default {
       alert(`Delete product with ID: ${id}`);
     },
     viewProductDetail(id) {
-      this.$router.push({name: 'ProductDetail', params: {id: id}});
+      this.$router.push({ name: 'ProductDetail', params: { id: id } });
     },
   },
   created() {
