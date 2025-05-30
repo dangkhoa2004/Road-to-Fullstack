@@ -1,29 +1,49 @@
 <template>
-  <ItemTableComponent :error="productError" :headers="productHeaders" :items="products"
-    loading-message="Loading products..." @delete-item="deleteProduct" @view-item-detail="viewProductDetail" />
+  <AdminLayout>
+    <PageBreadcrumb :pageTitle="currentPageTitle" />
+    <div class="space-y-5 sm:space-y-6">
+      <ComponentCard title="Product Table">
+        <BasicTableOne :columns="productColumns" :rows="products">
+          <!-- Tuỳ chỉnh render riêng cho cột image_path -->
+          <template #cell-image_path="{ row }">
+            <img :src="row.image_path" alt="product image" class="w-12 h-12 object-cover rounded" />
+          </template>
+        </BasicTableOne>
+      </ComponentCard>
+    </div>
+  </AdminLayout>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import * as types from '@/store/types';
-import ItemTableComponent from '@/components/common/ItemTableComponent.vue';
+import PageBreadcrumb from "@/components/common/PageBreadcrumb.vue";
+import AdminLayout from "@/components/layout/AdminLayout.vue";
+import ComponentCard from "@/components/common/ComponentCard.vue";
+import BasicTableOne from "@/components/tables/basic-tables/BasicTableOne.vue";
 
 export default {
-  name: 'ProductView',
   components: {
-    ItemTableComponent,
+    PageBreadcrumb,
+    AdminLayout,
+    ComponentCard,
+    BasicTableOne,
   },
   data() {
     return {
-      productHeaders: [
-        { text: 'Tên sản phẩm', value: 'name' },
-        { text: 'Mã vạch', value: 'barcode' },
-        { text: 'Trạng thái', value: 'isActive' },
-        { text: 'Danh mục', value: 'categoryName' },
-        { text: 'Giá', value: 'price' },
-        { text: 'Số lượng', value: 'quantity' },
-        { text: 'Được tạo ra tại', value: 'createdAt' },
-        { text: 'Đã cập nhật tại', value: 'updatedAt' },
+      currentPageTitle: "Basic Tables",
+      productColumns: [
+        { key: "id", label: "ID" },
+        { key: "barcode", label: "Barcode" },
+        { key: "name", label: "Name" },
+        { key: "price", label: "Price" },
+        { key: "quantity", label: "Quantity" },
+        { key: "image_path", label: "Image" },
+        { key: "category_id", label: "Category ID" },
+        { key: "is_active", label: "Is Active" },
+        { key: "created_at", label: "Created At" },
+        { key: "updated_at", label: "Updated At" },
+        { key: "version", label: "Version" },
       ],
     };
   },
