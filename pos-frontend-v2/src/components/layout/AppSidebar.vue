@@ -13,12 +13,19 @@
       'py-8 flex',
       !isExpanded && !isHovered ? 'lg:justify-center' : 'justify-start',
     ]">
-      <router-link to="/">
-        <img v-if="isExpanded || isHovered || isMobileOpen" class="dark:hidden" src="/images/logo/logo.svg" alt="Logo"
-          width="150" height="40" />
-        <img v-if="isExpanded || isHovered || isMobileOpen" class="hidden dark:block" src="/images/logo/logo-dark.svg"
-          alt="Logo" width="150" height="40" />
-        <img v-else src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
+      <router-link to="/" class="flex items-center gap-2">
+        <!-- Logo hình tròn -->
+        <img v-if="isExpanded" class="dark:hidden rounded-full" src="/images/logo/logo.jpg" alt="Logo" width="40"
+          height="40" />
+        <img v-if="isExpanded" class="hidden dark:block rounded-full" src="/images/logo/logo.jpg" alt="Logo" width="40"
+          height="40" />
+        <img v-else src="/images/logo/logo.jpg" alt="Logo" width="32" height="32" class="rounded-full" />
+
+        <!-- Tên ứng dụng -->
+        <h1 v-show="isExpanded && !isHovered && !isMobileOpen"
+          class="text-lg font-semibold text-gray-800 dark:text-white tracking-wide">
+          POS-APPLICATION
+        </h1>
       </router-link>
     </div>
     <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
@@ -27,9 +34,7 @@
           <div v-for="(menuGroup, groupIndex) in menuGroups" :key="groupIndex">
             <h2 :class="[
               'mb-4 text-xs uppercase flex leading-[20px] text-gray-400',
-              !isExpanded && !isHovered
-                ? 'lg:justify-center'
-                : 'justify-start',
+              !isExpanded && !isHovered ? 'lg:justify-center' : 'justify-start',
             ]">
               <template v-if="isExpanded || isHovered || isMobileOpen">
                 {{ menuGroup.title }}
@@ -44,9 +49,7 @@
                     'menu-item-active': isSubmenuOpen(groupIndex, index),
                     'menu-item-inactive': !isSubmenuOpen(groupIndex, index),
                   },
-                  !isExpanded && !isHovered
-                    ? 'lg:justify-center'
-                    : 'lg:justify-start',
+                  !isExpanded && !isHovered ? 'lg:justify-center' : 'lg:justify-start',
                 ]">
                   <span :class="[
                     isSubmenuOpen(groupIndex, index)
@@ -59,10 +62,7 @@
                   <ChevronDownIcon v-if="isExpanded || isHovered || isMobileOpen" :class="[
                     'ml-auto w-5 h-5 transition-transform duration-200',
                     {
-                      'rotate-180 text-brand-500': isSubmenuOpen(
-                        groupIndex,
-                        index
-                      ),
+                      'rotate-180 text-brand-500': isSubmenuOpen(groupIndex, index),
                     },
                   ]" />
                 </button>
@@ -84,20 +84,14 @@
                 </router-link>
                 <transition @enter="startTransition" @after-enter="endTransition" @before-leave="startTransition"
                   @after-leave="endTransition">
-                  <div v-show="isSubmenuOpen(groupIndex, index) &&
-                    (isExpanded || isHovered || isMobileOpen)
-                    ">
+                  <div v-show="isSubmenuOpen(groupIndex, index) && (isExpanded || isHovered || isMobileOpen)">
                     <ul class="mt-2 space-y-1 ml-9">
                       <li v-for="subItem in item.subItems" :key="subItem.name">
                         <router-link :to="subItem.path" :class="[
                           'menu-dropdown-item',
                           {
-                            'menu-dropdown-item-active': isActive(
-                              subItem.path
-                            ),
-                            'menu-dropdown-item-inactive': !isActive(
-                              subItem.path
-                            ),
+                            'menu-dropdown-item-active': isActive(subItem.path),
+                            'menu-dropdown-item-inactive': !isActive(subItem.path),
                           },
                         ]">
                           {{ subItem.name }}
@@ -105,28 +99,20 @@
                             <span v-if="subItem.new" :class="[
                               'menu-dropdown-badge',
                               {
-                                'menu-dropdown-badge-active': isActive(
-                                  subItem.path
-                                ),
-                                'menu-dropdown-badge-inactive': !isActive(
-                                  subItem.path
-                                ),
+                                'menu-dropdown-badge-active': isActive(subItem.path),
+                                'menu-dropdown-badge-inactive': !isActive(subItem.path),
                               },
                             ]">
-                              new
+                              Mới
                             </span>
                             <span v-if="subItem.pro" :class="[
                               'menu-dropdown-badge',
                               {
-                                'menu-dropdown-badge-active': isActive(
-                                  subItem.path
-                                ),
-                                'menu-dropdown-badge-inactive': !isActive(
-                                  subItem.path
-                                ),
+                                'menu-dropdown-badge-active': isActive(subItem.path),
+                                'menu-dropdown-badge-inactive': !isActive(subItem.path),
                               },
                             ]">
-                              pro
+                              Pro
                             </span>
                           </span>
                         </router-link>
@@ -171,7 +157,7 @@ const { isExpanded, isMobileOpen, isHovered, openSubmenu } = useSidebar();
 
 const menuGroups = [
   {
-    title: "Menu",
+    title: "Chính",
     items: [
       {
         icon: GridIcon,
@@ -185,35 +171,34 @@ const menuGroups = [
       },
       {
         icon: UserCircleIcon,
-        name: "Thông tin người dùng",
+        name: "Hồ sơ người dùng",
         path: "/profile",
       },
-
       {
         name: "Bảng",
         icon: ListIcon,
         subItems: [
-          { name: "Các thành phần biểu mẫu", path: "/form-elements", pro: false },
-          { name: "Sản phẩm", path: "/products", pro: false }
+          { name: "Phần tử biểu mẫu", path: "/form-elements", pro: false },
+          { name: "Sản phẩm", path: "/products", pro: false },
         ],
       },
       {
         name: "Biểu mẫu",
         icon: TableIcon,
-        subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+        subItems: [{ name: "Bảng cơ bản", path: "/basic-tables", pro: false }],
       },
       {
         name: "Các trang",
         icon: PageIcon,
         subItems: [
           { name: "Trang trắng", path: "/blank", pro: false },
-          { name: "Trang 404", path: "/error-404", pro: false },
+          { name: "Trang lỗi 404", path: "/error-404", pro: false },
         ],
       },
     ],
   },
   {
-    title: "Khác...",
+    title: "Khác",
     items: [
       {
         icon: PieChartIcon,
@@ -227,10 +212,10 @@ const menuGroups = [
         icon: BoxCubeIcon,
         name: "Thành phần UI",
         subItems: [
-          { name: "Thông báo", path: "/alerts", pro: false },
+          { name: "Cảnh báo", path: "/alerts", pro: false },
           { name: "Ảnh đại diện", path: "/avatars", pro: false },
           { name: "Huy hiệu", path: "/badge", pro: false },
-          { name: "Các nút", path: "/buttons", pro: false },
+          { name: "Nút bấm", path: "/buttons", pro: false },
           { name: "Hình ảnh", path: "/images", pro: false },
           { name: "Videos", path: "/videos", pro: false },
         ],

@@ -2,10 +2,11 @@
   <AdminLayout>
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="space-y-5 sm:space-y-6">
-      <ComponentCard title="Product Table">
+      <ComponentCard title="Bảng sản phẩm">
         <BasicTableOne :columns="productColumns" :rows="products">
+          <!-- Tuỳ chỉnh render riêng cho cột hình ảnh -->
           <template #cell-imagePath="{ row }">
-            <img :src="row.imagePath" alt="product image" class="w-12 h-12 object-cover rounded" />
+            <img :src="row.imagePath" alt="Hình ảnh sản phẩm" class="w-12 h-12 object-cover rounded" />
           </template>
         </BasicTableOne>
       </ComponentCard>
@@ -31,17 +32,17 @@ export default {
   },
   data() {
     return {
-      currentPageTitle: 'Basic Tables',
+      currentPageTitle: 'Bảng cơ bản',
       productColumns: [
         { key: 'id', label: 'ID' },
-        { key: 'barcode', label: 'Barcode' },
-        { key: 'name', label: 'Name' },
-        { key: 'price', label: 'Price' },
-        { key: 'quantity', label: 'Quantity' },
-        { key: 'imagePath', label: 'Image' },
-        { key: 'categoryName', label: 'Category ID' },
-        { key: 'createdAt', label: 'Created At' },
-        { key: 'updatedAt', label: 'Updated At' }
+        { key: 'barcode', label: 'Mã vạch' },
+        { key: 'name', label: 'Tên sản phẩm' },
+        { key: 'price', label: 'Giá' },
+        { key: 'quantity', label: 'Số lượng' },
+        { key: 'imagePath', label: 'Hình ảnh' },
+        { key: 'categoryName', label: 'Danh mục' },
+        { key: 'createdAt', label: 'Ngày tạo' },
+        { key: 'updatedAt', label: 'Ngày cập nhật' },
       ],
     };
   },
@@ -59,10 +60,9 @@ export default {
       try {
         await this.fetchProducts();
       } catch (error) {
-        console.error('Failed to load products in component:', error);
+        console.error('Không thể tải sản phẩm:', error);
       }
     },
-
   },
   created() {
     this.loadProducts();

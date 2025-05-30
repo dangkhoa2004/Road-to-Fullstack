@@ -8,144 +8,140 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Ecommerce',
+      name: 'Bảng điều khiển',
       component: () => import('../views/Ecommerce.vue'),
       meta: {
-        title: 'eCommerce Dashboard',
+        title: 'Bảng điều khiển thương mại',
       },
     },
     {
       path: '/calendar',
-      name: 'Calendar',
+      name: 'Lịch',
       component: () => import('../views/Others/Calendar.vue'),
       meta: {
-        title: 'Calendar',
+        title: 'Lịch',
       },
     },
     {
       path: '/profile',
-      name: 'Profile',
+      name: 'Hồ sơ',
       component: () => import('../views/Others/UserProfile.vue'),
       meta: {
-        title: 'Profile',
+        title: 'Hồ sơ người dùng',
       },
     },
     {
       path: '/form-elements',
-      name: 'Form Elements',
+      name: 'Phần tử biểu mẫu',
       component: () => import('../views/Forms/FormElements.vue'),
       meta: {
-        title: 'Form Elements',
+        title: 'Phần tử biểu mẫu',
       },
     },
     {
       path: '/products',
-      name: 'List Product',
+      name: 'Danh sách sản phẩm',
       component: () => import('../views/Products/ListProduct.vue'),
       meta: {
-        title: 'List Product',
+        title: 'Danh sách sản phẩm',
       },
     },
     {
       path: '/basic-tables',
-      name: 'Basic Tables',
+      name: 'Bảng cơ bản',
       component: () => import('../views/Tables/BasicTables.vue'),
       meta: {
-        title: 'Basic Tables',
+        title: 'Bảng cơ bản',
       },
     },
     {
       path: '/line-chart',
-      name: 'Line Chart',
+      name: 'Biểu đồ đường',
       component: () => import('../views/Chart/LineChart/LineChart.vue'),
     },
     {
       path: '/bar-chart',
-      name: 'Bar Chart',
+      name: 'Biểu đồ cột',
       component: () => import('../views/Chart/BarChart/BarChart.vue'),
     },
     {
       path: '/alerts',
-      name: 'Alerts',
+      name: 'Cảnh báo',
       component: () => import('../views/UiElements/Alerts.vue'),
       meta: {
-        title: 'Alerts',
+        title: 'Cảnh báo',
       },
     },
     {
       path: '/avatars',
-      name: 'Avatars',
+      name: 'Ảnh đại diện',
       component: () => import('../views/UiElements/Avatars.vue'),
       meta: {
-        title: 'Avatars',
+        title: 'Ảnh đại diện',
       },
     },
     {
       path: '/badge',
-      name: 'Badge',
+      name: 'Huy hiệu',
       component: () => import('../views/UiElements/Badges.vue'),
       meta: {
-        title: 'Badge',
+        title: 'Huy hiệu',
       },
     },
-
     {
       path: '/buttons',
-      name: 'Buttons',
+      name: 'Nút bấm',
       component: () => import('../views/UiElements/Buttons.vue'),
       meta: {
-        title: 'Buttons',
+        title: 'Nút bấm',
       },
     },
-
     {
       path: '/images',
-      name: 'Images',
+      name: 'Hình ảnh',
       component: () => import('../views/UiElements/Images.vue'),
       meta: {
-        title: 'Images',
+        title: 'Hình ảnh',
       },
     },
     {
       path: '/videos',
-      name: 'Videos',
+      name: 'Video',
       component: () => import('../views/UiElements/Videos.vue'),
       meta: {
-        title: 'Videos',
+        title: 'Video',
       },
     },
     {
       path: '/blank',
-      name: 'Blank',
+      name: 'Trang trắng',
       component: () => import('../views/Pages/BlankPage.vue'),
       meta: {
-        title: 'Blank',
+        title: 'Trang trắng',
       },
     },
-
     {
       path: '/error-404',
-      name: '404 Error',
+      name: 'Lỗi 404',
       component: () => import('../views/Errors/FourZeroFour.vue'),
       meta: {
-        title: '404 Error',
+        title: 'Lỗi 404',
       },
     },
-
     {
       path: '/signin',
-      name: 'Signin',
+      name: 'Đăng nhập',
       component: () => import('../views/Auth/Signin.vue'),
       meta: {
-        title: 'Signin',
+        title: 'Đăng nhập',
       },
     },
     {
       path: '/signup',
-      name: 'Signup',
+      name: 'Đăng ký',
       component: () => import('../views/Auth/Signup.vue'),
       meta: {
-        title: 'Signup',
+        title: 'Đăng ký',
       },
     },
   ],
@@ -154,6 +150,6 @@ const router = createRouter({
 export default router
 
 router.beforeEach((to, from, next) => {
-  document.title = `Vue.js ${to.meta.title} | TailAdmin - Vue.js Tailwind CSS Dashboard Template`
+  document.title = `Vue.js ${to.meta.title} | TailAdmin - Mẫu bảng điều khiển Vue.js + Tailwind CSS`
   next()
 })
