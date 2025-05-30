@@ -1,15 +1,11 @@
 <template>
-  <button
-    :class="[
-      'inline-flex items-center justify-center font-medium gap-2 rounded-lg transition',
-      sizeClasses[size],
-      variantClasses[variant],
-      className,
-      { 'cursor-not-allowed opacity-50': disabled },
-    ]"
-    @click="onClick"
-    :disabled="disabled"
-  >
+  <button :class="[
+    'inline-flex items-center justify-center font-medium gap-2 rounded-lg transition',
+    sizeClasses[size],
+    variantClasses[variant],
+    className,
+    { 'cursor-not-allowed opacity-50': disabled },
+  ]" @click="onClick" :disabled="disabled">
     <span v-if="startIcon" class="flex items-center">
       <component :is="startIcon" />
     </span>

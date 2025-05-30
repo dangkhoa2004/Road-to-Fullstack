@@ -1,8 +1,7 @@
 <template>
   <div class="mb-10">
     <div
-      class="flex flex-wrap justify-center gap-1 mb-2 font-bold text-title-md text-brand-500 dark:text-brand-400 xl:text-title-lg"
-    >
+      class="flex flex-wrap justify-center gap-1 mb-2 font-bold text-title-md text-brand-500 dark:text-brand-400 xl:text-title-lg">
       <!-- timer days -->
       <div v-for="(day, index) in daysArray" :key="index">
         <div v-show="day.visible" class="timer-box">

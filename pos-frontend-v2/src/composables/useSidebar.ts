@@ -1,25 +1,3 @@
-// import { ref } from 'vue'
-
-// export function useSidebar() {
-//   const isMobileOpen = ref(false)
-//   const isDesktopOpen = ref(true)
-
-//   const toggleSidebar = () => {
-//     isDesktopOpen.value = !isDesktopOpen.value
-//   }
-
-//   const toggleMobileSidebar = () => {
-//     isMobileOpen.value = !isMobileOpen.value
-//   }
-
-//   return {
-//     isMobileOpen,
-//     isDesktopOpen,
-//     toggleSidebar,
-//     toggleMobileSidebar,
-//   }
-// }
-
 import { ref, computed, onMounted, onUnmounted, provide, inject } from 'vue'
 import type { Ref } from 'vue' //
 

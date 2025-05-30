@@ -17,8 +17,12 @@
         </ComponentCard>
       </div>
       <div class="space-y-6">
-        <ComponentCard title="Inputs Group"> <InputGroup /> </ComponentCard>
-        <ComponentCard title="File Input"> <FileInput /> </ComponentCard>
+        <ComponentCard title="Inputs Group">
+          <InputGroup />
+        </ComponentCard>
+        <ComponentCard title="File Input">
+          <FileInput />
+        </ComponentCard>
         <ComponentCard title="Checkboxes">
           <CheckboxInput />
         </ComponentCard>
