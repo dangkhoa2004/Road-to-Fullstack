@@ -192,10 +192,11 @@ const menuGroups = [
       },
 
       {
-        name: "Forms",
+        name: "Bảng",
         icon: ListIcon,
         subItems: [
           { name: "Form Elements", path: "/form-elements", pro: false },
+          { name: "Sản phẩm", path: "/products", pro: false }
         ],
       },
       {

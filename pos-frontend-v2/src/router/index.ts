@@ -39,6 +39,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/products',
+      name: 'List Product',
+      component: () => import('../views/Products/ListProduct.vue'),
+      meta: {
+        title: 'List Product',
+      },
+    },
+    {
       path: '/basic-tables',
       name: 'Basic Tables',
       component: () => import('../views/Tables/BasicTables.vue'),
