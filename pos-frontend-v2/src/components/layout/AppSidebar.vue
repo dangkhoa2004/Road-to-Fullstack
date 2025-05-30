@@ -139,7 +139,6 @@
           </div>
         </div>
       </nav>
-      <SidebarWidget v-if="isExpanded || isHovered || isMobileOpen" />
     </div>
   </aside>
 </template>
@@ -163,7 +162,6 @@ import {
   ListIcon,
   PlugInIcon,
 } from "../../icons";
-import SidebarWidget from "./SidebarWidget.vue";
 import BoxCubeIcon from "@/icons/BoxCubeIcon.vue";
 import { useSidebar } from "@/composables/useSidebar";
 
@@ -187,7 +185,7 @@ const menuGroups = [
       },
       {
         icon: UserCircleIcon,
-        name: "User Profile",
+        name: "Thông tin người dùng",
         path: "/profile",
       },
 
@@ -195,57 +193,56 @@ const menuGroups = [
         name: "Bảng",
         icon: ListIcon,
         subItems: [
-          { name: "Form Elements", path: "/form-elements", pro: false },
+          { name: "Các thành phần biểu mẫu", path: "/form-elements", pro: false },
           { name: "Sản phẩm", path: "/products", pro: false }
         ],
       },
       {
-        name: "Tables",
+        name: "Biểu mẫu",
         icon: TableIcon,
         subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
       },
       {
-        name: "Pages",
+        name: "Các trang",
         icon: PageIcon,
         subItems: [
-          { name: "Black Page", path: "/blank", pro: false },
-          { name: "404 Page", path: "/error-404", pro: false },
+          { name: "Trang trắng", path: "/blank", pro: false },
+          { name: "Trang 404", path: "/error-404", pro: false },
         ],
       },
     ],
   },
   {
-    title: "Others",
+    title: "Khác...",
     items: [
       {
         icon: PieChartIcon,
-        name: "Charts",
+        name: "Biểu đồ",
         subItems: [
-          { name: "Line Chart", path: "/line-chart", pro: false },
-          { name: "Bar Chart", path: "/bar-chart", pro: false },
+          { name: "Biểu đồ đường", path: "/line-chart", pro: false },
+          { name: "Biểu đồ thanh", path: "/bar-chart", pro: false },
         ],
       },
       {
         icon: BoxCubeIcon,
-        name: "Ui Elements",
+        name: "Thành phần UI",
         subItems: [
-          { name: "Alerts", path: "/alerts", pro: false },
-          { name: "Avatars", path: "/avatars", pro: false },
-          { name: "Badge", path: "/badge", pro: false },
-          { name: "Buttons", path: "/buttons", pro: false },
-          { name: "Images", path: "/images", pro: false },
+          { name: "Thông báo", path: "/alerts", pro: false },
+          { name: "Ảnh đại diện", path: "/avatars", pro: false },
+          { name: "Huy hiệu", path: "/badge", pro: false },
+          { name: "Các nút", path: "/buttons", pro: false },
+          { name: "Hình ảnh", path: "/images", pro: false },
           { name: "Videos", path: "/videos", pro: false },
         ],
       },
       {
         icon: PlugInIcon,
-        name: "Authentication",
+        name: "Xác thực",
         subItems: [
-          { name: "Signin", path: "/signin", pro: false },
-          { name: "Signup", path: "/signup", pro: false },
+          { name: "Đăng nhập", path: "/signin", pro: false },
+          { name: "Đăng ký", path: "/signup", pro: false },
         ],
       },
-      // ... Add other menu items here
     ],
   },
 ];
@@ -281,7 +278,7 @@ const startTransition = (el) => {
   el.style.height = "auto";
   const height = el.scrollHeight;
   el.style.height = "0px";
-  el.offsetHeight; // force reflow
+  el.offsetHeight;
   el.style.height = height + "px";
 };
 
