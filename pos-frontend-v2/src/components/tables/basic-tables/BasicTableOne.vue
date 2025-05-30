@@ -9,7 +9,7 @@
             <th
               v-for="(column, index) in columns"
               :key="index"
-              class="px-5 py-3 text-left sm:px-6"
+              class="px-5 py-3 text-left sm:px-6 dark:text-white"
               :class="column.headerClass"
             >
               {{ column.label }}
