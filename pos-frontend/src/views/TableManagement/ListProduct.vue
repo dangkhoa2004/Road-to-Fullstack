@@ -4,7 +4,6 @@
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="Bảng sản phẩm">
         <BasicTableOne :columns="productColumns" :rows="products">
-          <!-- Tuỳ chỉnh render riêng cho cột hình ảnh -->
           <template #cell-imagePath="{ row }">
             <img :src="row.imagePath" alt="Hình ảnh sản phẩm" class="w-12 h-12 object-cover rounded" />
           </template>
@@ -41,8 +40,8 @@ export default {
         { key: 'quantity', label: 'Số lượng' },
         { key: 'imagePath', label: 'Hình ảnh' },
         { key: 'categoryName', label: 'Danh mục' },
-        { key: 'createdAt', label: 'Ngày tạo' },
-        { key: 'updatedAt', label: 'Ngày cập nhật' },
+        // { key: 'createdAt', label: 'Ngày tạo' },
+        // { key: 'updatedAt', label: 'Ngày cập nhật' },
       ],
     };
   },

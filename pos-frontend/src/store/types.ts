@@ -44,3 +44,46 @@ export const GET_PRODUCTS = 'GET_PRODUCTS' as const;
 export const GET_PRODUCT = 'GET_PRODUCT' as const;
 export const GET_PRODUCT_LOADING = 'GET_PRODUCT_LOADING' as const;
 export const GET_PRODUCT_ERROR = 'GET_PRODUCT_ERROR' as const;
+
+// --- Category Actions ---
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES' as const;
+export const FETCH_CATEGORY_BY_ID = 'FETCH_CATEGORY_BY_ID' as const;
+
+// --- Category Mutations ---
+export const SET_CATEGORIES = 'SET_CATEGORIES' as const;
+export const SET_CATEGORY = 'SET_CATEGORY' as const;
+export const SET_CATEGORY_LOADING = 'SET_CATEGORY_LOADING' as const;
+export const SET_CATEGORY_ERROR = 'SET_CATEGORY_ERROR' as const;
+
+// --- Category Getters ---
+export const GET_CATEGORIES = 'GET_CATEGORIES' as const;
+export const GET_CATEGORY = 'GET_CATEGORY' as const;
+export const GET_CATEGORY_LOADING = 'GET_CATEGORY_LOADING' as const;
+export const GET_CATEGORY_ERROR = 'GET_CATEGORY_ERROR' as const;
+
+// --- Discount Actions ---
+export const FETCH_DISCOUNTS = 'FETCH_DISCOUNTS' as const;
+export const FETCH_DISCOUNT_BY_ID = 'FETCH_DISCOUNT_BY_ID' as const;
+
+// --- Discount Mutations ---
+export const SET_DISCOUNTS = 'SET_DISCOUNTS' as const;
+export const SET_DISCOUNT = 'SET_DISCOUNT' as const;
+export const SET_DISCOUNT_LOADING = 'SET_DISCOUNT_LOADING' as const;
+export const SET_DISCOUNT_ERROR = 'SET_DISCOUNT_ERROR' as const;
+
+// --- Discount Getters ---
+export const GET_DISCOUNTS = 'GET_DISCOUNTS' as const;
+export const GET_DISCOUNT = 'GET_DISCOUNT' as const;
+export const GET_DISCOUNT_LOADING = 'GET_DISCOUNT_LOADING' as const;
+export const GET_DISCOUNT_ERROR = 'GET_DISCOUNT_ERROR' as const;
+
+// --- Invoice Types ---
+export const FETCH_INVOICES = 'FETCH_INVOICES'
+export const GET_INVOICES = 'GET_INVOICES'
+export const GET_INVOICE = 'GET_INVOICE'
+export const SET_INVOICES = 'SET_INVOICES'
+export const SET_INVOICE = 'SET_INVOICE'
+export const SET_INVOICE_LOADING = 'SET_INVOICE_LOADING'
+export const SET_INVOICE_ERROR = 'SET_INVOICE_ERROR'
+export const GET_INVOICE_LOADING = 'GET_INVOICE_LOADING'
+export const GET_INVOICE_ERROR = 'GET_INVOICE_ERROR'

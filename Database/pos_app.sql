@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 30, 2025 lúc 02:18 PM
+-- Thời gian đã tạo: Th5 30, 2025 lúc 05:15 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -170,7 +170,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `username`, `password_hash`, `role_id`, `phone`, `email`, `is_active`, `created_at`, `updated_at`, `version`) VALUES
-(1, 'John Doe', 'admin', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '1234567890', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-05-28 16:24:04', 1),
+(1, 'Cao Đăng Khoa', 'admin', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '1234567890', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-05-30 20:09:13', 1),
 (4, 'John Doe', 'admin123', '$2a$10$PCke0EClQ.8ILZ3bt7AkHu59EdqWrSeUAsez8AxQtWmWJT2gkfmUO', 1, '12345678900', 'khoacdpp02847@fpt.edu.vn', 1, '2025-05-28 14:57:06', '2025-05-28 16:13:51', 1);
 
 -- --------------------------------------------------------
@@ -301,11 +301,11 @@ INSERT INTO `products` (`id`, `barcode`, `name`, `price`, `quantity`, `image_pat
 (2, 'BC123456788', 'Trà sữa thái xanh', 30000.00, 80, 'https://png.pngtree.com/png-clipart/20220102/original/pngtree-green-milk-thai-tea-png-image_7003288.png', 1, 1, '2025-05-23 17:41:02', '2025-05-23 18:52:01', 1),
 (3, 'BC123456787', 'Sinh tố bơ', 35000.00, 50, 'https://png.pngtree.com/png-vector/20240731/ourmid/pngtree-avocado-smoothie-with-isolated-on-transparent-background-png-image_13317561.png', 2, 0, '2025-05-23 17:41:02', '2025-05-23 18:52:12', 1),
 (4, 'BC123456786', 'Bim Bim Oishi', 10000.00, 200, 'https://down-vn.img.susercontent.com/file/51b0f28104e4c45e4d96f8b0bad73945', 3, 0, '2025-05-23 17:41:02', '2025-05-23 18:52:33', 1),
-(5, 'BC2025000005', 'Bánh Mì', 10500.00, 55, NULL, 3, 1, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
-(6, 'BC2025000006', 'Phở Bò', 10600.00, 56, NULL, 1, 0, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
-(7, 'BC2025000007', 'Bún Chả', 10700.00, 57, NULL, 2, 1, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
-(8, 'BC2025000008', 'Cà Phê Sữa', 10800.00, 58, NULL, 3, 0, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
-(9, 'BC2025000009', 'Trà Đào', 10900.00, 59, NULL, 1, 1, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
+(5, 'BC2025000005', 'Bánh Mì', 10500.00, 55, 'https://png.pngtree.com/png-vector/20240530/ourmid/pngtree-easy-and-nutritious-bread-egg-breakfast-options-for-busy-mornings-png-image_12554587.png', 3, 1, '2025-05-30 12:00:00', '2025-05-30 21:18:15', 1),
+(6, 'BC2025000006', 'Phở Bò', 10600.00, 56, 'https://phovihoang.vn/wp-content/uploads/2018/01/48267.png', 1, 0, '2025-05-30 12:00:00', '2025-05-30 21:18:28', 1),
+(7, 'BC2025000007', 'Bún Chả', 10700.00, 57, 'https://dailong.asia/page/download/bun-cha-ha-noi-png-rice-noodles-hanoi-KVGSis.png', 2, 1, '2025-05-30 12:00:00', '2025-05-30 21:18:44', 1),
+(8, 'BC2025000008', 'Cà Phê Sữa', 10800.00, 58, 'https://khothietke.net/wp-content/uploads/2021/03/taifree1439-ca-phe-sua-tach-ca-phe-sua.png', 3, 0, '2025-05-30 12:00:00', '2025-05-30 21:19:03', 1),
+(9, 'BC2025000009', 'Trà Đào', 10900.00, 59, 'https://png.pngtree.com/png-clipart/20231018/original/pngtree-iced-peach-tea-in-plastic-glass-watercolor-png-image_13342502.png', 1, 1, '2025-05-30 12:00:00', '2025-05-30 21:19:14', 1),
 (10, 'BC2025000010', 'Nước Cam', 11000.00, 60, NULL, 2, 0, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
 (11, 'BC2025000011', 'Bia Hà Nội', 11100.00, 61, NULL, 3, 1, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),
 (12, 'BC2025000012', 'Cơm Tấm', 11200.00, 62, NULL, 1, 0, '2025-05-30 12:00:00', '2025-05-30 12:00:00', 1),

@@ -175,17 +175,22 @@ const menuGroups = [
         path: "/profile",
       },
       {
-        name: "Bảng",
+        name: "Biểu mẫu",
         icon: ListIcon,
         subItems: [
           { name: "Phần tử biểu mẫu", path: "/form-elements", pro: false },
-          { name: "Sản phẩm", path: "/products", pro: false },
+
         ],
       },
       {
-        name: "Biểu mẫu",
+        name: "Bảng",
         icon: TableIcon,
-        subItems: [{ name: "Bảng cơ bản", path: "/basic-tables", pro: false }],
+        subItems: [
+          { name: "Sản phẩm", path: "/products", pro: false },
+          { name: "Danh mục", path: "/categorys", pro: false },
+          { name: "Giảm giá", path: "/discounts", pro: false },
+          { name: "Hóa đơn", path: "/invoices", pro: false },
+        ]
       },
       {
         name: "Các trang",
