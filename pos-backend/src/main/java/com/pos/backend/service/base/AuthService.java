@@ -4,7 +4,6 @@ import com.pos.backend.dto.auth.AuthResponse;
 import com.pos.backend.dto.auth.LoginRequest;
 import com.pos.backend.dto.auth.RegisterRequest;
 import com.pos.backend.dto.employee.EmployeeResponse;
-import com.pos.backend.dto.role.RoleResponse;
 import com.pos.backend.model.Employee;
 import com.pos.backend.model.Role;
 import com.pos.backend.repository.EmployeeRepository;
@@ -19,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 @Service
 public class AuthService {
 
@@ -27,35 +28,51 @@ public class AuthService {
     private final EmployeeRepository employeeRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmployeeService employeeService; // 👈 Thêm EmployeeService
 
-    public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, EmployeeRepository employeeRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public AuthService(AuthenticationManager authenticationManager,
+                       JwtTokenProvider jwtTokenProvider,
+                       EmployeeRepository employeeRepository,
+                       RoleRepository roleRepository,
+                       PasswordEncoder passwordEncoder,
+                       EmployeeService employeeService) { // 👈 Thêm EmployeeService
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.employeeRepository = employeeRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.employeeService = employeeService; // 👈 Khởi tạo
     }
 
+    /**
+     * Xác thực người dùng
+     */
     public AuthResponse authenticateUser(LoginRequest loginRequest) {
         // Xác thực username/password
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        // Sinh token
         String jwt = jwtTokenProvider.generateToken(authentication);
 
         // Lấy thông tin nhân viên
-        Employee employee = employeeRepository.findByUsername(loginRequest.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + loginRequest.getUsername()));
+        Employee employee = employeeRepository.findByUsername(loginRequest.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + loginRequest.getUsername()));
 
-        // Tạo RoleResponse từ Role của Employee
-        RoleResponse roleResponse = new RoleResponse(employee.getRole().getId(), employee.getRole().getName());
+        // Lấy quyền cuối cùng (role + individual)
+        Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());
 
-        // Tạo EmployeeResponse
-        EmployeeResponse employeeResponse = new EmployeeResponse(employee.getId(), employee.getName(), employee.getUsername(), roleResponse, employee.getPhone(), employee.getEmail(), employee.getIsActive());
+        // Tạo EmployeeResponse đầy đủ (có quyền)
+        EmployeeResponse employeeResponse = new EmployeeResponse(employee, finalPermissions);
 
         return new AuthResponse(jwt, "Login successful", employeeResponse);
     }
 
+    /**
+     * Đăng ký người dùng mới
+     */
     @Transactional
     public EmployeeResponse registerUser(RegisterRequest registerRequest) {
         if (employeeRepository.findByUsername(registerRequest.getUsername()).isPresent()) {
@@ -63,7 +80,8 @@ public class AuthService {
         }
 
         // Lấy role mặc định
-        Role defaultRole = roleRepository.findByName("EMPLOYEE").orElseThrow(() -> new RuntimeException("Default role 'EMPLOYEE' not found. Please create it."));
+        Role defaultRole = roleRepository.findByName("EMPLOYEE")
+                .orElseThrow(() -> new RuntimeException("Default role 'EMPLOYEE' not found. Please create it."));
 
         // Tạo nhân viên mới
         Employee employee = new Employee();
@@ -77,10 +95,7 @@ public class AuthService {
 
         Employee savedEmployee = employeeRepository.save(employee);
 
-        // Tạo RoleResponse từ Role của Employee đã lưu
-        RoleResponse roleResponse = new RoleResponse(savedEmployee.getRole().getId(), savedEmployee.getRole().getName());
-
-        // Tạo EmployeeResponse
-        return new EmployeeResponse(savedEmployee.getId(), savedEmployee.getName(), savedEmployee.getUsername(), roleResponse, savedEmployee.getPhone(), savedEmployee.getEmail(), savedEmployee.getIsActive());
+        // Không có quyền riêng lúc đăng ký, chỉ trả về thông tin cơ bản
+        return new EmployeeResponse(savedEmployee);
     }
 }

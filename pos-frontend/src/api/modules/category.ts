@@ -1,4 +1,4 @@
-import { get, post, put, deleteApi } from './api'
+import { get, post, put, deleteApi } from '../api'
 import type { AxiosError } from 'axios'
 
 // Định nghĩa đầy đủ Category

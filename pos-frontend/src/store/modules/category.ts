@@ -1,5 +1,5 @@
-import { getAllCategory, getCategoryById } from '@/api/category'
-import type { Category } from '@/api/category'
+import { getAllCategory, getCategoryById } from '@/api/modules/category'
+import type { Category } from '@/api/modules/category'
 import type { ActionContext } from 'vuex'
 
 // --- State ---

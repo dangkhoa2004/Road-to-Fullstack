@@ -1,13 +1,12 @@
-// src/store/modules/auth.ts
-import { login } from '@/api/auth';
+// src\store\modules\auth.ts
+import { login } from '@/api/modules/auth';
 import router from '@/router';
 import * as types from '../types';
 import type { ActionContext } from 'vuex';
 
-// --- Auth State ---
 export interface AuthState {
   token: string | null;
-  user: any; // Thay bằng User interface nếu có
+  user: any;
   authError: string | null;
   isLoggedIn: boolean;
 }
@@ -19,14 +18,12 @@ const state: AuthState = {
   isLoggedIn: !!localStorage.getItem('jwtToken'),
 };
 
-// --- Getters ---
 const getters = {
   [types.IS_LOGGED_IN]: (state: AuthState) => !!state.token,
   [types.GET_AUTH_USER]: (state: AuthState) => state.user,
   [types.GET_AUTH_ERROR]: (state: AuthState) => state.authError,
 };
 
-// --- Mutations ---
 const mutations = {
   [types.SET_AUTH_TOKEN](state: AuthState, token: string) {
     state.token = token;
@@ -48,7 +45,6 @@ const mutations = {
   },
 };
 
-// --- Actions ---
 const actions = {
   async [types.LOGIN](
     { commit }: ActionContext<AuthState, unknown>,
@@ -56,10 +52,7 @@ const actions = {
   ) {
     try {
       const response = await login(credentials);
-
-      // response là { token, user } rồi
       const { token, user } = response;
-
       commit(types.SET_AUTH_TOKEN, token);
       commit(types.SET_AUTH_USER, user);
       commit(types.SET_AUTH_ERROR, null);
@@ -77,9 +70,13 @@ const actions = {
       throw error;
     }
   },
+
+  [types.LOGOUT]({ commit }: ActionContext<AuthState, unknown>) {
+    commit(types.CLEAR_AUTH_DATA);
+    router.push('/login');
+  },
 };
 
-// --- Export ---
 export default {
   namespaced: true,
   state,

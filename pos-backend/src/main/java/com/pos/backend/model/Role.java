@@ -28,12 +28,14 @@ public class Role extends BaseEntity {
     @Column(name = "name", nullable = false, unique = true, length = 50)
     private String name;
 
-    // Mối quan hệ One-to-Many với Employee
-    // mappedBy trỏ đến trường 'role' trong lớp Employee
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Employee> employees; // Sử dụng Set để tránh trùng lặp
+    private Set<Employee> employees;
 
-    // Có thể thêm quyền hạn chi tiết cho từng vai trò tại đây hoặc trong một bảng khác
-    // Ví dụ: @Column(name = "permissions", columnDefinition = "JSON")
-    // private String permissions;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "role_permissions",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private Set<Permission> permissions;
 }

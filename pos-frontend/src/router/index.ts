@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
-// Import các module routes
 import authRoutes from './modules/auth'
 import dashboardRoutes from './modules/dashboard'
 import uiRoutes from './modules/ui'
@@ -10,7 +9,6 @@ import othersRoutes from './modules/others'
 import errorsRoutes from './modules/errors'
 import pagesRoutes from './modules/pages'
 
-// Gộp tất cả routes lại
 const routes: RouteRecordRaw[] = [
   {
     path: '/:pathMatch(.*)*',
@@ -33,11 +31,21 @@ const router = createRouter({
   routes,
 })
 
-// Hook đổi title
+// 👇 Middleware kiểm tra localStorage
 router.beforeEach((to, from, next) => {
   const defaultTitle = 'Ứng dụng của tôi'
   document.title = `${to.meta?.title || defaultTitle} | Pos - Application`
-  next()
+
+  const token = localStorage.getItem('jwtToken')
+  const user = localStorage.getItem('user')
+
+  const publicRoutes = ['/dang-nhap', '/dang-ky', '/forgot-password']
+
+  if ((!token || !user) && !publicRoutes.includes(to.path)) {
+    next('/dang-nhap')
+  } else {
+    next()
+  }
 })
 
 export default router

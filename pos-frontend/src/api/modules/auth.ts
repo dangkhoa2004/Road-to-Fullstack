@@ -1,4 +1,4 @@
-import axios from './index';
+import axios from '../index';
 import type { AxiosResponse, AxiosError } from 'axios';
 
 // Interface cho user (tuỳ chỉnh thêm nếu muốn rõ ràng hơn)

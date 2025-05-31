@@ -1,5 +1,5 @@
-import { getAllDiscount, getDiscountById } from '@/api/discount'
-import type { Discount } from '@/api/discount'
+import { getAllDiscount, getDiscountById } from '@/api/modules/discount'
+import type { Discount } from '@/api/modules/discount'
 import type { ActionContext } from 'vuex'
 
 // --- State ---

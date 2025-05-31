@@ -1,5 +1,5 @@
-import { getAllProduct, getProductById } from '@/api/product';
-import type { Product } from '@/api/product';
+import { getAllProduct, getProductById } from '@/api/modules/product';
+import type { Product } from '@/api/modules/product';
 import type { ActionContext } from 'vuex';
 
 // --- State ---

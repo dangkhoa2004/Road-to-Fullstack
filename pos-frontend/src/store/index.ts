@@ -5,6 +5,7 @@ import product from './modules/product'
 import category from './modules/category'
 import discount from './modules/discount'
 import invoice from './modules/invoice'
+import stock from './modules/stock' // 👈 Thêm
 
 import type { AuthState } from './modules/auth'
 import type { UserState } from './modules/user'
@@ -12,6 +13,7 @@ import type { ProductState } from './modules/product'
 import type { CategoryState } from './modules/category'
 import type { DiscountState } from './modules/discount'
 import type { InvoiceState } from './modules/invoice'
+import type { StockState } from './modules/stock'
 
 export interface RootState {
   auth: AuthState
@@ -20,6 +22,7 @@ export interface RootState {
   category: CategoryState
   discount: DiscountState
   invoice: InvoiceState
+  stock: StockState
 }
 
 const store = createStore<RootState>({
@@ -30,6 +33,7 @@ const store = createStore<RootState>({
     category,
     discount,
     invoice,
+    stock,
   },
 })
 

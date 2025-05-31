@@ -31,6 +31,12 @@ const dashboardRoutes: RouteRecordRaw[] = [
     component: () => import('../../views/TableManagement/ListInvoice.vue'),
     meta: { title: 'Danh sách hóa đơn' },
   },
+  {
+    path: '/stocks',
+    name: 'Danh sách nhập / xuất kho',
+    component: () => import('../../views/TableManagement/ListStocks.vue'),
+    meta: { title: 'Danh sách nhập / xuất kho' },
+  },
 ]
 
 export default dashboardRoutes

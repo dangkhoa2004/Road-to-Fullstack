@@ -15,6 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "employees")
 @Getter
@@ -45,6 +47,12 @@ public class Employee extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
-    // No need for @Version here if it's already in BaseEntity
-    // private Long version; // Remove this line if BaseEntity handles it
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "employee_permissions",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private Set<Permission> individualPermissions;
 }
+

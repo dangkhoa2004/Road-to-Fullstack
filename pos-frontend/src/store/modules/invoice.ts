@@ -1,5 +1,5 @@
-import { getAllInvoices, getInvoiceById, addInvoice, updateInvoice, deleteInvoice } from '@/api/invoice'
-import type { Invoice } from '@/api/invoice'
+import { getAllInvoices, getInvoiceById, addInvoice, updateInvoice, deleteInvoice } from '@/api/modules/invoice'
+import type { Invoice } from '@/api/modules/invoice'
 import type { ActionContext } from 'vuex'
 
 export interface InvoiceState {

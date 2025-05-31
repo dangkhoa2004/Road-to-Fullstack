@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -38,23 +39,37 @@ public class EmployeeController {
     public ResponseEntity<ApiResponse<EmployeeResponse>> findEmployeeByEmail(@RequestParam String email) {
         Optional<Employee> optionalEmployee = employeeService.findEmployeeByEmail(email);
         if (optionalEmployee.isPresent()) {
-            EmployeeResponse response = new EmployeeResponse(optionalEmployee.get());
+            Employee employee = optionalEmployee.get();
+
+            // Lấy quyền cuối cùng
+            Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());
+
+            // Tạo response đầy đủ
+            EmployeeResponse response = new EmployeeResponse(employee, finalPermissions);
+
             return ResponseEntity.ok(new ApiResponse<>("Tìm thấy nhân viên", "200", response));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiResponse<>("Không tìm thấy nhân viên với email này", "404", null));
     }
 
+
     @GetMapping("/by-username")
     public ResponseEntity<ApiResponse<EmployeeResponse>> findEmployeeByUsername(@RequestParam String username) {
         Employee employee = employeeService.findEmployeeByUsername(username);
         if (employee != null) {
-            EmployeeResponse response = new EmployeeResponse(employee);
+            // Lấy quyền cuối cùng
+            Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());
+
+            // Tạo response đầy đủ
+            EmployeeResponse response = new EmployeeResponse(employee, finalPermissions);
+
             return ResponseEntity.ok(new ApiResponse<>("Tìm thấy nhân viên", "200", response));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiResponse<>("Không tìm thấy nhân viên với username này", "404", null));
     }
+
 
     @PostMapping("/save")
     public ResponseEntity<ApiResponse<EmployeeResponse>> saveEmployee(@Valid @RequestBody EmployeeRequest request) {

@@ -10,7 +10,7 @@
             </th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 dark:text-white">
           <tr v-for="(row, rowIndex) in paginatedRows" :key="rowIndex"
             class="border-t border-gray-100 dark:border-gray-800">
             <td v-for="(column, colIndex) in columns" :key="colIndex" class="px-5 py-4 sm:px-6">

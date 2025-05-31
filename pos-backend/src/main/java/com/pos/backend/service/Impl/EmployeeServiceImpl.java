@@ -7,7 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -51,4 +53,26 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setPasswordHash(passwordEncoder.encode(newPassword));
         employeeRepository.save(employee);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Set<String> getFinalPermissionsForEmployee(Long employeeId) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        Set<String> permissions = new HashSet<>();
+
+        // 1️⃣ Quyền từ role
+        if (employee.getRole() != null && employee.getRole().getPermissions() != null) {
+            employee.getRole().getPermissions().forEach(p -> permissions.add(p.getName()));
+        }
+
+        // 2️⃣ Quyền riêng (nếu có)
+        if (employee.getIndividualPermissions() != null) {
+            employee.getIndividualPermissions().forEach(p -> permissions.add(p.getName()));
+        }
+
+        return permissions;
+    }
+
 }

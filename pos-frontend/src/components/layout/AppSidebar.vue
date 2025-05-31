@@ -190,6 +190,7 @@ const menuGroups = [
           { name: "Danh mục", path: "/categorys", pro: false },
           { name: "Giảm giá", path: "/discounts", pro: false },
           { name: "Hóa đơn", path: "/invoices", pro: false },
+          { name: "Nhập / Xuất kho", path: "/stocks", pro: false },
         ]
       },
       {
@@ -229,8 +230,8 @@ const menuGroups = [
         icon: PlugInIcon,
         name: "Xác thực",
         subItems: [
-          { name: "Đăng nhập", path: "/signin", pro: false },
-          { name: "Đăng ký", path: "/signup", pro: false },
+          { name: "Đăng nhập", path: "/dang-nhap", pro: false },
+          { name: "Đăng ký", path: "/dang-ky", pro: false },
         ],
       },
     ],
