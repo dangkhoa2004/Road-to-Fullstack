@@ -233,15 +233,7 @@ const menuGroups = [
           { name: "Hình ảnh", path: "/images", pro: false },
           { name: "Videos", path: "/videos", pro: false },
         ],
-      },
-      {
-        icon: PlugInIcon,
-        name: "Xác thực",
-        subItems: [
-          { name: "Đăng nhập", path: "/dang-nhap", pro: false },
-          { name: "Đăng ký", path: "/dang-ky", pro: false },
-        ],
-      },
+      }
     ],
   },
 ];
