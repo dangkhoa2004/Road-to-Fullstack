@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 30, 2025 lúc 05:15 PM
+-- Thời gian đã tạo: Th5 31, 2025 lúc 07:26 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -196,6 +196,13 @@ CREATE TABLE `invoices` (
   `version` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `customer_id`, `employee_id`, `table_id`, `discount_id`, `sub_total`, `discount_amount`, `tax_amount`, `total_amount`, `status`, `note`, `created_at`, `updated_at`, `version`) VALUES
+(1, 1, 1, 1, 1, 25000.00, 0.00, 2500.00, 27500.00, 'pending', 'test invoice 01', '2025-05-31 05:08:41', '2025-05-31 05:08:41', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -213,6 +220,13 @@ CREATE TABLE `invoice_items` (
   `updated_at` datetime(6) NOT NULL,
   `version` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `invoice_items`
+--
+
+INSERT INTO `invoice_items` (`id`, `invoice_id`, `product_id`, `quantity`, `unit_price`, `item_total`, `created_at`, `updated_at`, `version`) VALUES
+(1, 1, 1, 1, 25000.00, 25000.00, '2025-05-31 05:08:41.000000', '2025-05-31 05:08:41.000000', 0);
 
 -- --------------------------------------------------------
 
@@ -737,13 +751,13 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT cho bảng `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `invoice_items`
 --
 ALTER TABLE `invoice_items`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `password_reset_tokens`
