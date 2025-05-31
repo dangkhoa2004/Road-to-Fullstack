@@ -3,7 +3,8 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="Bảng sản phẩm">
-        <BasicTableOne :columns="productColumns" :rows="products">
+        <BasicTableOne :columns="productColumns" :rows="products" modalHeaderTitle="Chỉnh sửa sản phẩm"
+          modalHeaderDescription="Cập nhật thông tin sản phẩm tại đây.">
           <template #cell-imagePath="{ row }">
             <img :src="row.imagePath" alt="Hình ảnh sản phẩm" class="w-12 h-12 object-cover rounded" />
           </template>
@@ -14,15 +15,15 @@
 </template>
 
 <script lang="ts">
-import { mapActions, mapGetters } from 'vuex';
-import * as types from '@/store/types.ts';
-import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
-import AdminLayout from '@/components/layout/AdminLayout.vue';
-import ComponentCard from '@/components/common/ComponentCard.vue';
-import BasicTableOne from '@/components/tables/basic-tables/BasicTableOne.vue';
-import type { Product } from '@/api/product';
+import { defineComponent } from 'vue'
+import { mapActions, mapGetters } from 'vuex'
+import * as types from '@/store/types.ts'
+import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
+import AdminLayout from '@/components/layout/AdminLayout.vue'
+import ComponentCard from '@/components/common/ComponentCard.vue'
+import BasicTableOne from '@/components/tables/basic-tables/BasicTableOne.vue'
 
-export default {
+export default defineComponent({
   components: {
     PageBreadcrumb,
     AdminLayout,
@@ -31,7 +32,7 @@ export default {
   },
   data() {
     return {
-      currentPageTitle: 'Bảng cơ bản',
+      currentPageTitle: 'Bảng sản phẩm',
       productColumns: [
         { key: 'id', label: 'ID' },
         { key: 'barcode', label: 'Mã vạch' },
@@ -40,10 +41,8 @@ export default {
         { key: 'quantity', label: 'Số lượng' },
         { key: 'imagePath', label: 'Hình ảnh' },
         { key: 'categoryName', label: 'Danh mục' },
-        // { key: 'createdAt', label: 'Ngày tạo' },
-        // { key: 'updatedAt', label: 'Ngày cập nhật' },
       ],
-    };
+    }
   },
   computed: {
     ...mapGetters('product', {
@@ -55,16 +54,16 @@ export default {
     ...mapActions('product', {
       fetchProducts: types.FETCH_PRODUCTS,
     }),
-    async loadProducts() {
+    async loadProducts(): Promise<void> {
       try {
-        await this.fetchProducts();
+        await this.fetchProducts()
       } catch (error) {
-        console.error('Không thể tải sản phẩm:', error);
+        console.error('Không thể tải sản phẩm:', error)
       }
     },
   },
   created() {
-    this.loadProducts();
+    this.loadProducts()
   },
-};
+})
 </script>

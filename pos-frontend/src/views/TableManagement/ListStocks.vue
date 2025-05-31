@@ -5,10 +5,8 @@
     <div class="space-y-5 sm:space-y-6">
       <!-- Bảng Hàng Nhập Kho -->
       <ComponentCard title="Hàng Nhập Kho">
-        <BasicTableOne
-          :columns="stockColumns"
-          :rows="stockIns || []"
-        >
+        <BasicTableOne :columns="stockColumns" :rows="stockIns || []" modalHeaderTitle="Chi tiết hàng nhập kho"
+          modalHeaderDescription="Xem và chỉnh sửa thông tin hàng nhập kho tại đây.">
           <template #cell-quantity="{ row }">
             <span>{{ row.quantity }}</span>
           </template>
@@ -17,10 +15,8 @@
 
       <!-- Bảng Hàng Xuất Kho -->
       <ComponentCard title="Hàng Xuất Kho">
-        <BasicTableOne
-          :columns="stockColumns"
-          :rows="stockOuts || []"
-        >
+        <BasicTableOne :columns="stockColumns" :rows="stockOuts || []" modalHeaderTitle="Chi tiết hàng xuất kho"
+          modalHeaderDescription="Xem và chỉnh sửa thông tin hàng xuất kho tại đây.">
           <template #cell-quantity="{ row }">
             <span>{{ row.quantity }}</span>
           </template>
@@ -38,7 +34,6 @@ import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import BasicTableOne from '@/components/tables/basic-tables/BasicTableOne.vue'
-import type { Stock } from '@/api/modules/stock'
 
 export default defineComponent({
   components: {
@@ -74,8 +69,8 @@ export default defineComponent({
     }),
     async loadStocks(): Promise<void> {
       try {
-        const stockInsData = await this.fetchStockIns()
-        const stockOutsData = await this.fetchStockOuts()
+        await this.fetchStockIns()
+        await this.fetchStockOuts()
       } catch (error) {
         console.error('Không thể tải danh sách hàng tồn kho:', error)
       }

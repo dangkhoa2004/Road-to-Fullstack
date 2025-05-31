@@ -3,7 +3,9 @@
         <PageBreadcrumb :pageTitle="currentPageTitle" />
         <div class="space-y-5 sm:space-y-6">
             <ComponentCard title="Bảng Mã Giảm Giá">
-                <BasicTableOne :columns="discountColumns" :rows="discounts || []">
+                <BasicTableOne :columns="discountColumns" :rows="discounts || []"
+                    modalHeaderTitle="Chỉnh sửa mã giảm giá"
+                    modalHeaderDescription="Cập nhật chi tiết mã giảm giá tại đây.">
                     <template #cell-active="{ row }">
                         <span class="inline-block px-2 py-1 rounded text-xs font-semibold"
                             :class="row.active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
@@ -24,7 +26,7 @@ import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import BasicTableOne from '@/components/tables/basic-tables/BasicTableOne.vue'
-import type { Discount } from '@/api/discount'
+import type { Discount } from '@/api/modules/discount'
 
 export default defineComponent({
     components: {
@@ -47,9 +49,6 @@ export default defineComponent({
                 { key: 'active', label: 'Trạng thái' },
                 { key: 'minimumOrderAmount', label: 'Giá trị đơn tối thiểu' },
                 { key: 'maximumDiscountAmount', label: 'Giảm tối đa' },
-                // { key: 'created_at', label: 'Ngày tạo' },
-                // { key: 'updated_at', label: 'Ngày cập nhật' },
-                // { key: 'version', label: 'Phiên bản' },
             ],
         }
     },

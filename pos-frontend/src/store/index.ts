@@ -5,7 +5,8 @@ import product from './modules/product'
 import category from './modules/category'
 import discount from './modules/discount'
 import invoice from './modules/invoice'
-import stock from './modules/stock' // 👈 Thêm
+import stock from './modules/stock'
+import employee from './modules/employee.ts'
 
 import type { AuthState } from './modules/auth'
 import type { UserState } from './modules/user'
@@ -14,6 +15,7 @@ import type { CategoryState } from './modules/category'
 import type { DiscountState } from './modules/discount'
 import type { InvoiceState } from './modules/invoice'
 import type { StockState } from './modules/stock'
+import type { EmployeeState } from './modules/employee.ts'
 
 export interface RootState {
   auth: AuthState
@@ -23,6 +25,7 @@ export interface RootState {
   discount: DiscountState
   invoice: InvoiceState
   stock: StockState
+  employee: EmployeeState
 }
 
 const store = createStore<RootState>({
@@ -34,6 +37,7 @@ const store = createStore<RootState>({
     discount,
     invoice,
     stock,
+    employee,
   },
 })
 

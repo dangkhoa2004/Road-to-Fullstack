@@ -4,7 +4,7 @@ import type { ActionContext } from 'vuex';
 
 // --- User State ---
 export interface UserState {
-  profile: any; // Thay bằng UserProfile nếu có type
+  profile: any;
   isLoading: boolean;
   userError: string | null;
 }

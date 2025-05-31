@@ -2,6 +2,7 @@ package com.pos.backend.service.base;
 
 import com.pos.backend.model.Employee;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,4 +19,7 @@ public interface EmployeeService {
 
     Set<String> getFinalPermissionsForEmployee(Long employeeId);
 
+    List<Employee> findAllEmployees();
+
+    void deleteEmployeeById(Long id);
 }

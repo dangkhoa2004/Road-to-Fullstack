@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -17,12 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<Employee> findEmployeeById(Long id) {
-        return employeeRepository.findById(id);
-    }
-
     public EmployeeServiceImpl(EmployeeRepository employeeRepository, PasswordEncoder passwordEncoder) {
         this.employeeRepository = employeeRepository;
         this.passwordEncoder = passwordEncoder;
@@ -30,9 +25,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional(readOnly = true)
-    // Thay đổi kiểu trả về thành Optional<Employee>
+    public Optional<Employee> findEmployeeById(Long id) {
+        return employeeRepository.findById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Optional<Employee> findEmployeeByEmail(String email) {
-        return employeeRepository.findByEmail(email); // Trả về Optional trực tiếp
+        return employeeRepository.findByEmail(email);
     }
 
     @Override
@@ -75,4 +75,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         return permissions;
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Employee> findAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void deleteEmployeeById(Long id) {
+        employeeRepository.deleteById(id);
+    }
 }

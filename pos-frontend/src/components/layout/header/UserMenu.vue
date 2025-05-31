@@ -43,7 +43,7 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { UserCircleIcon, ChevronDownIcon, LogoutIcon, SettingsIcon, InfoCircleIcon } from '@/icons'
-import { LOGOUT } from '@/store/types' // 👈 import types
+import { LOGOUT } from '@/store/types'
 
 const store = useStore()
 const router = useRouter()
@@ -58,23 +58,20 @@ const closeDropdown = () => {
   dropdownOpen.value = false
 }
 
-// Lấy user từ Vuex store
 const user = computed(() => store.getters['auth/getAuthUser'] || {
   name: 'Guest',
   email: 'guest@example.com',
   avatar: '/images/user/owner.jpg',
 })
 
-// Menu items
 const menuItems = [
   { href: '/profile', icon: UserCircleIcon, text: 'Sửa thông tin' },
   { href: '/chat', icon: SettingsIcon, text: 'Cài đặt tài khoản' },
   { href: '/profile', icon: InfoCircleIcon, text: 'Hỗ trợ' },
 ]
 
-// Hàm Đăng xuất
 const signOut = () => {
-  store.dispatch(`auth/${LOGOUT}`) // 👈 gọi LOGOUT từ store auth
+  store.dispatch(`auth/${LOGOUT}`)
   closeDropdown()
 }
 

@@ -103,3 +103,19 @@ export const GET_STOCK_INS = 'GET_STOCK_INS' as const
 export const GET_STOCK_OUTS = 'GET_STOCK_OUTS' as const
 export const GET_STOCK_LOADING = 'GET_STOCK_LOADING' as const
 export const GET_STOCK_ERROR = 'GET_STOCK_ERROR' as const
+
+// --- Employee Actions ---
+export const FETCH_EMPLOYEES = 'FETCH_EMPLOYEES' as const
+export const FETCH_EMPLOYEE_BY_ID = 'FETCH_EMPLOYEE_BY_ID' as const
+
+// --- Employee Mutations ---
+export const SET_EMPLOYEES = 'SET_EMPLOYEES' as const
+export const SET_EMPLOYEE = 'SET_EMPLOYEE' as const
+export const SET_EMPLOYEE_LOADING = 'SET_EMPLOYEE_LOADING' as const
+export const SET_EMPLOYEE_ERROR = 'SET_EMPLOYEE_ERROR' as const
+
+// --- Employee Getters ---
+export const GET_EMPLOYEES = 'GET_EMPLOYEES' as const
+export const GET_EMPLOYEE = 'GET_EMPLOYEE' as const
+export const GET_EMPLOYEE_LOADING = 'GET_EMPLOYEE_LOADING' as const
+export const GET_EMPLOYEE_ERROR = 'GET_EMPLOYEE_ERROR' as const

@@ -20,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -35,52 +36,64 @@ public class EmployeeController {
         this.roleService = roleService;
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<ApiResponse<List<EmployeeResponse>>> getAllEmployees() {
+        List<Employee> employees = employeeService.findAllEmployees();
+
+        // Tạo danh sách response kèm quyền đầy đủ
+        List<EmployeeResponse> responses = employees.stream()
+                .map(emp -> new EmployeeResponse(emp, employeeService.getFinalPermissionsForEmployee(emp.getId())))
+                .toList();
+
+        return ResponseEntity.ok(new ApiResponse<>("Danh sách nhân viên", "200", responses));
+    }
+
     @GetMapping("/by-email")
     public ResponseEntity<ApiResponse<EmployeeResponse>> findEmployeeByEmail(@RequestParam String email) {
         Optional<Employee> optionalEmployee = employeeService.findEmployeeByEmail(email);
         if (optionalEmployee.isPresent()) {
             Employee employee = optionalEmployee.get();
-
-            // Lấy quyền cuối cùng
             Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());
-
-            // Tạo response đầy đủ
             EmployeeResponse response = new EmployeeResponse(employee, finalPermissions);
-
             return ResponseEntity.ok(new ApiResponse<>("Tìm thấy nhân viên", "200", response));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiResponse<>("Không tìm thấy nhân viên với email này", "404", null));
     }
 
-
     @GetMapping("/by-username")
     public ResponseEntity<ApiResponse<EmployeeResponse>> findEmployeeByUsername(@RequestParam String username) {
         Employee employee = employeeService.findEmployeeByUsername(username);
         if (employee != null) {
-            // Lấy quyền cuối cùng
             Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());
-
-            // Tạo response đầy đủ
             EmployeeResponse response = new EmployeeResponse(employee, finalPermissions);
-
             return ResponseEntity.ok(new ApiResponse<>("Tìm thấy nhân viên", "200", response));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiResponse<>("Không tìm thấy nhân viên với username này", "404", null));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<EmployeeResponse>> getEmployeeById(@PathVariable Long id) {
+        Optional<Employee> optionalEmployee = employeeService.findEmployeeById(id);
+        if (optionalEmployee.isPresent()) {
+            Employee employee = optionalEmployee.get();
+            Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());
+            EmployeeResponse response = new EmployeeResponse(employee, finalPermissions);
+            return ResponseEntity.ok(new ApiResponse<>("Tìm thấy nhân viên", "200", response));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiResponse<>("Không tìm thấy nhân viên với ID này", "404", null));
+    }
 
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<ApiResponse<EmployeeResponse>> saveEmployee(@Valid @RequestBody EmployeeRequest request) {
-        // Lấy role từ RoleService
         Optional<Role> optionalRole = roleService.findRoleById(request.getRoleId());
         if (optionalRole.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ApiResponse<>("Không tìm thấy vai trò", "400", null));
         }
 
-        // Tạo Employee từ DTO
         Employee employee = new Employee();
         employee.setName(request.getName());
         employee.setUsername(request.getUsername());
@@ -90,12 +103,49 @@ public class EmployeeController {
         employee.setEmail(request.getEmail());
         employee.setIsActive(request.getIsActive() != null ? request.getIsActive() : true);
 
-        // Lưu
         employeeService.saveEmployee(employee);
-
         EmployeeResponse response = new EmployeeResponse(employee);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ApiResponse<>("Nhân viên đã được lưu", "201", response));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<EmployeeResponse>> updateEmployee(
+            @PathVariable Long id,
+            @Valid @RequestBody EmployeeRequest request) {
+        Optional<Employee> optionalEmployee = employeeService.findEmployeeById(id);
+        if (optionalEmployee.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>("Không tìm thấy nhân viên với ID này", "404", null));
+        }
+
+        Employee employee = optionalEmployee.get();
+        employee.setName(request.getName());
+        employee.setUsername(request.getUsername());
+        employee.setPhone(request.getPhone());
+        employee.setEmail(request.getEmail());
+        employee.setIsActive(request.getIsActive() != null ? request.getIsActive() : true);
+
+        if (request.getRoleId() != null) {
+            Optional<Role> optionalRole = roleService.findRoleById(request.getRoleId());
+            optionalRole.ifPresent(employee::setRole);
+        }
+
+        employeeService.saveEmployee(employee);
+        EmployeeResponse response = new EmployeeResponse(employee);
+        return ResponseEntity.ok(new ApiResponse<>("Cập nhật thông tin nhân viên thành công", "200", response));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<String>> deleteEmployee(@PathVariable Long id) {
+        Optional<Employee> optionalEmployee = employeeService.findEmployeeById(id);
+        if (optionalEmployee.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>("Không tìm thấy nhân viên với ID này", "404", null));
+        }
+
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.ok(new ApiResponse<>("Xoá nhân viên thành công", "200", "Employee deleted successfully"));
     }
 
     @PostMapping("/{id}/change-password")
@@ -114,4 +164,3 @@ public class EmployeeController {
         return ResponseEntity.ok(new ApiResponse<>("Đổi mật khẩu thành công", "200", "Password changed successfully"));
     }
 }
-

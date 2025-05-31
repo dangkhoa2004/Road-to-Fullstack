@@ -3,7 +3,8 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="Bảng danh mục">
-        <BasicTableOne :columns="categoryColumns" :rows="categories">
+        <BasicTableOne :columns="categoryColumns" :rows="categories" modalHeaderTitle="Chỉnh sửa danh mục"
+          modalHeaderDescription="Cập nhật chi tiết danh mục ở đây.">
           <template #cell-description="{ row }">
             <span>{{ row.description }}</span>
           </template>
@@ -21,7 +22,7 @@ import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import BasicTableOne from '@/components/tables/basic-tables/BasicTableOne.vue'
-import type { Category } from '@/api/category'
+import type { Category } from '@/api/modules/category'
 
 export default defineComponent({
   components: {

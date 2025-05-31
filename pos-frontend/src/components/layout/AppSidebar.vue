@@ -134,6 +134,7 @@ import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 import {
+  SettingsIcon,
   GridIcon,
   CalenderIcon,
   UserCircleIcon,
@@ -206,6 +207,13 @@ const menuGroups = [
   {
     title: "Khác",
     items: [
+      {
+        icon: SettingsIcon,
+        name: "Hệ thống",
+        subItems: [
+          { name: "Phân quyền", path: "/permissions", pro: false }
+        ],
+      },
       {
         icon: PieChartIcon,
         name: "Biểu đồ",

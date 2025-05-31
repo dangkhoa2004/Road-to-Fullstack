@@ -37,6 +37,12 @@ const dashboardRoutes: RouteRecordRaw[] = [
     component: () => import('../../views/TableManagement/ListStocks.vue'),
     meta: { title: 'Danh sách nhập / xuất kho' },
   },
+  {
+    path: '/permissions',
+    name: 'Danh sách phân quyền',
+    component: () => import('../../views/TableManagement/ListEmployee.vue'),
+    meta: { title: 'Danh sách phân quyền' },
+  },
 ]
 
 export default dashboardRoutes

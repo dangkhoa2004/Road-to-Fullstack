@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 31, 2025 lúc 11:03 AM
+-- Thời gian đã tạo: Th5 31, 2025 lúc 01:56 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -134,6 +134,17 @@ CREATE TABLE `employees` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `employee_permissions`
+--
+
+CREATE TABLE `employee_permissions` (
+  `employee_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `invoices`
 --
 
@@ -222,6 +233,21 @@ CREATE TABLE `payment_methods` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `products`
 --
 
@@ -251,6 +277,17 @@ CREATE TABLE `roles` (
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `version` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `role_permissions`
+--
+
+CREATE TABLE `role_permissions` (
+  `role_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -398,6 +435,13 @@ ALTER TABLE `employees`
   ADD KEY `role_id` (`role_id`);
 
 --
+-- Chỉ mục cho bảng `employee_permissions`
+--
+ALTER TABLE `employee_permissions`
+  ADD PRIMARY KEY (`employee_id`,`permission_id`),
+  ADD KEY `permission_id` (`permission_id`);
+
+--
 -- Chỉ mục cho bảng `invoices`
 --
 ALTER TABLE `invoices`
@@ -439,6 +483,12 @@ ALTER TABLE `payment_methods`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Chỉ mục cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
@@ -452,6 +502,13 @@ ALTER TABLE `products`
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Chỉ mục cho bảng `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  ADD PRIMARY KEY (`role_id`,`permission_id`),
+  ADD KEY `permission_id` (`permission_id`);
 
 --
 -- Chỉ mục cho bảng `settings`
@@ -561,6 +618,12 @@ ALTER TABLE `payment_methods`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
@@ -619,6 +682,13 @@ ALTER TABLE `employees`
   ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
+-- Các ràng buộc cho bảng `employee_permissions`
+--
+ALTER TABLE `employee_permissions`
+  ADD CONSTRAINT `employee_permissions_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
+  ADD CONSTRAINT `employee_permissions_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`);
+
+--
 -- Các ràng buộc cho bảng `invoices`
 --
 ALTER TABLE `invoices`
@@ -652,6 +722,13 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+
+--
+-- Các ràng buộc cho bảng `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  ADD CONSTRAINT `role_permissions_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_permissions_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`);
 
 --
 -- Các ràng buộc cho bảng `stock_in`

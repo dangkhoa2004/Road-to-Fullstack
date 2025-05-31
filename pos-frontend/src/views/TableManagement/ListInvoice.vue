@@ -3,7 +3,8 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="Bảng Hóa Đơn">
-        <BasicTableOne :columns="invoiceColumns" :rows="invoices || []">
+        <BasicTableOne :columns="invoiceColumns" :rows="invoices || []" modalHeaderTitle="Chi tiết hóa đơn"
+          modalHeaderDescription="Xem và chỉnh sửa thông tin hóa đơn tại đây.">
           <template #cell-status="{ row }">
             <span class="inline-block px-2 py-1 rounded text-xs font-semibold"
               :class="row.status === 'paid' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
@@ -24,7 +25,7 @@ import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import BasicTableOne from '@/components/tables/basic-tables/BasicTableOne.vue'
-import type { Invoice } from '@/api/invoice'
+import type { Invoice } from '@/api/modules/invoice'
 
 export default defineComponent({
   components: {

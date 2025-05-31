@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 31, 2025 lúc 07:26 AM
+-- Thời gian đã tạo: Th5 31, 2025 lúc 01:56 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -170,8 +170,26 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `username`, `password_hash`, `role_id`, `phone`, `email`, `is_active`, `created_at`, `updated_at`, `version`) VALUES
-(1, 'Cao Đăng Khoa', 'admin', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '1234567890', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-05-30 20:09:13', 1),
+(1, 'Cao Đăng Khoa', 'admin', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '1234567890', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-05-31 18:52:48', 1),
 (4, 'John Doe', 'admin123', '$2a$10$PCke0EClQ.8ILZ3bt7AkHu59EdqWrSeUAsez8AxQtWmWJT2gkfmUO', 1, '12345678900', 'khoacdpp02847@fpt.edu.vn', 1, '2025-05-28 14:57:06', '2025-05-28 16:13:51', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `employee_permissions`
+--
+
+CREATE TABLE `employee_permissions` (
+  `employee_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `employee_permissions`
+--
+
+INSERT INTO `employee_permissions` (`employee_id`, `permission_id`) VALUES
+(1, 9);
 
 -- --------------------------------------------------------
 
@@ -285,6 +303,37 @@ INSERT INTO `payment_methods` (`id`, `name`, `description`, `is_active`, `versio
 (3, 'momo', 'Ví Momo', 1, NULL, NULL, NULL),
 (4, 'zalo', 'Ví ZaloPay', 1, NULL, NULL, NULL),
 (5, 'vnpay', 'Cổng thanh toán VNPay', 1, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `description`, `created_at`, `updated_at`, `version`) VALUES
+(1, 'view_products', 'Xem danh sách sản phẩm', NULL, NULL, NULL),
+(2, 'edit_products', 'Sửa thông tin sản phẩm', NULL, NULL, NULL),
+(3, 'delete_products', 'Xóa sản phẩm', NULL, NULL, NULL),
+(4, 'view_invoices', 'Xem hóa đơn', NULL, NULL, NULL),
+(5, 'create_invoices', 'Tạo hóa đơn', NULL, NULL, NULL),
+(6, 'delete_invoices', 'Xóa hóa đơn', NULL, NULL, NULL),
+(7, 'view_employees', 'Xem danh sách nhân viên', NULL, NULL, NULL),
+(8, 'edit_employees', 'Sửa thông tin nhân viên', NULL, NULL, NULL),
+(9, 'delete_employees', 'Xóa nhân viên', NULL, NULL, NULL),
+(10, 'view_audit_logs', 'Xem nhật ký audit', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -435,8 +484,42 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`, `version`) VALUES
-(1, 'EMPLOYEE', '2025-05-22 06:52:01', '2025-05-22 06:52:01', 0),
-(2, 'ADMIN', '2025-05-22 06:52:01', '2025-05-22 06:52:01', 0);
+(1, 'NHÂN VIÊN', '2025-05-22 06:52:01', '2025-05-31 18:52:28', 0),
+(2, 'QUẢN TRỊ VIÊN', '2025-05-22 06:52:01', '2025-05-31 18:52:32', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `role_permissions`
+--
+
+CREATE TABLE `role_permissions` (
+  `role_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `role_permissions`
+--
+
+INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(2, 1),
+(2, 2),
+(2, 4),
+(2, 5),
+(2, 7),
+(2, 8),
+(2, 10);
 
 -- --------------------------------------------------------
 
@@ -615,6 +698,13 @@ ALTER TABLE `employees`
   ADD KEY `role_id` (`role_id`);
 
 --
+-- Chỉ mục cho bảng `employee_permissions`
+--
+ALTER TABLE `employee_permissions`
+  ADD PRIMARY KEY (`employee_id`,`permission_id`),
+  ADD KEY `permission_id` (`permission_id`);
+
+--
 -- Chỉ mục cho bảng `invoices`
 --
 ALTER TABLE `invoices`
@@ -656,6 +746,12 @@ ALTER TABLE `payment_methods`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Chỉ mục cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
@@ -669,6 +765,13 @@ ALTER TABLE `products`
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Chỉ mục cho bảng `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  ADD PRIMARY KEY (`role_id`,`permission_id`),
+  ADD KEY `permission_id` (`permission_id`);
 
 --
 -- Chỉ mục cho bảng `settings`
@@ -778,6 +881,12 @@ ALTER TABLE `payment_methods`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
@@ -836,6 +945,13 @@ ALTER TABLE `employees`
   ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
+-- Các ràng buộc cho bảng `employee_permissions`
+--
+ALTER TABLE `employee_permissions`
+  ADD CONSTRAINT `employee_permissions_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
+  ADD CONSTRAINT `employee_permissions_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`);
+
+--
 -- Các ràng buộc cho bảng `invoices`
 --
 ALTER TABLE `invoices`
@@ -869,6 +985,13 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+
+--
+-- Các ràng buộc cho bảng `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  ADD CONSTRAINT `role_permissions_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_permissions_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`);
 
 --
 -- Các ràng buộc cho bảng `stock_in`
