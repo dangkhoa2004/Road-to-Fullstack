@@ -12,20 +12,15 @@ import com.pos.backend.model.Employee;
 import com.pos.backend.service.base.AuthService;
 import com.pos.backend.service.base.EmployeeService;
 import com.pos.backend.service.base.PasswordResetService;
-
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -105,11 +100,8 @@ public class AuthController {
             System.err.println("Error sending password reset email: " + e.getMessage());
             return ResponseEntity.status(500).body(new ApiResponse<>("Có lỗi xảy ra khi gửi email đặt lại mật khẩu. Vui lòng thử lại sau.", "500", new ResetPasswordResponse("Failed to send password reset email.", false)));
         }
-
-
         return ResponseEntity.ok(new ApiResponse<>("Nếu email của bạn tồn tại trong hệ thống, chúng tôi sẽ gửi một liên kết đặt lại mật khẩu.", "200", new ResetPasswordResponse("Password reset email sent.", true)));
     }
-
 
     @PostMapping("/reset-password")
     public ResponseEntity<ApiResponse<ResetPasswordResponse>> resetPassword(@RequestParam("token") String token, @Valid @RequestBody ResetPasswordRequest requestBody) {

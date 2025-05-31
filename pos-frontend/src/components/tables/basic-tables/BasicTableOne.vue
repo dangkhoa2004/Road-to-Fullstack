@@ -60,20 +60,24 @@
     <Modal v-if="popupDetail" @close="popupDetail = false" :headerTitle="modalHeaderTitle"
       :headerDescription="modalHeaderDescription">
       <template #body>
-        <div
-          class="no-scrollbar relative w-full max-h-[700px] overflow-y-auto rounded-3xl bg-white dark:bg-gray-900">
+        <div class="no-scrollbar relative w-full max-h-[700px] overflow-y-auto rounded-xl bg-white dark:bg-gray-900">
 
           <form class="flex flex-col space-y-4 p-2">
             <div v-for="column in columns" :key="column.key" v-if="selectedRow">
-              <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">{{ column.label
-                }}</label>
+              <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                {{ column.label }}
+              </label>
 
               <!-- Đặc biệt với isActive (boolean) -->
               <template v-if="column.key === 'isActive'">
                 <select v-model="selectedRow[column.key]"
-                  class="border rounded w-full px-2 py-1 dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                  <option :value="true">Active</option>
-                  <option :value="false">Inactive</option>
+                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+                  <option :value="true" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                    Active
+                  </option>
+                  <option :value="false" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                    Inactive
+                  </option>
                 </select>
               </template>
 
@@ -81,7 +85,7 @@
               <template v-else-if="column.key === 'role.name'">
                 <input :value="selectedRow.role?.name || ''"
                   @input="updateNestedField('role', 'name', $event.target.value)"
-                  class="border rounded w-full px-2 py-1 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+                  class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
               </template>
 
               <!-- Đặc biệt với permissions (array) -->
@@ -124,14 +128,12 @@
                   placeholder="Nhập đường dẫn ảnh" />
               </template>
 
-
               <!-- Các field bình thường -->
               <template v-else>
                 <input type="text" v-model="selectedRow[column.key]"
                   class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
               </template>
             </div>
-
             <button @click="saveProfile" type="button"
               class="bg-green-500 text-white rounded px-4 py-2 self-end">Lưu</button>
           </form>

@@ -119,3 +119,10 @@ export const GET_EMPLOYEES = 'GET_EMPLOYEES' as const
 export const GET_EMPLOYEE = 'GET_EMPLOYEE' as const
 export const GET_EMPLOYEE_LOADING = 'GET_EMPLOYEE_LOADING' as const
 export const GET_EMPLOYEE_ERROR = 'GET_EMPLOYEE_ERROR' as const
+
+// --- Auth Actions ---
+export const RESET_PASSWORD = 'RESET_PASSWORD' as const
+export const SET_RESET_PASSWORD_SUCCESS = 'SET_RESET_PASSWORD_SUCCESS' as const
+export const SET_RESET_PASSWORD_ERROR = 'SET_RESET_PASSWORD_ERROR' as const
+export const GET_RESET_PASSWORD_SUCCESS = 'GET_RESET_PASSWORD_SUCCESS' as const
+export const GET_RESET_PASSWORD_ERROR = 'GET_RESET_PASSWORD_ERROR' as const

@@ -31,7 +31,6 @@ const router = createRouter({
   routes,
 })
 
-// 👇 Middleware kiểm tra localStorage
 router.beforeEach((to, from, next) => {
   const defaultTitle = 'Ứng dụng của tôi'
   document.title = `${to.meta?.title || defaultTitle} | Pos - Application`
@@ -39,7 +38,7 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('jwtToken')
   const user = localStorage.getItem('user')
 
-  const publicRoutes = ['/dang-nhap', '/dang-ky', '/forgot-password']
+  const publicRoutes = ['/dang-nhap', '/dang-ky', '/quen-mat-khau']
 
   if ((!token || !user) && !publicRoutes.includes(to.path)) {
     next('/dang-nhap')

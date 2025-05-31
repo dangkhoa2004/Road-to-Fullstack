@@ -1,5 +1,5 @@
 // src\store\modules\auth.ts
-import { login } from '@/api/modules/auth';
+import { login, register, forgotPassword } from '@/api/modules/auth'; // Thêm register!
 import router from '@/router';
 import * as types from '../types';
 import type { ActionContext } from 'vuex';
@@ -59,6 +59,51 @@ const actions = {
       router.push('/');
     } catch (error: any) {
       let errorMessage = 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.';
+      if (error.response && error.response.data) {
+        if (error.response.data.string) {
+          errorMessage = error.response.data.string;
+        } else if (error.response.data.message) {
+          errorMessage = error.response.data.message;
+        }
+      }
+      commit(types.SET_AUTH_ERROR, errorMessage);
+      throw error;
+    }
+  },
+  async [types.REGISTER](
+    { commit }: ActionContext<AuthState, unknown>,
+    userData: Record<string, any>
+  ) {
+    try {
+      const response = await register(userData);
+      const { token, user } = response;
+      commit(types.SET_AUTH_TOKEN, token);
+      commit(types.SET_AUTH_USER, user);
+      commit(types.SET_AUTH_ERROR, null);
+      router.push('/dang-nhap');
+    } catch (error: any) {
+      let errorMessage = 'Đăng ký thất bại. Vui lòng thử lại.';
+      if (error.response && error.response.data) {
+        if (error.response.data.string) {
+          errorMessage = error.response.data.string;
+        } else if (error.response.data.message) {
+          errorMessage = error.response.data.message;
+        }
+      }
+      commit(types.SET_AUTH_ERROR, errorMessage);
+      throw error;
+    }
+  },
+
+  async [types.RESET_PASSWORD](
+    { commit }: ActionContext<AuthState, unknown>,
+    payload: { email: string }
+  ) {
+    try {
+      const response = await forgotPassword(payload);
+      commit(types.SET_AUTH_ERROR, response.message);
+    } catch (error: any) {
+      let errorMessage = 'Gửi yêu cầu đặt lại mật khẩu thất bại.';
       if (error.response && error.response.data) {
         if (error.response.data.string) {
           errorMessage = error.response.data.string;

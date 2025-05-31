@@ -3,7 +3,6 @@
     <div class="relative p-6 bg-white z-1 dark:bg-gray-900 sm:p-0">
       <div class="relative flex flex-col justify-center w-full h-screen lg:flex-row dark:bg-gray-900">
         <div class="flex flex-col flex-1 w-full lg:w-1/2">
-          <BackToDashBoard />
           <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
             <div>
               <div class="mb-5 sm:mb-8">
@@ -81,7 +80,7 @@
                           Ghi nhớ đăng nhập
                         </label>
                       </div>
-                      <router-link to="/reset-password"
+                      <router-link to="/quen-mat-khau"
                         class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400">Quên mật
                         khẩu?</router-link>
                     </div>
@@ -96,7 +95,7 @@
                 <div class="mt-5">
                   <p class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
                     Chưa có tài khoản?
-                    <router-link to="/signup" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Đăng
+                    <router-link to="/dang-ky" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Đăng
                       ký</router-link>
                   </p>
                 </div>
@@ -113,7 +112,6 @@
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import FullScreenLayout from '@/components/layout/FullScreenLayout.vue'
-import BackToDashBoard from './components/BackToDashBoard.vue'
 import AboutDashBoard from './components/AboutDashBoard.vue'
 import SpecialLogin from './components/SpecialLogin.vue'
 import * as types from '@/store/types'
