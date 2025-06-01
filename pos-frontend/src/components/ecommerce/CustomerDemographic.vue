@@ -3,10 +3,10 @@
     <div class="flex justify-between">
       <div>
         <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Customers Demographic
+          Nhân khẩu học của khách hàng
         </h3>
         <p class="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
-          Number of customer based on country
+          Số lượng khách hàng dựa trên quốc gia
         </p>
       </div>
     </div>
@@ -23,9 +23,9 @@
             <img src="/images/country/country-01.svg" alt="usa" />
           </div>
           <div>
-            <p class="font-semibold text-gray-800 text-theme-sm dark:text-white/90">USA</p>
+            <p class="font-semibold text-gray-800 text-theme-sm dark:text-white/90">Mỹ</p>
             <span class="block text-gray-500 text-theme-xs dark:text-gray-400">
-              2,379 Customers
+              2.379 Khách hàng
             </span>
           </div>
         </div>
@@ -46,9 +46,9 @@
             <img src="/images/country/country-02.svg" alt="france" />
           </div>
           <div>
-            <p class="font-semibold text-gray-800 text-theme-sm dark:text-white/90">France</p>
+            <p class="font-semibold text-gray-800 text-theme-sm dark:text-white/90">Pháp</p>
             <span class="block text-gray-500 text-theme-xs dark:text-gray-400">
-              589 Customers
+              589 Khách hàng
             </span>
           </div>
         </div>

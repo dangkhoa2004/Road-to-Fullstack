@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen xl:flex">
+  <div class="min-h-screen xl:flex bg-gray-50">
     <app-sidebar />
     <Backdrop />
     <div class="flex-1 transition-all duration-300 ease-in-out"

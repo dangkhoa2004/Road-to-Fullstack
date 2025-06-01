@@ -88,7 +88,7 @@ export default defineComponent({
                 input: '',
                 description: '',
             },
-            currentPageTitle: 'Point of Sale',
+            currentPageTitle: 'Điểm bán hàng',
             searchQuery: '',
             categories: ['All', 'Trà sữa', 'Đồ uống khác', 'Đồ ăn vặt'],
             activeCategory: 'All',

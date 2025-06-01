@@ -2,7 +2,6 @@
     <div class="relative items-center hidden w-full h-full lg:w-1/2 bg-black lg:grid">
         <div class="flex flex-col items-center justify-center z-1 p-6 gap-6">
             <common-grid-shape />
-
             <div class="flex flex-col items-center max-w-sm text-center text-white dark:text-white/90 gap-4">
                 <h2 class="flex items-center gap-2 text-2xl font-bold text-brand-400 tracking-wide">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">

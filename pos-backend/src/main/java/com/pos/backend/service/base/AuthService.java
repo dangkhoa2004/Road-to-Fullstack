@@ -1,14 +1,7 @@
 package com.pos.backend.service.base;
 
-import com.pos.backend.dto.auth.AuthResponse;
-import com.pos.backend.dto.auth.LoginRequest;
-import com.pos.backend.dto.auth.RegisterRequest;
-import com.pos.backend.dto.employee.EmployeeResponse;
-import com.pos.backend.model.Employee;
-import com.pos.backend.model.Role;
-import com.pos.backend.repository.EmployeeRepository;
-import com.pos.backend.repository.RoleRepository;
-import com.pos.backend.security.JwtTokenProvider;
+import java.util.Set;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,7 +11,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Set;
+import com.pos.backend.dto.auth.AuthResponse;
+import com.pos.backend.dto.auth.LoginRequest;
+import com.pos.backend.dto.auth.RegisterRequest;
+import com.pos.backend.dto.employee.EmployeeResponse;
+import com.pos.backend.model.Employee;
+import com.pos.backend.model.Role;
+import com.pos.backend.repository.EmployeeRepository;
+import com.pos.backend.repository.RoleRepository;
+import com.pos.backend.security.JwtTokenProvider;
 
 @Service
 public class AuthService {
@@ -80,8 +81,8 @@ public class AuthService {
         }
 
         // Lấy role mặc định
-        Role defaultRole = roleRepository.findByName("EMPLOYEE")
-                .orElseThrow(() -> new RuntimeException("Default role 'EMPLOYEE' not found. Please create it."));
+        Role defaultRole = roleRepository.findByName("Nhân viên")
+                .orElseThrow(() -> new RuntimeException("Default role 'Nhân viên' not found. Please create it."));
 
         // Tạo nhân viên mới
         Employee employee = new Employee();

@@ -126,3 +126,19 @@ export const SET_RESET_PASSWORD_SUCCESS = 'SET_RESET_PASSWORD_SUCCESS' as const
 export const SET_RESET_PASSWORD_ERROR = 'SET_RESET_PASSWORD_ERROR' as const
 export const GET_RESET_PASSWORD_SUCCESS = 'GET_RESET_PASSWORD_SUCCESS' as const
 export const GET_RESET_PASSWORD_ERROR = 'GET_RESET_PASSWORD_ERROR' as const
+
+// --- Customer Actions ---
+export const FETCH_CUSTOMERS = 'FETCH_CUSTOMERS' as const
+export const FETCH_CUSTOMER_BY_ID = 'FETCH_CUSTOMER_BY_ID' as const
+
+// --- Customer Mutations ---
+export const SET_CUSTOMERS = 'SET_CUSTOMERS' as const
+export const SET_CUSTOMER = 'SET_CUSTOMER' as const
+export const SET_CUSTOMER_LOADING = 'SET_CUSTOMER_LOADING' as const
+export const SET_CUSTOMER_ERROR = 'SET_CUSTOMER_ERROR' as const
+
+// --- Customer Getters ---
+export const GET_CUSTOMERS = 'GET_CUSTOMERS' as const
+export const GET_CUSTOMER = 'GET_CUSTOMER' as const
+export const GET_CUSTOMER_LOADING = 'GET_CUSTOMER_LOADING' as const
+export const GET_CUSTOMER_ERROR = 'GET_CUSTOMER_ERROR' as const

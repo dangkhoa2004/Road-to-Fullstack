@@ -3,7 +3,7 @@
     class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
     <div class="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Recent Orders</h3>
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Đơn hàng gần đây</h3>
       </div>
 
       <div class="flex items-center gap-3">
@@ -23,12 +23,12 @@
               fill="" stroke="" stroke-width="1.5" />
           </svg>
 
-          Filter
+          Lọc
         </button>
 
         <button
           class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-          See all
+          Xem tất cả
         </button>
       </div>
     </div>
@@ -38,16 +38,16 @@
         <thead>
           <tr class="border-t border-gray-100 dark:border-gray-800">
             <th class="py-3 text-left">
-              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Products</p>
+              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Sản phẩm</p>
             </th>
             <th class="py-3 text-left">
-              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Category</p>
+              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Danh mục</p>
             </th>
             <th class="py-3 text-left">
-              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Price</p>
+              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Giá</p>
             </th>
             <th class="py-3 text-left">
-              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Status</p>
+              <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Trạng thái</p>
             </th>
           </tr>
         </thead>
@@ -62,7 +62,7 @@
                   <p class="font-medium text-gray-800 text-theme-sm dark:text-white/90">
                     {{ product.name }}
                   </p>
-                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">{{ product.variants }} Variants</span>
+                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">{{ product.variants }} sản phẩm</span>
                 </div>
               </div>
             </td>
@@ -76,11 +76,11 @@
               <span :class="{
                 'rounded-full px-2 py-0.5 text-theme-xs font-medium': true,
                 'bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-500':
-                  product.status === 'Delivered',
+                  product.status === 'Đã nhận hàng',
                 'bg-warning-50 text-warning-600 dark:bg-warning-500/15 dark:text-orange-400':
-                  product.status === 'Pending',
+                  product.status === 'Đang chờ',
                 'bg-error-50 text-error-600 dark:bg-error-500/15 dark:text-error-500':
-                  product.status === 'Canceled',
+                  product.status === 'Đã hủy',
               }">
                 {{ product.status }}
               </span>
@@ -102,39 +102,39 @@ const products = ref([
     image: '/images/product/product-01.jpg',
     category: 'Laptop',
     price: '$2399.00',
-    status: 'Delivered',
+    status: 'Đã nhận hàng',
   },
   {
     name: 'Apple Watch Ultra',
     variants: 1,
     image: '/images/product/product-02.jpg',
-    category: 'Watch',
+    category: 'Đồng hồ',
     price: '$879.00',
-    status: 'Pending',
+    status: 'Đang chờ',
   },
   {
     name: 'iPhone 15 Pro Max',
     variants: 2,
     image: '/images/product/product-03.jpg',
-    category: 'SmartPhone',
+    category: 'Điện thoại',
     price: '$1869.00',
-    status: 'Delivered',
+    status: 'Đã nhận hàng',
   },
   {
     name: 'iPad Pro 3rd Gen',
     variants: 2,
     image: '/images/product/product-04.jpg',
-    category: 'Electronics',
+    category: 'Máy tính bảng',
     price: '$1699.00',
-    status: 'Canceled',
+    status: 'Đã hủy',
   },
   {
     name: 'Airpods Pro 2nd Gen',
     variants: 1,
     image: '/images/product/product-05.jpg',
-    category: 'Accessories',
+    category: 'Tai nghe',
     price: '$240.00',
-    status: 'Delivered',
+    status: 'Đã nhận hàng',
   },
 ])
 </script>

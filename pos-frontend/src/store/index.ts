@@ -7,6 +7,7 @@ import discount from './modules/discount'
 import invoice from './modules/invoice'
 import stock from './modules/stock'
 import employee from './modules/employee.ts'
+import customer from './modules/customer.ts'
 
 import type { AuthState } from './modules/auth'
 import type { UserState } from './modules/user'
@@ -16,6 +17,7 @@ import type { DiscountState } from './modules/discount'
 import type { InvoiceState } from './modules/invoice'
 import type { StockState } from './modules/stock'
 import type { EmployeeState } from './modules/employee.ts'
+import type { CustomerState } from './modules/customer.ts'
 
 export interface RootState {
   auth: AuthState
@@ -26,6 +28,7 @@ export interface RootState {
   invoice: InvoiceState
   stock: StockState
   employee: EmployeeState
+  customer: CustomerState
 }
 
 const store = createStore<RootState>({
@@ -38,6 +41,7 @@ const store = createStore<RootState>({
     invoice,
     stock,
     employee,
+    customer
   },
 })
 

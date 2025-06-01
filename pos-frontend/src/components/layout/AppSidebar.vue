@@ -15,11 +15,11 @@
     ]">
       <router-link to="/" class="flex items-center gap-2">
         <!-- Logo hình tròn -->
-        <img v-if="isExpanded" class="dark:hidden rounded-full" src="/images/logo/logo.jpg" alt="Logo" width="40"
+        <img v-if="isExpanded" class="dark:hidden rounded" src="/images/logo/logo.png" alt="Logo" width="40"
           height="40" />
-        <img v-if="isExpanded" class="hidden dark:block rounded-full" src="/images/logo/logo.jpg" alt="Logo" width="40"
+        <img v-if="isExpanded" class="hidden dark:block rounded" src="/images/logo/logo.png" alt="Logo" width="40"
           height="40" />
-        <img v-else src="/images/logo/logo.jpg" alt="Logo" width="32" height="32" class="rounded-full" />
+        <img v-else src="/images/logo/logo.png" alt="Logo" width="32" height="32" class="rounded" />
 
         <!-- Tên ứng dụng -->
         <h1 v-show="isExpanded && !isHovered && !isMobileOpen"
@@ -165,7 +165,7 @@ const menuGroups = [
         name: "Trang chủ",
         subItems: [
           { name: "Thương mại điện tử", path: "/", pro: false },
-          { name: "POS", path: "/pos", pro: false },
+          { name: "Điểm bán hàng", path: "/pos", pro: false },
         ],
       },
       {
@@ -214,6 +214,7 @@ const menuGroups = [
         icon: SettingsIcon,
         name: "Hệ thống",
         subItems: [
+          { name: "Khách hàng", path: "/customers", pro: false },
           { name: "Phân quyền", path: "/permissions", pro: false }
         ],
       },

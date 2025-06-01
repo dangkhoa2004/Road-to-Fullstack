@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 01, 2025 lúc 06:09 AM
+-- Thời gian đã tạo: Th6 01, 2025 lúc 07:40 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -90,7 +90,107 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`id`, `name`, `phone`, `email`, `address`, `created_at`, `updated_at`, `version`) VALUES
 (1, 'Nguyễn Văn A', '0901234567', 'a@gmail.com', '12 Nguyễn Trãi, Q1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
 (2, 'Trần Thị B', '0907654321', 'b@gmail.com', '56 Lê Lợi, Q3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
-(3, 'Lê Văn C', '0912345678', 'c@gmail.com', '20 Phan Chu Trinh, Q.Hải An', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL);
+(3, 'Lê Văn C', '0912345678', 'c@gmail.com', '20 Phan Chu Trinh, Q.Hải An', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(4, 'Customer 4', '0901234004', 'customer4@example.com', '4 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(5, 'Customer 5', '0901234005', 'customer5@example.com', '5 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(6, 'Customer 6', '0901234006', 'customer6@example.com', '6 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(7, 'Customer 7', '0901234007', 'customer7@example.com', '7 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(8, 'Customer 8', '0901234008', 'customer8@example.com', '8 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(9, 'Customer 9', '0901234009', 'customer9@example.com', '9 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(10, 'Customer 10', '0901234010', 'customer10@example.com', '10 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(11, 'Customer 11', '0901234011', 'customer11@example.com', '11 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(12, 'Customer 12', '0901234012', 'customer12@example.com', '12 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(13, 'Customer 13', '0901234013', 'customer13@example.com', '13 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(14, 'Customer 14', '0901234014', 'customer14@example.com', '14 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(15, 'Customer 15', '0901234015', 'customer15@example.com', '15 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(16, 'Customer 16', '0901234016', 'customer16@example.com', '16 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(17, 'Customer 17', '0901234017', 'customer17@example.com', '17 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(18, 'Customer 18', '0901234018', 'customer18@example.com', '18 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(19, 'Customer 19', '0901234019', 'customer19@example.com', '19 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(20, 'Customer 20', '0901234020', 'customer20@example.com', '20 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(21, 'Customer 21', '0901234021', 'customer21@example.com', '21 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(22, 'Customer 22', '0901234022', 'customer22@example.com', '22 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(23, 'Customer 23', '0901234023', 'customer23@example.com', '23 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(24, 'Customer 24', '0901234024', 'customer24@example.com', '24 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(25, 'Customer 25', '0901234025', 'customer25@example.com', '25 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(26, 'Customer 26', '0901234026', 'customer26@example.com', '26 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(27, 'Customer 27', '0901234027', 'customer27@example.com', '27 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(28, 'Customer 28', '0901234028', 'customer28@example.com', '28 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(29, 'Customer 29', '0901234029', 'customer29@example.com', '29 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(30, 'Customer 30', '0901234030', 'customer30@example.com', '30 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(31, 'Customer 31', '0901234031', 'customer31@example.com', '31 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(32, 'Customer 32', '0901234032', 'customer32@example.com', '32 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(33, 'Customer 33', '0901234033', 'customer33@example.com', '33 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(34, 'Customer 34', '0901234034', 'customer34@example.com', '34 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(35, 'Customer 35', '0901234035', 'customer35@example.com', '35 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(36, 'Customer 36', '0901234036', 'customer36@example.com', '36 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(37, 'Customer 37', '0901234037', 'customer37@example.com', '37 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(38, 'Customer 38', '0901234038', 'customer38@example.com', '38 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(39, 'Customer 39', '0901234039', 'customer39@example.com', '39 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(40, 'Customer 40', '0901234040', 'customer40@example.com', '40 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(41, 'Customer 41', '0901234041', 'customer41@example.com', '41 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(42, 'Customer 42', '0901234042', 'customer42@example.com', '42 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(43, 'Customer 43', '0901234043', 'customer43@example.com', '43 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(44, 'Customer 44', '0901234044', 'customer44@example.com', '44 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(45, 'Customer 45', '0901234045', 'customer45@example.com', '45 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(46, 'Customer 46', '0901234046', 'customer46@example.com', '46 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(47, 'Customer 47', '0901234047', 'customer47@example.com', '47 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(48, 'Customer 48', '0901234048', 'customer48@example.com', '48 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(49, 'Customer 49', '0901234049', 'customer49@example.com', '49 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(50, 'Customer 50', '0901234050', 'customer50@example.com', '50 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(51, 'Customer 51', '0901234051', 'customer51@example.com', '51 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(52, 'Customer 52', '0901234052', 'customer52@example.com', '52 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(53, 'Customer 53', '0901234053', 'customer53@example.com', '53 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(54, 'Customer 54', '0901234054', 'customer54@example.com', '54 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(55, 'Customer 55', '0901234055', 'customer55@example.com', '55 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(56, 'Customer 56', '0901234056', 'customer56@example.com', '56 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(57, 'Customer 57', '0901234057', 'customer57@example.com', '57 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(58, 'Customer 58', '0901234058', 'customer58@example.com', '58 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(59, 'Customer 59', '0901234059', 'customer59@example.com', '59 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(60, 'Customer 60', '0901234060', 'customer60@example.com', '60 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(61, 'Customer 61', '0901234061', 'customer61@example.com', '61 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(62, 'Customer 62', '0901234062', 'customer62@example.com', '62 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(63, 'Customer 63', '0901234063', 'customer63@example.com', '63 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(64, 'Customer 64', '0901234064', 'customer64@example.com', '64 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(65, 'Customer 65', '0901234065', 'customer65@example.com', '65 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(66, 'Customer 66', '0901234066', 'customer66@example.com', '66 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(67, 'Customer 67', '0901234067', 'customer67@example.com', '67 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(68, 'Customer 68', '0901234068', 'customer68@example.com', '68 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(69, 'Customer 69', '0901234069', 'customer69@example.com', '69 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(70, 'Customer 70', '0901234070', 'customer70@example.com', '70 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(71, 'Customer 71', '0901234071', 'customer71@example.com', '71 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(72, 'Customer 72', '0901234072', 'customer72@example.com', '72 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(73, 'Customer 73', '0901234073', 'customer73@example.com', '73 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(74, 'Customer 74', '0901234074', 'customer74@example.com', '74 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(75, 'Customer 75', '0901234075', 'customer75@example.com', '75 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(76, 'Customer 76', '0901234076', 'customer76@example.com', '76 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(77, 'Customer 77', '0901234077', 'customer77@example.com', '77 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(78, 'Customer 78', '0901234078', 'customer78@example.com', '78 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(79, 'Customer 79', '0901234079', 'customer79@example.com', '79 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(80, 'Customer 80', '0901234080', 'customer80@example.com', '80 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(81, 'Customer 81', '0901234081', 'customer81@example.com', '81 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(82, 'Customer 82', '0901234082', 'customer82@example.com', '82 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(83, 'Customer 83', '0901234083', 'customer83@example.com', '83 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(84, 'Customer 84', '0901234084', 'customer84@example.com', '84 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(85, 'Customer 85', '0901234085', 'customer85@example.com', '85 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(86, 'Customer 86', '0901234086', 'customer86@example.com', '86 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(87, 'Customer 87', '0901234087', 'customer87@example.com', '87 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(88, 'Customer 88', '0901234088', 'customer88@example.com', '88 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(89, 'Customer 89', '0901234089', 'customer89@example.com', '89 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(90, 'Customer 90', '0901234090', 'customer90@example.com', '90 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(91, 'Customer 91', '0901234091', 'customer91@example.com', '91 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(92, 'Customer 92', '0901234092', 'customer92@example.com', '92 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(93, 'Customer 93', '0901234093', 'customer93@example.com', '93 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(94, 'Customer 94', '0901234094', 'customer94@example.com', '94 Đường Mẫu, Quận 5', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(95, 'Customer 95', '0901234095', 'customer95@example.com', '95 Đường Mẫu, Quận 6', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(96, 'Customer 96', '0901234096', 'customer96@example.com', '96 Đường Mẫu, Quận 7', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(97, 'Customer 97', '0901234097', 'customer97@example.com', '97 Đường Mẫu, Quận 8', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(98, 'Customer 98', '0901234098', 'customer98@example.com', '98 Đường Mẫu, Quận 9', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(99, 'Customer 99', '0901234099', 'customer99@example.com', '99 Đường Mẫu, Quận 10', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(100, 'Customer 100', '0901234100', 'customer100@example.com', '100 Đường Mẫu, Quận 1', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(101, 'Customer 101', '0901234101', 'customer101@example.com', '101 Đường Mẫu, Quận 2', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(102, 'Customer 102', '0901234102', 'customer102@example.com', '102 Đường Mẫu, Quận 3', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL),
+(103, 'Customer 103', '0901234103', 'customer103@example.com', '103 Đường Mẫu, Quận 4', '2025-05-28 21:36:31', '2025-05-28 21:36:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -171,7 +271,106 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`id`, `name`, `username`, `password_hash`, `role_id`, `phone`, `email`, `is_active`, `created_at`, `updated_at`, `version`) VALUES
 (1, 'Cao Đăng Khoa', 'admin', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '1234567890', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-05-31 18:52:48', 1),
-(4, 'John Doe', 'admin123', '$2a$10$PCke0EClQ.8ILZ3bt7AkHu59EdqWrSeUAsez8AxQtWmWJT2gkfmUO', 1, '12345678900', 'khoacdpp02847@fpt.edu.vn', 1, '2025-05-28 14:57:06', '2025-05-28 16:13:51', 1);
+(2, 'Employee 2', 'user2', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671002', 'user2@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(3, 'Employee 3', 'user3', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671003', 'user3@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(4, 'Employee 4', 'user4', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671004', 'user4@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(5, 'Employee 5', 'user5', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671005', 'user5@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(6, 'Employee 6', 'user6', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671006', 'user6@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(7, 'Employee 7', 'user7', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671007', 'user7@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(8, 'Employee 8', 'user8', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671008', 'user8@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(9, 'Employee 9', 'user9', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671009', 'user9@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(10, 'Employee 10', 'user10', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671010', 'user10@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(11, 'Employee 11', 'user11', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671011', 'user11@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(12, 'Employee 12', 'user12', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671012', 'user12@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(13, 'Employee 13', 'user13', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671013', 'user13@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(14, 'Employee 14', 'user14', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671014', 'user14@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(15, 'Employee 15', 'user15', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671015', 'user15@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(16, 'Employee 16', 'user16', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671016', 'user16@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(17, 'Employee 17', 'user17', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671017', 'user17@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(18, 'Employee 18', 'user18', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671018', 'user18@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(19, 'Employee 19', 'user19', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671019', 'user19@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(20, 'Employee 20', 'user20', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671020', 'user20@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(21, 'Employee 21', 'user21', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671021', 'user21@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(22, 'Employee 22', 'user22', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671022', 'user22@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(23, 'Employee 23', 'user23', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671023', 'user23@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(24, 'Employee 24', 'user24', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671024', 'user24@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(25, 'Employee 25', 'user25', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671025', 'user25@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(26, 'Employee 26', 'user26', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671026', 'user26@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(27, 'Employee 27', 'user27', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671027', 'user27@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(28, 'Employee 28', 'user28', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671028', 'user28@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(29, 'Employee 29', 'user29', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671029', 'user29@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(30, 'Employee 30', 'user30', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671030', 'user30@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(31, 'Employee 31', 'user31', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671031', 'user31@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(32, 'Employee 32', 'user32', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671032', 'user32@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(33, 'Employee 33', 'user33', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671033', 'user33@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(34, 'Employee 34', 'user34', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671034', 'user34@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(35, 'Employee 35', 'user35', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671035', 'user35@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(36, 'Employee 36', 'user36', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671036', 'user36@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(37, 'Employee 37', 'user37', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671037', 'user37@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(38, 'Employee 38', 'user38', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671038', 'user38@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(39, 'Employee 39', 'user39', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671039', 'user39@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(40, 'Employee 40', 'user40', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671040', 'user40@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(41, 'Employee 41', 'user41', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671041', 'user41@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(42, 'Employee 42', 'user42', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671042', 'user42@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(43, 'Employee 43', 'user43', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671043', 'user43@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(44, 'Employee 44', 'user44', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671044', 'user44@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(45, 'Employee 45', 'user45', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671045', 'user45@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(46, 'Employee 46', 'user46', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671046', 'user46@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(47, 'Employee 47', 'user47', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671047', 'user47@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(48, 'Employee 48', 'user48', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671048', 'user48@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(49, 'Employee 49', 'user49', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671049', 'user49@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(50, 'Employee 50', 'user50', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671050', 'user50@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(51, 'Employee 51', 'user51', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671051', 'user51@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(52, 'Employee 52', 'user52', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671052', 'user52@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(53, 'Employee 53', 'user53', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671053', 'user53@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(54, 'Employee 54', 'user54', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671054', 'user54@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(55, 'Employee 55', 'user55', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671055', 'user55@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(56, 'Employee 56', 'user56', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671056', 'user56@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(57, 'Employee 57', 'user57', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671057', 'user57@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(58, 'Employee 58', 'user58', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671058', 'user58@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(59, 'Employee 59', 'user59', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671059', 'user59@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(60, 'Employee 60', 'user60', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671060', 'user60@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(61, 'Employee 61', 'user61', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671061', 'user61@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(62, 'Employee 62', 'user62', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671062', 'user62@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(63, 'Employee 63', 'user63', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671063', 'user63@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(64, 'Employee 64', 'user64', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671064', 'user64@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(65, 'Employee 65', 'user65', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671065', 'user65@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(66, 'Employee 66', 'user66', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671066', 'user66@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(67, 'Employee 67', 'user67', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671067', 'user67@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(68, 'Employee 68', 'user68', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671068', 'user68@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(69, 'Employee 69', 'user69', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671069', 'user69@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(70, 'Employee 70', 'user70', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671070', 'user70@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(71, 'Employee 71', 'user71', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671071', 'user71@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(72, 'Employee 72', 'user72', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671072', 'user72@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(73, 'Employee 73', 'user73', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671073', 'user73@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(74, 'Employee 74', 'user74', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671074', 'user74@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(75, 'Employee 75', 'user75', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671075', 'user75@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(76, 'Employee 76', 'user76', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671076', 'user76@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(77, 'Employee 77', 'user77', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671077', 'user77@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(78, 'Employee 78', 'user78', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671078', 'user78@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(79, 'Employee 79', 'user79', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671079', 'user79@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(80, 'Employee 80', 'user80', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671080', 'user80@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(81, 'Employee 81', 'user81', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671081', 'user81@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(82, 'Employee 82', 'user82', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671082', 'user82@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(83, 'Employee 83', 'user83', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671083', 'user83@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(84, 'Employee 84', 'user84', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671084', 'user84@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(85, 'Employee 85', 'user85', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671085', 'user85@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(86, 'Employee 86', 'user86', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671086', 'user86@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(87, 'Employee 87', 'user87', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671087', 'user87@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(88, 'Employee 88', 'user88', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671088', 'user88@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(89, 'Employee 89', 'user89', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671089', 'user89@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(90, 'Employee 90', 'user90', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671090', 'user90@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(91, 'Employee 91', 'user91', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671091', 'user91@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(92, 'Employee 92', 'user92', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671092', 'user92@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(93, 'Employee 93', 'user93', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671093', 'user93@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(94, 'Employee 94', 'user94', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671094', 'user94@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(95, 'Employee 95', 'user95', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671095', 'user95@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(96, 'Employee 96', 'user96', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671096', 'user96@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(97, 'Employee 97', 'user97', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671097', 'user97@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(98, 'Employee 98', 'user98', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671098', 'user98@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(99, 'Employee 99', 'user99', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671099', 'user99@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(100, 'Employee 100', 'user100', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671100', 'user100@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
+(101, 'Employee 101', 'user101', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671101', 'user101@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1);
 
 -- --------------------------------------------------------
 
@@ -183,13 +382,6 @@ CREATE TABLE `employee_permissions` (
   `employee_id` bigint(20) NOT NULL,
   `permission_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `employee_permissions`
---
-
-INSERT INTO `employee_permissions` (`employee_id`, `permission_id`) VALUES
-(1, 9);
 
 -- --------------------------------------------------------
 
@@ -360,19 +552,19 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `barcode`, `name`, `price`, `quantity`, `image_path`, `category_id`, `is_active`, `created_at`, `updated_at`, `version`) VALUES
-(1, 'BC123456789', 'Cà phê đen', 25000.00, 100, 'https://static.vecteezy.com/system/resources/thumbnails/041/643/200/small_2x/ai-generated-a-cup-of-coffee-and-a-piece-of-coffee-bean-perfect-for-food-and-beverage-related-designs-or-promoting-cozy-moments-png.png', 2, 1, '2025-05-23 17:41:02', '2025-05-23 18:51:34', 1),
-(2, 'BC123456788', 'Trà sữa thái xanh', 30000.00, 80, 'https://dailong.asia/page/download/tra-tac-thai-xanh-png-green-thai-kumquat-tea-cBRZ0r.png', 1, 1, '2025-05-23 17:41:02', '2025-06-01 11:03:50', 1),
-(3, 'BC123456787', 'Sinh tố bơ', 35000.00, 50, 'https://png.pngtree.com/png-vector/20240731/ourmid/pngtree-avocado-smoothie-with-isolated-on-transparent-background-png-image_13317561.png', 2, 0, '2025-05-23 17:41:02', '2025-05-23 18:52:12', 1),
-(4, 'BC123456786', 'Bim Bim Oishi', 10000.00, 200, 'https://lanchi.vn/wp-content/uploads/2021/11/SNACK-OISHI-VI-MUC-80G.png', 3, 0, '2025-05-23 17:41:02', '2025-06-01 11:03:35', 1),
-(5, 'BC2025000005', 'Bánh Mì', 10500.00, 55, 'https://png.pngtree.com/png-vector/20240530/ourmid/pngtree-easy-and-nutritious-bread-egg-breakfast-options-for-busy-mornings-png-image_12554587.png', 3, 1, '2025-05-30 12:00:00', '2025-05-30 21:18:15', 1),
-(6, 'BC2025000006', 'Phở Bò', 10600.00, 56, 'https://phovihoang.vn/wp-content/uploads/2018/01/48267.png', 1, 0, '2025-05-30 12:00:00', '2025-05-30 21:18:28', 1),
-(7, 'BC2025000007', 'Bún Chả', 10700.00, 57, 'https://dailong.asia/page/download/bun-cha-ha-noi-png-rice-noodles-hanoi-KVGSis.png', 2, 1, '2025-05-30 12:00:00', '2025-05-30 21:18:44', 1),
-(8, 'BC2025000008', 'Cà Phê Sữa', 10800.00, 58, 'https://khothietke.net/wp-content/uploads/2021/03/taifree1439-ca-phe-sua-tach-ca-phe-sua.png', 3, 0, '2025-05-30 12:00:00', '2025-05-30 21:19:03', 1),
-(9, 'BC2025000009', 'Trà Đào', 10900.00, 59, 'https://png.pngtree.com/png-clipart/20231018/original/pngtree-iced-peach-tea-in-plastic-glass-watercolor-png-image_13342502.png', 1, 1, '2025-05-30 12:00:00', '2025-05-30 21:19:14', 1),
-(10, 'BC2025000010', 'Nước Cam', 11000.00, 60, 'https://khothietke.net/wp-content/uploads/2021/03/taifree1492-nuoc-cam-nuoc-cam-ep.png', 2, 0, '2025-05-30 12:00:00', '2025-06-01 10:07:58', 1),
-(11, 'BC2025000011', 'Bia Hà Nội', 11100.00, 61, 'https://bizweb.dktcdn.net/100/405/121/products/bia-450-png-png.png?v=1610167341887', 3, 1, '2025-05-30 12:00:00', '2025-06-01 10:08:12', 1),
-(12, 'BC2025000012', 'Cơm Tấm', 11200.00, 62, 'https://dailong.asia/page/download/com-tam-suon-bi-cha-sai-gon-png-chop-meatloaf-and-shredded-pork-skin-HErW92.png', 1, 0, '2025-05-30 12:00:00', '2025-06-01 10:08:34', 1),
-(13, 'BC2025000013', 'Bún Bò Huế', 11300.00, 63, 'https://dailong.asia/page/download/bun-bo-hue-png-beef-rice-noodles-hue-yKOcJl.png', 2, 1, '2025-05-30 12:00:00', '2025-06-01 10:08:36', 1);
+(1, 'BC123456789', 'Cà phê đen', 25000.00, 100, '\\images\\product\\coffe.webp', 2, 1, '2025-05-23 17:41:02', '2025-06-01 11:13:06', 1),
+(2, 'BC123456788', 'Trà sữa thái xanh', 15000.00, 80, '\\images\\product\\thaixanh.png', 1, 1, '2025-05-23 17:41:02', '2025-06-01 11:24:19', 1),
+(3, 'BC123456787', 'Sinh tố bơ', 35000.00, 50, '\\images\\product\\sinhtobo.png', 2, 0, '2025-05-23 17:41:02', '2025-06-01 11:14:40', 1),
+(4, 'BC123456786', 'Bim Bim Oishi', 8000.00, 200, '\\images\\product\\bimbim.png', 3, 0, '2025-05-23 17:41:02', '2025-06-01 11:24:21', 1),
+(5, 'BC2025000005', 'Bánh Mì', 25000.00, 55, '\\images\\product\\banhmi.png', 3, 1, '2025-05-30 12:00:00', '2025-06-01 11:24:26', 1),
+(6, 'BC2025000006', 'Phở Bò', 35000.00, 56, '\\images\\product\\phobo.png', 1, 0, '2025-05-30 12:00:00', '2025-06-01 11:24:30', 1),
+(7, 'BC2025000007', 'Bún Chả', 35000.00, 57, '\\images\\product\\buncha.png', 2, 1, '2025-05-30 12:00:00', '2025-06-01 11:24:35', 1),
+(8, 'BC2025000008', 'Cà Phê Sữa', 35000.00, 58, '\\images\\product\\caphesua.png', 3, 0, '2025-05-30 12:00:00', '2025-06-01 11:24:37', 1),
+(9, 'BC2025000009', 'Trà Đào', 15000.00, 59, '\\images\\product\\tradao.png', 1, 1, '2025-05-30 12:00:00', '2025-06-01 11:24:42', 1),
+(10, 'BC2025000010', 'Nước Cam', 35000.00, 60, '\\images\\product\\nuoccam.png', 2, 0, '2025-05-30 12:00:00', '2025-06-01 11:24:45', 1),
+(11, 'BC2025000011', 'Bia Hà Nội', 10000.00, 61, '\\images\\product\\biahanoi.webp', 3, 1, '2025-05-30 12:00:00', '2025-06-01 11:24:50', 1),
+(12, 'BC2025000012', 'Cơm Tấm', 35000.00, 62, '\\images\\product\\comtam.png', 1, 0, '2025-05-30 12:00:00', '2025-06-01 11:24:53', 1),
+(13, 'BC2025000013', 'Bún Bò Huế', 35000.00, 63, '\\images\\product\\bunbohue.png', 2, 1, '2025-05-30 12:00:00', '2025-06-01 11:24:55', 1);
 
 -- --------------------------------------------------------
 
@@ -393,8 +585,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`, `version`) VALUES
-(1, 'NHÂN VIÊN', '2025-05-22 06:52:01', '2025-05-31 18:52:28', 0),
-(2, 'QUẢN TRỊ VIÊN', '2025-05-22 06:52:01', '2025-05-31 18:52:32', 0);
+(1, 'Nhân viên', '2025-05-22 06:52:01', '2025-06-01 12:36:14', 0),
+(2, 'Quản trị viên', '2025-05-22 06:52:01', '2025-06-01 12:36:18', 0);
 
 -- --------------------------------------------------------
 
@@ -739,7 +931,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT cho bảng `discounts`
@@ -757,7 +949,7 @@ ALTER TABLE `discount_types`
 -- AUTO_INCREMENT cho bảng `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT cho bảng `invoices`
