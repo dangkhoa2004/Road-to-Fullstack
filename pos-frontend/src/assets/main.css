@@ -180,6 +180,7 @@
     cursor: pointer;
   }
   body {
+    user-select: none;
     @apply relative font-normal font-outfit z-1 bg-gray-50;
   }
 }

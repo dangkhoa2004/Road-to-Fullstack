@@ -24,7 +24,7 @@
                         <td class="px-4 py-3 sm:px-6 whitespace-nowrap">
                             <div class="flex space-x-2">
                                 <span @click="showModal(row)"
-                                    class="inline-block px-2 py-1 rounded text-xs font-semibold cursor-pointer bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-200/10 dark:text-green-400 transition">
+                                    class="inline-block px-2 py-1 rounded text-xs font-semibold cursor-pointer bg-green-100 text-black hover:bg-green-200 dark:bg-green-200/10 dark:text-green-400 transition">
                                     Xem / Sửa
                                 </span>
                             </div>

@@ -1,8 +1,14 @@
 <template>
     <div>
-        <h2 class="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100">
-            Chi tiết đơn hàng
-        </h2>
+        <div class="flex items-center justify-between mb-2">
+            <h2 class="text-lg font-bold text-gray-800 dark:text-gray-100">
+                Chi tiết đơn hàng
+            </h2>
+            <button class="text-xs text-red-500 cursor-pointer hover:underline" @click="$emit('clear')">
+                Làm mới
+            </button>
+        </div>
+
         <div v-for="(order, index) in orders" :key="index" class="flex items-center justify-between py-1">
             <div>
                 <p class="text-sm font-medium text-gray-800 dark:text-gray-200">
@@ -28,7 +34,6 @@
         </div>
     </div>
 </template>
-
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 
@@ -36,5 +41,5 @@ const props = defineProps<{
     orders: { name: string; price: number; quantity: number }[]
 }>()
 
-const emit = defineEmits(['increase', 'decrease'])
+const emit = defineEmits(['increase', 'decrease', 'clear'])
 </script>

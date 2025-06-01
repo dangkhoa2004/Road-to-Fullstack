@@ -1,8 +1,8 @@
 <template>
   <Modal @close="$emit('close')" :headerTitle="headerTitle" :headerDescription="headerDescription">
     <template #body>
-      <div class="no-scrollbar relative w-full max-h-[700px] overflow-y-auto rounded-xl bg-white dark:bg-gray-900">
-        <form class="flex flex-col space-y-4 p-2">
+      <div class="no-scrollbar relative w-full max-h-[700px] overflow-y-auto  bg-white dark:bg-gray-900">
+        <form class="flex flex-col space-y-4">
           <div v-for="column in columns" :key="column.key" v-if="row">
             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
               {{ column.label }}
