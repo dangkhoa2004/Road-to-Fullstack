@@ -163,7 +163,10 @@ const menuGroups = [
       {
         icon: GridIcon,
         name: "Trang chủ",
-        subItems: [{ name: "Thương mại điện tử", path: "/", pro: false }],
+        subItems: [
+          { name: "Thương mại điện tử", path: "/", pro: false },
+          { name: "POS", path: "/pos", pro: false },
+        ],
       },
       {
         icon: CalenderIcon,

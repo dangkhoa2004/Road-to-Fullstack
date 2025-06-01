@@ -8,6 +8,12 @@ const dashboardRoutes: RouteRecordRaw[] = [
     meta: { title: 'Bảng điều khiển thương mại' },
   },
   {
+    path: '/pos',
+    name: 'POS',
+    component: () => import('../../views/PosManagement/PosManagement.vue'),
+    meta: { title: 'POS' },
+  },
+  {
     path: '/products',
     name: 'Danh sách sản phẩm',
     component: () => import('../../views/TableManagement/ListProduct.vue'),
