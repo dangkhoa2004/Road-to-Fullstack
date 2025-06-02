@@ -9,6 +9,12 @@ package com.pos.backend.service.Impl;
  * @author 04dkh
  */
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.pos.backend.dto.product.ProductRequest;
 import com.pos.backend.dto.product.ProductResponse;
 import com.pos.backend.model.Category;
@@ -17,11 +23,6 @@ import com.pos.backend.repository.CategoryRepository;
 import com.pos.backend.repository.ProductRepository;
 import com.pos.backend.service.base.ProductService;
 import com.pos.backend.util.ResourceNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -90,7 +91,8 @@ public class ProductServiceImpl implements ProductService {
 
         if (request.getCategoryId() != null) {
             Category category = categoryRepository.findById(request.getCategoryId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + request.getCategoryId()));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Category not found with id: " + request.getCategoryId()));
             product.setCategory(category);
         } else {
             product.setCategory(null); // Or handle as per business logic, e.g., throw error

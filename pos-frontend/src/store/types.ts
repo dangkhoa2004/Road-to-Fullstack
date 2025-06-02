@@ -142,3 +142,17 @@ export const GET_CUSTOMERS = 'GET_CUSTOMERS' as const
 export const GET_CUSTOMER = 'GET_CUSTOMER' as const
 export const GET_CUSTOMER_LOADING = 'GET_CUSTOMER_LOADING' as const
 export const GET_CUSTOMER_ERROR = 'GET_CUSTOMER_ERROR' as const
+
+// --- Permission Actions ---
+export const FETCH_PERMISSIONS = 'FETCH_PERMISSIONS' as const
+export const FETCH_PERMISSION_BY_ID = 'FETCH_PERMISSION_BY_ID' as const
+// --- Permission Mutations ---
+export const SET_PERMISSIONS = 'SET_PERMISSIONS' as const
+export const SET_PERMISSION = 'SET_PERMISSION' as const
+export const SET_PERMISSION_LOADING = 'SET_PERMISSION_LOADING' as const
+export const SET_PERMISSION_ERROR = 'SET_PERMISSION_ERROR' as const
+// --- Permission Getters ---
+export const GET_PERMISSIONS = 'GET_PERMISSIONS' as const
+export const GET_PERMISSION = 'GET_PERMISSION' as const
+export const GET_PERMISSION_LOADING = 'GET_PERMISSION_LOADING' as const
+export const GET_PERMISSION_ERROR = 'GET_PERMISSION_ERROR' as const

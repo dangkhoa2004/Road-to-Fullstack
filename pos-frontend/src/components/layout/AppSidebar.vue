@@ -210,6 +210,7 @@ const menuGroups = [
         name: "Hệ thống",
         subItems: [
           { name: "Khách hàng", path: "/customers", pro: false },
+          { name: "Nhân viên", path: "/employees", pro: false },
           { name: "Phân quyền", path: "/permissions", pro: false },
           { name: "Code mới", path: "/developer", pro: false },
         ],

@@ -50,9 +50,15 @@ const dashboardRoutes: RouteRecordRaw[] = [
     meta: { title: 'Danh sách khách hàng' },
   },
   {
+    path: '/employees',
+    name: 'Danh sách nhân viên',
+    component: () => import('../../views/TableManagement/ListEmployee.vue'),
+    meta: { title: 'Danh sách nhân viên' },
+  },
+  {
     path: '/permissions',
     name: 'Danh sách phân quyền',
-    component: () => import('../../views/TableManagement/ListEmployee.vue'),
+    component: () => import('../../views/TableManagement/ListPermission.vue'),
     meta: { title: 'Danh sách phân quyền' },
   },
   {

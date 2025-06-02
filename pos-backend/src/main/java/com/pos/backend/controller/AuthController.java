@@ -80,7 +80,6 @@ public class AuthController {
         return ResponseEntity.ok(apiResponse);
     }
 
-
     @PostMapping("/forgot-password")
     public ResponseEntity<ApiResponse<ResetPasswordResponse>> forgotPassword(@Valid @RequestBody ForgotPasswordRequest requestBody, HttpServletRequest request) {
         String employeeEmail = requestBody.getEmail();
