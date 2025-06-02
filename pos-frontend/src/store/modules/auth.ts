@@ -22,7 +22,15 @@ const getters = {
   [types.IS_LOGGED_IN]: (state: AuthState) => !!state.token,
   [types.GET_AUTH_USER]: (state: AuthState) => state.user,
   [types.GET_AUTH_ERROR]: (state: AuthState) => state.authError,
-};
+  // 👇 MỚI: Kiểm tra role
+  hasRole: (state: AuthState) => (roleName: string) => {
+    return state.user?.role?.name === roleName
+  },
+  // 👇 MỚI: Kiểm tra permission
+  hasPermission: (state: AuthState) => (permission: string) => {
+    return state.user?.permissions?.includes(permission)
+  },
+}
 
 const mutations = {
   [types.SET_AUTH_TOKEN](state: AuthState, token: string) {
@@ -56,7 +64,8 @@ const actions = {
       commit(types.SET_AUTH_TOKEN, token);
       commit(types.SET_AUTH_USER, user);
       commit(types.SET_AUTH_ERROR, null);
-      router.push('/');
+      const redirectPath = router.currentRoute.value.query.redirect as string;
+      router.push(redirectPath || '/');
     } catch (error: any) {
       let errorMessage = 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.';
       if (error.response && error.response.data) {
@@ -118,7 +127,7 @@ const actions = {
 
   [types.LOGOUT]({ commit }: ActionContext<AuthState, unknown>) {
     commit(types.CLEAR_AUTH_DATA);
-    router.push('/login');
+    router.push('/dang-nhap');
   },
 };
 

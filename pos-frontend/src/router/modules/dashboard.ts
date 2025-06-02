@@ -55,6 +55,12 @@ const dashboardRoutes: RouteRecordRaw[] = [
     component: () => import('../../views/TableManagement/ListEmployee.vue'),
     meta: { title: 'Danh sách phân quyền' },
   },
+  {
+    path: '/developer',
+    name: 'Test code mới',
+    component: () => import('../../views/Others/DevoloperPage.vue'),
+    meta: { title: 'Test code mới' },
+  },
 ]
 
 export default dashboardRoutes

@@ -79,7 +79,6 @@ function showModal(row) {
 }
 
 function saveProfile(editedRow) {
-    console.log("Đã chỉnh sửa:", editedRow);
     popupDetail.value = false;
 }
 </script>

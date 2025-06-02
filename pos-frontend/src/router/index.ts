@@ -1,5 +1,7 @@
+// src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
+import { authGuard } from '@/composables/authGuard'
 
 import authRoutes from './modules/auth'
 import dashboardRoutes from './modules/dashboard'
@@ -10,6 +12,7 @@ import errorsRoutes from './modules/errors'
 import pagesRoutes from './modules/pages'
 
 const routes: RouteRecordRaw[] = [
+  // Route mặc định redirect về 404 nếu không tìm thấy
   {
     path: '/:pathMatch(.*)*',
     redirect: '/error-404',
@@ -31,21 +34,14 @@ const router = createRouter({
   routes,
 })
 
+// Cập nhật tiêu đề động cho từng route
 router.beforeEach((to, from, next) => {
   const defaultTitle = 'Ứng dụng của tôi'
   document.title = `${to.meta?.title || defaultTitle} | Pos - Application`
-
-  // const token = localStorage.getItem('jwtToken')
-  // const user = localStorage.getItem('user')
-
-  // const publicRoutes = ['/dang-nhap', '/dang-ky', '/quen-mat-khau']
-
-  // if ((!token || !user) && !publicRoutes.includes(to.path)) {
-  //   next('/dang-nhap')
-  // } else {
-  //   next()
-  // }
   next()
 })
+
+// Bảo vệ route (auth)
+router.beforeEach(authGuard)
 
 export default router

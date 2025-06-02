@@ -30,11 +30,12 @@
           </router-link>
         </li>
       </ul>
-      <router-link to="/dang-nhap" @click.prevent="signOut"
+      <button @click="signOut"
         class="flex items-center gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300">
         <LogoutIcon class="text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300" />
         Đăng xuất
-      </router-link>
+      </button>
+
     </div>
   </div>
 </template>
@@ -73,6 +74,7 @@ const menuItems = [
 const signOut = () => {
   store.dispatch(`auth/${LOGOUT}`)
   closeDropdown()
+  router.push('/dang-nhap')
 }
 
 const handleClickOutside = (event: MouseEvent) => {
