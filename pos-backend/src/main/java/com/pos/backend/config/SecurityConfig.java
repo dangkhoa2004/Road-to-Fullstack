@@ -96,7 +96,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Cấu hình origin cụ thể hoặc "*" cho tất cả (trong dev)
-        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173","http://localhost:4173/"));
+        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173","http://localhost:4173/", "http://192.168.1.2/"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "X-Requested-With"));
         configuration.setAllowCredentials(true);
