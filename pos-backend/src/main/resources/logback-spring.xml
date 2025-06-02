@@ -1,0 +1,20 @@
+<configuration scan="true">
+
+    <!-- Chỉnh mức log toàn hệ thống -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+    </root>
+
+    <!-- Appender console (màu đẹp) -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%thread] %highlight(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Cho phép package backend log chi tiết hơn -->
+    <logger name="com.pos.backend" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+</configuration>
