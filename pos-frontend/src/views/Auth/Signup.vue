@@ -65,7 +65,7 @@
               </form>
 
               <div class="mt-5 text-center sm:text-start">
-                <router-link to="/login" class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400">
+                <router-link to="/dang-nhap" class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400">
                   Đã có tài khoản? Đăng nhập
                 </router-link>
               </div>

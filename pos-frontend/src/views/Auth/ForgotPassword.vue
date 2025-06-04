@@ -63,7 +63,7 @@
                             </form>
 
                             <div class="mt-5 text-center sm:text-start">
-                                <router-link to="/login"
+                                <router-link to="/dang-nhap"
                                     class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400">
                                     Quay lại đăng nhập
                                 </router-link>
@@ -125,7 +125,7 @@ const handleSubmit = async () => {
                 newPassword: newPassword.value,
                 confirmPassword: confirmPassword.value
             })
-            location.href = '/login'
+            location.href = '/dang-nhap'
         } catch (error) {
             console.error('Reset password failed:', error)
             store.commit('auth/' + types.SET_AUTH_ERROR, 'Không thể thay đổi mật khẩu. Vui lòng thử lại.')

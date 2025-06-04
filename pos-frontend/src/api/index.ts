@@ -28,11 +28,11 @@ axios.interceptors.response.use(
     if (
       error.response &&
       error.response.status === 401 &&
-      error.config?.url !== '/auth/login'
+      error.config?.url !== '/auth/dang-nhap'
     ) {
       localStorage.removeItem('jwtToken');
       localStorage.removeItem('user');
-      router.push('/login');
+      router.push('/dang-nhap');
     }
     return Promise.reject(error);
   }

@@ -13,12 +13,11 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        "name": "Tên App",
-        "short_name": "Tên Ngắn",
+        "name": "POS - Application",
+        "short_name": "POS - Application",
         "start_url": ".",
         "display": "standalone",
         "background_color": "#ffffff",
-        "theme_color": "#6200ee",
         "icons": [
           {
             "src": "/images/logo/192.png",
