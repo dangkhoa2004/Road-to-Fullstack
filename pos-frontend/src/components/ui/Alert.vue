@@ -37,7 +37,7 @@ interface AlertProps {
 const props = withDefaults(defineProps<AlertProps>(), {
   showLink: false,
   linkHref: '#',
-  linkText: 'Learn more',
+  linkText: 'Tìm hiểu thêm',
 })
 
 const variantClasses = {

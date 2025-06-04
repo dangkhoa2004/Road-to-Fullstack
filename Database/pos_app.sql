@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 01, 2025 lúc 07:40 AM
+-- Thời gian đã tạo: Th6 04, 2025 lúc 05:13 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -270,7 +270,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `username`, `password_hash`, `role_id`, `phone`, `email`, `is_active`, `created_at`, `updated_at`, `version`) VALUES
-(1, 'Cao Đăng Khoa', 'admin', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '1234567890', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-05-31 18:52:48', 1),
+(1, 'Cao Đăng Khoa', 'admin', '$2a$10$MyY8Icevsw8uGd9Fw/RS9O0j6NmKrzESUNMmPiTguZNcDTtj6kA/O', 2, '0869938981', '04dkhoa04@gmail.com', 1, '2025-05-22 06:52:27', '2025-06-04 10:13:22', 2),
 (2, 'Employee 2', 'user2', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671002', 'user2@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
 (3, 'Employee 3', 'user3', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 2, '2345671003', 'user3@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
 (4, 'Employee 4', 'user4', '$2a$10$JtWbThTzQhvXxFL90AdhoePJAx6xG4eUJkdBgrMGHhXcEWK49poDW', 1, '2345671004', 'user4@example.com', 1, '2025-05-31 18:52:48', '2025-05-31 18:52:48', 1),
@@ -967,7 +967,7 @@ ALTER TABLE `invoice_items`
 -- AUTO_INCREMENT cho bảng `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `payments`

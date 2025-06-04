@@ -18,11 +18,14 @@
             </template>
 
             <template v-else-if="column.key === 'role.name'">
-              <input :value="row.role?.name || ''" @input="updateNestedField('role', 'name', $event.target.value)"
-                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 focus:border-brand-300 focus:ring-brand-500/10" />
+              <select v-model="row.role.name"
+                class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 focus:border-brand-300 focus:ring-brand-500/10">
+                <option value="Quản trị viên">Quản trị viên</option>
+                <option value="Nhân viên">Nhân viên</option>
+              </select>
             </template>
 
-            <template v-if="column.key === 'permissions' && Array.isArray(row.permissions)">
+            <template v-else-if="column.key === 'permissions' && Array.isArray(row.permissions)">
               <div class="flex flex-wrap items-center gap-8">
                 <div v-for="(permission, index) in allPermissions" :key="index" class="flex items-center space-x-2">
                   <label :for="`permission-${index}`"

@@ -163,24 +163,14 @@ const menuGroups = [
           { name: "Điểm bán hàng", path: "/pos", pro: false },
         ],
       },
-      {
-        icon: CalenderIcon,
-        name: "Lịch",
-        path: "/calendar",
-      },
-      {
-        icon: UserCircleIcon,
-        name: "Hồ sơ người dùng",
-        path: "/profile",
-      },
-      {
-        name: "Biểu mẫu",
-        icon: ListIcon,
-        subItems: [
-          { name: "Phần tử biểu mẫu", path: "/form-elements", pro: false },
+      // {
+      //   name: "Biểu mẫu",
+      //   icon: ListIcon,
+      //   subItems: [
+      //     { name: "Phần tử biểu mẫu", path: "/form-elements", pro: false },
 
-        ],
-      },
+      //   ],
+      // },
       {
         name: "Bảng",
         icon: TableIcon,
@@ -192,19 +182,29 @@ const menuGroups = [
           { name: "Nhập / Xuất kho", path: "/stocks", pro: false },
         ]
       },
-      {
-        name: "Các trang",
-        icon: PageIcon,
-        subItems: [
-          { name: "Trang trắng", path: "/blank", pro: false },
-          { name: "Trang lỗi 404", path: "/error-404", pro: false },
-        ],
-      },
+      // {
+      //   name: "Các trang",
+      //   icon: PageIcon,
+      //   subItems: [
+      //     { name: "Trang trắng", path: "/blank", pro: false },
+      //     { name: "Trang lỗi 404", path: "/error-404", pro: false },
+      //   ],
+      // },
     ],
   },
   {
     title: "Khác",
     items: [
+      {
+        icon: UserCircleIcon,
+        name: "Hồ sơ người dùng",
+        path: "/profile",
+      },
+      {
+        icon: CalenderIcon,
+        name: "Lịch",
+        path: "/calendar",
+      },
       {
         icon: SettingsIcon,
         name: "Hệ thống",
@@ -215,26 +215,26 @@ const menuGroups = [
           { name: "Code mới", path: "/developer", pro: false },
         ],
       },
-      {
-        icon: PieChartIcon,
-        name: "Biểu đồ",
-        subItems: [
-          { name: "Biểu đồ đường", path: "/line-chart", pro: false },
-          { name: "Biểu đồ thanh", path: "/bar-chart", pro: false },
-        ],
-      },
-      {
-        icon: BoxCubeIcon,
-        name: "Thành phần UI",
-        subItems: [
-          { name: "Cảnh báo", path: "/alerts", pro: false },
-          { name: "Ảnh đại diện", path: "/avatars", pro: false },
-          { name: "Huy hiệu", path: "/badge", pro: false },
-          { name: "Nút bấm", path: "/buttons", pro: false },
-          { name: "Hình ảnh", path: "/images", pro: false },
-          { name: "Videos", path: "/videos", pro: false },
-        ],
-      }
+      // {
+      //   icon: PieChartIcon,
+      //   name: "Biểu đồ",
+      //   subItems: [
+      //     { name: "Biểu đồ đường", path: "/line-chart", pro: false },
+      //     { name: "Biểu đồ thanh", path: "/bar-chart", pro: false },
+      //   ],
+      // },
+      // {
+      //   icon: BoxCubeIcon,
+      //   name: "Thành phần UI",
+      //   subItems: [
+      //     { name: "Cảnh báo", path: "/alerts", pro: false },
+      //     { name: "Ảnh đại diện", path: "/avatars", pro: false },
+      //     { name: "Huy hiệu", path: "/badge", pro: false },
+      //     { name: "Nút bấm", path: "/buttons", pro: false },
+      //     { name: "Hình ảnh", path: "/images", pro: false },
+      //     { name: "Videos", path: "/videos", pro: false },
+      //   ],
+      // }
     ],
   },
 ];

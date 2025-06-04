@@ -41,7 +41,7 @@ export interface ResetPasswordResponse {
 // --- Hàm login ---
 export const login = async (credentials: Record<string, any>): Promise<AuthResponse> => {
   try {
-    const response: AxiosResponse<AuthApiResponse> = await axios.post('/auth/dang-nhap', credentials);
+    const response: AxiosResponse<AuthApiResponse> = await axios.post('/auth/login', credentials);
     const { token, user } = response.data.data;
     return { token, user };
   } catch (error: unknown) {

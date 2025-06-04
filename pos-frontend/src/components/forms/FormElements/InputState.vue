@@ -35,7 +35,7 @@
           </svg>
         </span>
       </div>
-      <p class="mt-1.5 text-theme-xs text-success-500">This is a success message.</p>
+      <p class="mt-1.5 text-theme-xs text-success-500">This is a Tin nhắn thành công.</p>
     </div>
 
     <!-- Disabled State Input -->
