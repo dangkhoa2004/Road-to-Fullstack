@@ -38,8 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
                 customer.getName(),
                 customer.getPhone(),
                 customer.getEmail(),
-                customer.getAddress()
-        );
+                customer.getAddress());
     }
 
     private Customer mapToEntity(CustomerRequest request) {
@@ -108,7 +107,8 @@ public class CustomerServiceImpl implements CustomerService {
         existingCustomer.setPhone(customerRequest.getPhone());
         existingCustomer.setEmail(customerRequest.getEmail());
         existingCustomer.setAddress(customerRequest.getAddress());
-        // loyaltyPoints thường không được cập nhật qua request này, mà qua các giao dịch
+        // loyaltyPoints thường không được cập nhật qua request này, mà qua các giao
+        // dịch
 
         Customer updatedCustomer = customerRepository.save(existingCustomer);
         return mapToResponse(updatedCustomer);

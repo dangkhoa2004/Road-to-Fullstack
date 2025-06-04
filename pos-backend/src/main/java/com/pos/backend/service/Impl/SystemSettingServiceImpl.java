@@ -56,4 +56,3 @@ public class SystemSettingServiceImpl implements SystemSettingService {
                 .build();
     }
 }
-

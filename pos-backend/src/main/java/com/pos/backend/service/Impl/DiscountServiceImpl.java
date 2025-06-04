@@ -44,8 +44,7 @@ public class DiscountServiceImpl implements DiscountService {
             discountTypeDto = new DiscountTypeDto(
                     discount.getDiscountType().getId(),
                     discount.getDiscountType().getName(),
-                    discount.getDiscountType().getDescription()
-            );
+                    discount.getDiscountType().getDescription());
         }
 
         return new DiscountResponse(
@@ -58,8 +57,7 @@ public class DiscountServiceImpl implements DiscountService {
                 discount.getEndDate(),
                 discount.getActive(),
                 discount.getMinimumOrderAmount(),
-                discount.getMaximumDiscountAmount()
-        );
+                discount.getMaximumDiscountAmount());
     }
 
     private Discount mapToEntity(DiscountRequest request, Discount discount) {
@@ -85,7 +83,8 @@ public class DiscountServiceImpl implements DiscountService {
         discount.setMaximumDiscountAmount(request.getMaximumDiscountAmount());
 
         DiscountType discountType = discountTypeRepository.findById(request.getDiscountTypeId())
-                .orElseThrow(() -> new NoSuchElementException("Không tìm thấy loại khuyến mãi với ID: " + request.getDiscountTypeId()));
+                .orElseThrow(() -> new NoSuchElementException(
+                        "Không tìm thấy loại khuyến mãi với ID: " + request.getDiscountTypeId()));
         discount.setDiscountType(discountType);
 
         return discount;

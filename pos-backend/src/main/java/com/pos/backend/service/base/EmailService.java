@@ -23,7 +23,8 @@ public class EmailService {
     public void sendEmail(String to, String subject, String text) {
     }
 
-    public void sendHtmlEmail(String to, String subject, String templateName, Map<String, Object> templateVariables) throws MessagingException {
+    public void sendHtmlEmail(String to, String subject, String templateName, Map<String, Object> templateVariables)
+            throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
         helper.setFrom("your-email@example.com");

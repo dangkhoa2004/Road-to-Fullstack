@@ -33,7 +33,9 @@ public class StockServiceImpl implements StockService {
     @Transactional
     public StockInResponse createStockIn(StockInRequest request) {
         Product product = productRepository.findById(request.getProductId()).orElseThrow();
-        Employee employee = request.getEmployeeId() != null ? employeeRepository.findById(request.getEmployeeId()).orElse(null) : null;
+        Employee employee = request.getEmployeeId() != null
+                ? employeeRepository.findById(request.getEmployeeId()).orElse(null)
+                : null;
 
         StockIn stockIn = new StockIn();
         stockIn.setProduct(product);
@@ -49,7 +51,9 @@ public class StockServiceImpl implements StockService {
     @Transactional
     public StockOutResponse createStockOut(StockOutRequest request) {
         Product product = productRepository.findById(request.getProductId()).orElseThrow();
-        Employee employee = request.getEmployeeId() != null ? employeeRepository.findById(request.getEmployeeId()).orElse(null) : null;
+        Employee employee = request.getEmployeeId() != null
+                ? employeeRepository.findById(request.getEmployeeId()).orElse(null)
+                : null;
 
         StockOut stockOut = new StockOut();
         stockOut.setProduct(product);
@@ -97,4 +101,3 @@ public class StockServiceImpl implements StockService {
                 .build();
     }
 }
-

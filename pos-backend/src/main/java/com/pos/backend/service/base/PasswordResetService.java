@@ -17,7 +17,8 @@ public class PasswordResetService {
     private final EmployeeRepository employeeRepository;
     private final EmailService emailService;
 
-    public PasswordResetService(PasswordResetTokenRepository tokenRepository, EmployeeRepository employeeRepository, EmailService emailService) {
+    public PasswordResetService(PasswordResetTokenRepository tokenRepository, EmployeeRepository employeeRepository,
+            EmailService emailService) {
         this.tokenRepository = tokenRepository;
         this.employeeRepository = employeeRepository;
         this.emailService = emailService;

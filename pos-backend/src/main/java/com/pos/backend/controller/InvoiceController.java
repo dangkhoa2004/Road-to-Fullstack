@@ -1,19 +1,29 @@
 package com.pos.backend.controller;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.invoice.InvoiceRequest;
 import com.pos.backend.dto.invoice.InvoiceResponse;
 import com.pos.backend.model.Invoice;
 import com.pos.backend.service.base.InvoiceService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/invoice")
@@ -27,10 +37,12 @@ public class InvoiceController {
     public ResponseEntity<ApiResponse<List<InvoiceResponse>>> getAllInvoices() {
         try {
             List<InvoiceResponse> invoices = invoiceService.getAllInvoices();
-            ApiResponse<List<InvoiceResponse>> apiResponse = new ApiResponse<>("Lấy danh sách hoá đơn thành công", "200", invoices);
+            ApiResponse<List<InvoiceResponse>> apiResponse = new ApiResponse<>("Lấy danh sách hoá đơn thành công",
+                    "200", invoices);
             return ResponseEntity.ok(apiResponse);
         } catch (Exception e) {
-            ApiResponse<List<InvoiceResponse>> errorResponse = new ApiResponse<>("Có lỗi xảy ra khi lấy danh sách hoá đơn: " + e.getMessage(), "500", null);
+            ApiResponse<List<InvoiceResponse>> errorResponse = new ApiResponse<>(
+                    "Có lỗi xảy ra khi lấy danh sách hoá đơn: " + e.getMessage(), "500", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -40,16 +52,19 @@ public class InvoiceController {
     public ResponseEntity<ApiResponse<InvoiceResponse>> createInvoice(@Valid @RequestBody InvoiceRequest request) {
         try {
             InvoiceResponse createdInvoice = invoiceService.create(request);
-            ApiResponse<InvoiceResponse> apiResponse = new ApiResponse<>("Tạo hoá đơn thành công", "201", createdInvoice);
+            ApiResponse<InvoiceResponse> apiResponse = new ApiResponse<>("Tạo hoá đơn thành công", "201",
+                    createdInvoice);
             return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>(e.getMessage(), "400", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         } catch (DataIntegrityViolationException e) {
-            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Dữ liệu đầu vào vi phạm ràng buộc.", "409", null);
+            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Dữ liệu đầu vào vi phạm ràng buộc.", "409",
+                    null);
             return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
         } catch (Exception e) {
-            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Tạo hoá đơn thất bại: " + e.getMessage(), "500", null);
+            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Tạo hoá đơn thất bại: " + e.getMessage(),
+                    "500", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -62,10 +77,12 @@ public class InvoiceController {
             ApiResponse<InvoiceResponse> apiResponse = new ApiResponse<>("Lấy hoá đơn thành công", "200", invoice);
             return ResponseEntity.ok(apiResponse);
         } catch (NoSuchElementException e) {
-            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Không tìm thấy hoá đơn với ID: " + id, "404", null);
+            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Không tìm thấy hoá đơn với ID: " + id,
+                    "404", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Có lỗi xảy ra khi lấy hoá đơn: " + e.getMessage(), "500", null);
+            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>(
+                    "Có lỗi xảy ra khi lấy hoá đơn: " + e.getMessage(), "500", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -77,13 +94,16 @@ public class InvoiceController {
             @RequestParam Invoice.InvoiceStatus status) {
         try {
             InvoiceResponse updatedInvoice = invoiceService.updateStatus(id, status);
-            ApiResponse<InvoiceResponse> apiResponse = new ApiResponse<>("Cập nhật trạng thái hoá đơn thành công", "200", updatedInvoice);
+            ApiResponse<InvoiceResponse> apiResponse = new ApiResponse<>("Cập nhật trạng thái hoá đơn thành công",
+                    "200", updatedInvoice);
             return ResponseEntity.ok(apiResponse);
         } catch (NoSuchElementException e) {
-            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Không tìm thấy hoá đơn để cập nhật với ID: " + id, "404", null);
+            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>(
+                    "Không tìm thấy hoá đơn để cập nhật với ID: " + id, "404", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>("Cập nhật trạng thái hoá đơn thất bại: " + e.getMessage(), "500", null);
+            ApiResponse<InvoiceResponse> errorResponse = new ApiResponse<>(
+                    "Cập nhật trạng thái hoá đơn thất bại: " + e.getMessage(), "500", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -96,7 +116,8 @@ public class InvoiceController {
             ApiResponse<Void> apiResponse = new ApiResponse<>("Xoá hoá đơn thành công", "204", null);
             return new ResponseEntity<>(apiResponse, HttpStatus.NO_CONTENT);
         } catch (NoSuchElementException e) {
-            ApiResponse<Void> errorResponse = new ApiResponse<>("Không tìm thấy hoá đơn để xoá với ID: " + id, "404", null);
+            ApiResponse<Void> errorResponse = new ApiResponse<>("Không tìm thấy hoá đơn để xoá với ID: " + id, "404",
+                    null);
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             ApiResponse<Void> errorResponse = new ApiResponse<>("Xoá hoá đơn thất bại: " + e.getMessage(), "500", null);

@@ -32,11 +32,11 @@ public class AuthService {
     private final EmployeeService employeeService; // 👈 Thêm EmployeeService
 
     public AuthService(AuthenticationManager authenticationManager,
-                       JwtTokenProvider jwtTokenProvider,
-                       EmployeeRepository employeeRepository,
-                       RoleRepository roleRepository,
-                       PasswordEncoder passwordEncoder,
-                       EmployeeService employeeService) { // 👈 Thêm EmployeeService
+            JwtTokenProvider jwtTokenProvider,
+            EmployeeRepository employeeRepository,
+            RoleRepository roleRepository,
+            PasswordEncoder passwordEncoder,
+            EmployeeService employeeService) { // 👈 Thêm EmployeeService
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.employeeRepository = employeeRepository;
@@ -60,7 +60,8 @@ public class AuthService {
 
         // Lấy thông tin nhân viên
         Employee employee = employeeRepository.findByUsername(loginRequest.getUsername())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + loginRequest.getUsername()));
+                .orElseThrow(() -> new UsernameNotFoundException(
+                        "User not found with username: " + loginRequest.getUsername()));
 
         // Lấy quyền cuối cùng (role + individual)
         Set<String> finalPermissions = employeeService.getFinalPermissionsForEmployee(employee.getId());

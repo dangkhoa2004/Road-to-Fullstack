@@ -25,8 +25,7 @@ public interface TableService {
 
     TableResponse update(Long id, TableRequest request);
 
-    TableResponse updateStatus(Long id, Tables.TableStatus status);  // ✅ đã khớp
+    TableResponse updateStatus(Long id, Tables.TableStatus status); // ✅ đã khớp
 
     void delete(Long id);
 }
-

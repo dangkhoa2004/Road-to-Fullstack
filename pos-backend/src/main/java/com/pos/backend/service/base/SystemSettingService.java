@@ -11,7 +11,6 @@ import com.pos.backend.dto.system_setting.SystemSettingResponse;
  * @author 04dkh
  */
 
-
 public interface SystemSettingService {
     SystemSettingResponse getSetting();
 

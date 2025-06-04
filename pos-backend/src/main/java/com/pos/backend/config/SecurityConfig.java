@@ -64,7 +64,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
@@ -77,12 +78,16 @@ public class SecurityConfig {
                     // .authenticationEntryPoint(jwtAuthenticationEntryPoint) // Xử lý lỗi xác thực
                     // .accessDeniedHandler(customAccessDeniedHandler) // Xử lý lỗi phân quyền
                 })
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Không tạo session
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Không
+                                                                                                              // tạo
+                                                                                                              // session
                 .authorizeHttpRequests(authorize -> {
                     authorize
                             .requestMatchers("/api/auth/**").permitAll()
-                            .requestMatchers("/api/forgot-password","/api/reset-password").permitAll()
-                            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-ui/index.html").permitAll() // Cho phép truy cập Swagger UI
+                            .requestMatchers("/api/forgot-password", "/api/reset-password").permitAll()
+                            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html",
+                                    "/swagger-ui/index.html")
+                            .permitAll() // Cho phép truy cập Swagger UI
                             .anyRequest().authenticated(); // Tất cả các request khác đều cần xác thực
                 });
 
@@ -97,10 +102,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         // Cấu hình origin cụ thể hoặc "*" cho tất cả (trong dev)
         configuration.setAllowedOriginPatterns(List.of("http://localhost:5173",
-        "http://localhost:4173/",
-         "http://192.168.1.2/",
-         "http://192.168.1.3:3000/"
-         ));
+                "http://localhost:4173/",
+                "http://192.168.1.2/",
+                "http://192.168.1.3:3000/"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "X-Requested-With"));
         configuration.setAllowCredentials(true);

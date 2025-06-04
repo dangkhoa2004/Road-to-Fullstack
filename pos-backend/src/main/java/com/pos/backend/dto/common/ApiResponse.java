@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({"status", "string", "data"})
+@JsonPropertyOrder({ "status", "string", "data" })
 public class ApiResponse<T> {
 
     @JsonProperty("string")

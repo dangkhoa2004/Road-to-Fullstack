@@ -1,6 +1,5 @@
 package com.pos.backend.service.Impl;
 
-
 import com.pos.backend.dto.invoice.InvoiceItemResponse;
 import com.pos.backend.dto.invoice.InvoiceRequest;
 import com.pos.backend.dto.invoice.InvoiceResponse;
@@ -40,7 +39,6 @@ public class InvoiceServiceImpl implements InvoiceService {
                 .collect(Collectors.toList());
     }
 
-
     /* ------------------------- CREATE ------------------------- */
     @Override
     @Transactional
@@ -49,7 +47,9 @@ public class InvoiceServiceImpl implements InvoiceService {
         invoice.setCustomer(customerRepository.findById(request.getCustomerId()).orElse(null));
         invoice.setEmployee(employeeRepository.findById(request.getEmployeeId()).orElseThrow());
         invoice.setTable(tablesRepository.findById(request.getTableId()).orElse(null));
-        invoice.setDiscount(request.getDiscountId() != null ? discountRepository.findById(request.getDiscountId()).orElse(null) : null);
+        invoice.setDiscount(
+                request.getDiscountId() != null ? discountRepository.findById(request.getDiscountId()).orElse(null)
+                        : null);
         invoice.setNote(request.getNote());
 
         BigDecimal subTotal = BigDecimal.ZERO;
@@ -73,7 +73,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         invoice.setSubTotal(subTotal);
 
-        BigDecimal discountAmt = invoice.getDiscount() != null ? invoice.getDiscount().calculate(subTotal) : BigDecimal.ZERO;
+        BigDecimal discountAmt = invoice.getDiscount() != null ? invoice.getDiscount().calculate(subTotal)
+                : BigDecimal.ZERO;
         invoice.setDiscountAmount(discountAmt);
         BigDecimal taxAmt = subTotal.subtract(discountAmt).multiply(new BigDecimal("0.10"));
         invoice.setTaxAmount(taxAmt);
@@ -84,7 +85,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         return mapToResponse(invoice);
     }
-
 
     /* ------------------------- READ ------------------------- */
     @Override
@@ -118,14 +118,16 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     /* ------------------------- MAPPER ------------------------- */
     private InvoiceResponse mapToResponse(Invoice invoice) {
-        List<InvoiceItemResponse> itemResponses = invoice.getInvoiceItems().stream().map(ii -> InvoiceItemResponse.builder()
-                .id(ii.getId())
-                .productId(ii.getProduct().getId())
-                .productName(ii.getProduct().getName())
-                .quantity(ii.getQuantity())
-                .unitPrice(ii.getUnitPrice())
-                .itemTotal(ii.getItemTotal())
-                .build()).collect(Collectors.toList());
+        List<InvoiceItemResponse> itemResponses = invoice.getInvoiceItems().stream()
+                .map(ii -> InvoiceItemResponse.builder()
+                        .id(ii.getId())
+                        .productId(ii.getProduct().getId())
+                        .productName(ii.getProduct().getName())
+                        .quantity(ii.getQuantity())
+                        .unitPrice(ii.getUnitPrice())
+                        .itemTotal(ii.getItemTotal())
+                        .build())
+                .collect(Collectors.toList());
 
         return InvoiceResponse.builder()
                 .id(invoice.getId())

@@ -63,7 +63,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponse getCategoryById(Long id) {
-        // Tìm Category theo ID, nếu không tìm thấy thì ném ngoại lệ NoSuchElementException
+        // Tìm Category theo ID, nếu không tìm thấy thì ném ngoại lệ
+        // NoSuchElementException
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Không tìm thấy danh mục với ID: " + id));
         return mapToResponse(category); // Chuyển đổi sang Response DTO
@@ -72,7 +73,8 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional // Đảm bảo thao tác này chạy trong một transaction
     public CategoryResponse createCategory(CategoryRequest categoryRequest) {
-        // Kiểm tra xem tên danh mục đã tồn tại chưa để tránh lỗi UNIQUE constraint và cung cấp thông báo rõ ràng hơn
+        // Kiểm tra xem tên danh mục đã tồn tại chưa để tránh lỗi UNIQUE constraint và
+        // cung cấp thông báo rõ ràng hơn
         if (categoryRepository.findByName(categoryRequest.getName()).isPresent()) {
             throw new IllegalArgumentException("Tên danh mục đã tồn tại: " + categoryRequest.getName());
         }

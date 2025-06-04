@@ -7,17 +7,26 @@ package com.pos.backend.controller;
 /**
  * @author 04dkh
  */
-import com.pos.backend.dto.common.ApiResponse; // Import ApiResponse
+import java.util.List; // Import ApiResponse
+import java.util.NoSuchElementException;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody; // Import này để xử lý Not Found
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.product.ProductRequest;
 import com.pos.backend.dto.product.ProductResponse;
 import com.pos.backend.service.base.ProductService;
-import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.NoSuchElementException; // Import này để xử lý Not Found
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/product")
@@ -33,7 +42,8 @@ public class ProductController {
     @GetMapping("/list")
     public ResponseEntity<ApiResponse<List<ProductResponse>>> getAllProducts() {
         List<ProductResponse> products = productService.getAllProducts();
-        ApiResponse<List<ProductResponse>> apiResponse = new ApiResponse<>("Lấy danh sách sản phẩm thành công", "200", products);
+        ApiResponse<List<ProductResponse>> apiResponse = new ApiResponse<>("Lấy danh sách sản phẩm thành công", "200",
+                products);
         return ResponseEntity.ok(apiResponse);
     }
 
@@ -42,45 +52,55 @@ public class ProductController {
     public ResponseEntity<ApiResponse<ProductResponse>> getProductById(@PathVariable Long id) {
         try {
             ProductResponse product = productService.getProductById(id);
-            ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Lấy thông tin sản phẩm thành công", "200", product);
+            ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Lấy thông tin sản phẩm thành công", "200",
+                    product);
             return ResponseEntity.ok(apiResponse);
         } catch (NoSuchElementException e) {
             // Xử lý trường hợp không tìm thấy sản phẩm
-            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Không tìm thấy sản phẩm với ID: " + id, "404", null);
+            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Không tìm thấy sản phẩm với ID: " + id,
+                    "404", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             // Xử lý các lỗi khác
-            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Có lỗi xảy ra khi lấy sản phẩm: " + e.getMessage(), "500", null);
+            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>(
+                    "Có lỗi xảy ra khi lấy sản phẩm: " + e.getMessage(), "500", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     // Create a new product
     @PostMapping("/create")
-    public ResponseEntity<ApiResponse<ProductResponse>> createProduct(@Valid @RequestBody ProductRequest productRequest) {
+    public ResponseEntity<ApiResponse<ProductResponse>> createProduct(
+            @Valid @RequestBody ProductRequest productRequest) {
         try {
             ProductResponse createdProduct = productService.createProduct(productRequest);
-            ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Tạo sản phẩm thành công", "201", createdProduct);
+            ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Tạo sản phẩm thành công", "201",
+                    createdProduct);
             return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
         } catch (Exception e) {
             // Xử lý lỗi khi tạo sản phẩm (ví dụ: dữ liệu không hợp lệ, tên trùng lặp)
-            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Tạo sản phẩm thất bại: " + e.getMessage(), "400", null);
+            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Tạo sản phẩm thất bại: " + e.getMessage(),
+                    "400", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
     }
 
     // Update an existing product
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<ProductResponse>> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductRequest productRequest) {
+    public ResponseEntity<ApiResponse<ProductResponse>> updateProduct(@PathVariable Long id,
+            @Valid @RequestBody ProductRequest productRequest) {
         try {
             ProductResponse updatedProduct = productService.updateProduct(id, productRequest);
-            ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Cập nhật sản phẩm thành công", "200", updatedProduct);
+            ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Cập nhật sản phẩm thành công", "200",
+                    updatedProduct);
             return ResponseEntity.ok(apiResponse);
         } catch (NoSuchElementException e) {
-            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Không tìm thấy sản phẩm để cập nhật với ID: " + id, "404", null);
+            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>(
+                    "Không tìm thấy sản phẩm để cập nhật với ID: " + id, "404", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>("Cập nhật sản phẩm thất bại: " + e.getMessage(), "400", null);
+            ApiResponse<ProductResponse> errorResponse = new ApiResponse<>(
+                    "Cập nhật sản phẩm thất bại: " + e.getMessage(), "400", null);
             return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
     }
@@ -94,10 +114,12 @@ public class ProductController {
             ApiResponse<Void> apiResponse = new ApiResponse<>("Xóa sản phẩm thành công", "204", null);
             return new ResponseEntity<>(apiResponse, HttpStatus.NO_CONTENT); // 204 No Content
         } catch (NoSuchElementException e) {
-            ApiResponse<Void> errorResponse = new ApiResponse<>("Không tìm thấy sản phẩm để xóa với ID: " + id, "404", null);
+            ApiResponse<Void> errorResponse = new ApiResponse<>("Không tìm thấy sản phẩm để xóa với ID: " + id, "404",
+                    null);
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            ApiResponse<Void> errorResponse = new ApiResponse<>("Xóa sản phẩm thất bại: " + e.getMessage(), "500", null);
+            ApiResponse<Void> errorResponse = new ApiResponse<>("Xóa sản phẩm thất bại: " + e.getMessage(), "500",
+                    null);
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
