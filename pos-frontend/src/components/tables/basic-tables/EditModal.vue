@@ -1,16 +1,13 @@
 <template>
   <Modal @close="$emit('close')" :headerTitle="headerTitle" :headerDescription="headerDescription">
     <template #body>
-      <div class="no-scrollbar relative w-full max-h-[700px] overflow-y-auto  bg-white dark:bg-gray-900">
+      <div class="no-scrollbar relative w-full max-h-[700px] overflow-y-auto bg-white dark:bg-gray-900">
         <form class="flex flex-col space-y-4">
           <div v-for="column in columns" :key="column.key" v-if="row">
             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
               {{ column.label }}
             </label>
-
             <!-- Xử lý đặc biệt -->
-
-
             <template v-if="column.key === 'isActive'">
               <select v-model="row[column.key]"
                 class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 focus:border-brand-300 focus:ring-brand-500/10">
@@ -72,8 +69,6 @@
                 class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 focus:border-brand-300 focus:ring-brand-500/10" />
             </template>
           </div>
-          <button @click.prevent="$emit('save', row)" type="button"
-            class="bg-green-500 text-white rounded px-4 py-2 self-end">Lưu</button>
         </form>
       </div>
     </template>

@@ -15,6 +15,10 @@
         <ClosebuttonSvg />
       </button>
       <slot name="body"></slot>
+      <div class="flex justify-end mt-4">
+        <button @click.prevent="$emit('save', row)" type="button"
+          class="bg-green-500 text-white rounded px-4 py-2">Lưu</button>
+      </div>
     </div>
   </div>
 </template>

@@ -37,9 +37,10 @@
         <!-- Pagination -->
         <Pagination :current-page="currentPage" :total-pages="totalPages" @prev="prevPage" @next="nextPage" />
 
-        <!-- Modal -->
-        <EditModal v-if="popupDetail" :columns="columns" :row="selectedRow" :header-title="modalHeaderTitle"
-            :header-description="modalHeaderDescription" @close="popupDetail = false" @save="saveProfile" />
+        <Transition name="fade-modal">
+            <EditModal v-if="popupDetail" :columns="columns" :row="selectedRow" :header-title="modalHeaderTitle"
+                :header-description="modalHeaderDescription" @close="popupDetail = false" @save="saveProfile" />
+        </Transition>
     </div>
 </template>
 <script setup>
@@ -82,3 +83,6 @@ function saveProfile(editedRow) {
     popupDetail.value = false;
 }
 </script>
+<style>
+
+</style>

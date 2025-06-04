@@ -1,5 +1,6 @@
-import { ref, computed, onMounted, onUnmounted, provide, inject } from 'vue'
-import type { Ref } from 'vue' //
+import { ref, computed, onMounted, onUnmounted, provide, inject} from 'vue'
+import type { InjectionKey } from 'vue'
+import type { Ref } from 'vue'
 
 interface SidebarContextType {
   isExpanded: Ref<boolean>
@@ -14,9 +15,9 @@ interface SidebarContextType {
   toggleSubmenu: (item: string) => void
 }
 
-const SidebarSymbol = Symbol()
+const SidebarSymbol: InjectionKey<SidebarContextType> = Symbol('SidebarContext')
 
-export function useSidebarProvider() {
+export function useSidebarProvider(): SidebarContextType {
   const isExpanded = ref(true)
   const isMobileOpen = ref(false)
   const isMobile = ref(false)
@@ -50,7 +51,9 @@ export function useSidebarProvider() {
   }
 
   const toggleMobileSidebar = () => {
-    isMobileOpen.value = !isMobileOpen.value
+    if (isMobile.value) {
+      isMobileOpen.value = !isMobileOpen.value
+    }
   }
 
   const setIsHovered = (value: boolean) => {
@@ -84,10 +87,10 @@ export function useSidebarProvider() {
 }
 
 export function useSidebar(): SidebarContextType {
-  const context = inject<SidebarContextType>(SidebarSymbol)
+  const context = inject(SidebarSymbol)
   if (!context) {
     throw new Error(
-      'useSidebar must be used within a component that has SidebarProvider as an ancestor',
+      'useSidebar must be used within a component that has useSidebarProvider() in setup() or root',
     )
   }
   return context

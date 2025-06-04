@@ -45,6 +45,7 @@
         </button>
       </div>
     </div>
+    <Transition name="fade-modal">
     <Modal v-if="isProfileInfoModal" @close="isProfileInfoModal = false">
       <template #body>
         <div
@@ -160,6 +161,7 @@
         </div>
       </template>
     </Modal>
+    </Transition>
   </div>
 </template>
 
