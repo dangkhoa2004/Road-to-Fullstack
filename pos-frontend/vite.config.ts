@@ -12,36 +12,41 @@ export default defineConfig({
     vueDevTools(),
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true,
+      },
       manifest: {
-        "name": "POS - Application",
-        "short_name": "POS - Application",
-        "start_url": ".",
-        "display": "standalone",
-        "background_color": "#ffffff",
-        "icons": [
+        name: "POS - Application",
+        short_name: "POS",
+        start_url: ".",
+        scope: "/",
+        display: "standalone",
+        background_color: "#ffffff",
+        theme_color: "#ffffff",
+        icons: [
           {
-            "src": "/images/logo/192.png",
-            "sizes": "192x192",
-            "type": "image/png"
+            src: "/images/logo/192.png",
+            sizes: "192x192",
+            type: "image/png"
           },
           {
-            "src": "/images/logo/logo.png",
-            "sizes": "512x512",
-            "type": "image/png"
+            src: "/images/logo/logo.png",
+            sizes: "512x512",
+            type: "image/png"
           }
         ],
-        "screenshots": [
+        screenshots: [
           {
-            "src": "/images/logo/1080x1920.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "form_factor": "narrow"
+            src: "/images/logo/1080x1920.png",
+            sizes: "1080x1920",
+            type: "image/png",
+            form_factor: "narrow"
           },
           {
-            "src": "/images/logo/1920x1080.png",
-            "sizes": "1920x1080",
-            "type": "image/png",
-            "form_factor": "wide"
+            src: "/images/logo/1920x1080.png",
+            sizes: "1920x1080",
+            type: "image/png",
+            form_factor: "wide"
           }
         ]
       }
@@ -67,7 +72,6 @@ export default defineConfig({
           }
         },
       },
-      // chunkSizeWarningLimit: 600,
     },
   },
 })
