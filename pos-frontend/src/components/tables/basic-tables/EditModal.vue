@@ -9,12 +9,19 @@
             </label>
 
             <!-- Xử lý đặc biệt -->
+
+
             <template v-if="column.key === 'isActive'">
               <select v-model="row[column.key]"
                 class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 focus:border-brand-300 focus:ring-brand-500/10">
                 <option :value="true">Active</option>
                 <option :value="false">Inactive</option>
               </select>
+            </template>
+
+            <template v-else-if="column.key === 'id'">
+              <input type="text" v-model="row[column.key]" disabled
+                class="h-11 w-full rounded-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 focus:border-brand-300 focus:ring-brand-500/10" />
             </template>
 
             <template v-else-if="column.key === 'role.name'">

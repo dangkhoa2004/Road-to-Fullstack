@@ -5,8 +5,8 @@
             <!-- Danh sách món ăn -->
             <div class="flex-1 order-2 lg:order-1">
                 <div class="flex">
-                    <SearchBar v-model="searchQuery" class="flex-1 mb-4" />
-                    <div class="flex flex-wrap gap-2 mb-4">
+                    <SearchBar v-model="searchQuery" class="flex-1" />
+                    <div class="flex flex-wrap gap-2">
                         <button v-for="category in categories" :key="category" @click="activeCategory = category"
                             class="px-3 py-2 rounded text-sm font-medium transition-colors" :class="activeCategory === category
                                 ? 'bg-brand-50 text-brand-500'
