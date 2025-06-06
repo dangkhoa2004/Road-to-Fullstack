@@ -2,37 +2,36 @@ import axios from '../index';
 import type { AxiosResponse, AxiosError } from 'axios';
 
 // --- Interface User ---
-interface User {
+export interface User {
   id: number;
   name: string;
   username: string;
+  phone: string;
+  email: string;
+  isActive: boolean;
   role: {
     id: number;
     name: string;
   };
-  phone: string;
-  email: string;
-  isActive: boolean;
+  permissions: string[];
 }
 
 // --- Interface Auth API Response ---
 interface AuthApiResponse {
-  status: string;
-  string: string;
+  message: string;
+  code: string;
   data: {
     token: string;
     message: string;
-    user: User;
+    employeeId: number;
   };
 }
 
-// --- Interface Auth Response (gọn) ---
 export interface AuthResponse {
   token: string;
-  user: User;
+  employeeId: number;
 }
 
-// --- Interface Response của forgot/reset password (theo backend) ---
 export interface ResetPasswordResponse {
   message: string;
   success: boolean;
@@ -42,14 +41,11 @@ export interface ResetPasswordResponse {
 export const login = async (credentials: Record<string, any>): Promise<AuthResponse> => {
   try {
     const response: AxiosResponse<AuthApiResponse> = await axios.post('/auth/login', credentials);
-    const { token, user } = response.data.data;
-    return { token, user };
+    const { token, employeeId } = response.data.data;
+    return { token, employeeId };
   } catch (error: unknown) {
     const axiosError = error as AxiosError;
-    console.error(
-      'Login error:',
-      axiosError.response ? axiosError.response.data : axiosError.message
-    );
+    console.error('Login error:', axiosError.response?.data || axiosError.message);
     throw error;
   }
 };
@@ -58,14 +54,11 @@ export const login = async (credentials: Record<string, any>): Promise<AuthRespo
 export const register = async (userData: Record<string, any>): Promise<AuthResponse> => {
   try {
     const response: AxiosResponse<AuthApiResponse> = await axios.post('/auth/register', userData);
-    const { token, user } = response.data.data;
-    return { token, user };
+    const { token, employeeId } = response.data.data;
+    return { token, employeeId };
   } catch (error: unknown) {
     const axiosError = error as AxiosError;
-    console.error(
-      'Register error:',
-      axiosError.response ? axiosError.response.data : axiosError.message
-    );
+    console.error('Register error:', axiosError.response?.data || axiosError.message);
     throw error;
   }
 };
@@ -81,10 +74,7 @@ export const forgotPassword = async (payload: { email: string }): Promise<ResetP
     return response.data.data;
   } catch (error: unknown) {
     const axiosError = error as AxiosError;
-    console.error(
-      'Forgot password error:',
-      axiosError.response ? axiosError.response.data : axiosError.message
-    );
+    console.error('Forgot password error:', axiosError.response?.data || axiosError.message);
     throw error;
   }
 };
@@ -99,18 +89,28 @@ export const resetPassword = async (
       message: string;
       code: string;
       data: ResetPasswordResponse;
-    }> = await axios.post(
-      `/auth/reset-password?token=${encodeURIComponent(token)}`,
-      payload
-    );
+    }> = await axios.post(`/auth/reset-password?token=${encodeURIComponent(token)}`, payload);
+    return response.data.data;
+  } catch (error: unknown) {
+    const axiosError = error as AxiosError;
+    console.error('Reset password error:', axiosError.response?.data || axiosError.message);
+    throw error;
+  }
+};
+
+// --- Hàm lấy thông tin nhân viên theo ID ---
+export const getEmployeeById = async (id: number): Promise<User> => {
+  try {
+    const response: AxiosResponse<{
+      status: string;
+      string: string;
+      data: User;
+    }> = await axios.get(`/employees/${id}`);
 
     return response.data.data;
   } catch (error: unknown) {
     const axiosError = error as AxiosError;
-    console.error(
-      'Reset password error:',
-      axiosError.response ? axiosError.response.data : axiosError.message
-    );
+    console.error('Get employee by ID error:', axiosError.response?.data || axiosError.message);
     throw error;
   }
 };

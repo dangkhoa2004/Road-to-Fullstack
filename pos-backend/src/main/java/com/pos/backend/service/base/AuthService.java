@@ -69,7 +69,7 @@ public class AuthService {
         // Tạo EmployeeResponse đầy đủ (có quyền)
         EmployeeResponse employeeResponse = new EmployeeResponse(employee, finalPermissions);
 
-        return new AuthResponse(jwt, "Login successful", employeeResponse);
+        return new AuthResponse(jwt, "Login successful", employee.getId());
     }
 
     /**

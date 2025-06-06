@@ -3,12 +3,13 @@ export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN' as const
 export const SET_AUTH_USER = 'SET_AUTH_USER' as const
 export const CLEAR_AUTH_DATA = 'CLEAR_AUTH_DATA' as const
 export const SET_AUTH_ERROR = 'SET_AUTH_ERROR' as const
+export const GET_EMPLOYEE_ID = 'GET_EMPLOYEE_ID' as const
+export const LOGIN = 'LOGIN';
+export const REGISTER = 'REGISTER';
+export const LOGOUT = 'LOGOUT';
 
+export const GET_AUTH_USER = 'GET_AUTH_USER';
 // --- Auth Actions ---
-export const LOGIN = 'LOGIN' as const
-export const LOGOUT = 'LOGOUT' as const
-export const GET_AUTH_USER = 'getAuthUser' as const
-export const REGISTER = 'register' as const
 export const SET_USER_ERROR = 'setUserError' as const
 
 // --- Auth Getters ---

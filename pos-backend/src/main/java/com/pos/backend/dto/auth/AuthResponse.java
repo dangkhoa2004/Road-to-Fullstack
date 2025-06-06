@@ -8,7 +8,6 @@ package com.pos.backend.dto.auth;
  * @author 04dkh
  */
 
-import com.pos.backend.dto.employee.EmployeeResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,5 +19,5 @@ public class AuthResponse {
 
     private String token;
     private String message;
-    private EmployeeResponse user;
+    private Long employeeId;
 }
