@@ -7,17 +7,19 @@ package com.pos.backend.controller;
 /**
  * @author 04dkh
  */
-import com.pos.backend.dto.common.ApiResponse; // Import ApiResponse
+
+import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.customer.CustomerRequest;
 import com.pos.backend.dto.customer.CustomerResponse;
-import com.pos.backend.service.base.CustomerService; // Import CustomerService
+import com.pos.backend.service.base.CustomerService;
 import jakarta.validation.Valid;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.dao.DataIntegrityViolationException; // Để xử lý lỗi UNIQUE constraint
+
 import java.util.List;
-import java.util.NoSuchElementException; // Để xử lý Not Found
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/customer")
@@ -85,7 +87,7 @@ public class CustomerController {
     // Update an existing customer
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<CustomerResponse>> updateCustomer(@PathVariable Long id,
-            @Valid @RequestBody CustomerRequest customerRequest) {
+                                                                        @Valid @RequestBody CustomerRequest customerRequest) {
         try {
             CustomerResponse updatedCustomer = customerService.updateCustomer(id, customerRequest);
             ApiResponse<CustomerResponse> apiResponse = new ApiResponse<>("Cập nhật khách hàng thành công", "200",

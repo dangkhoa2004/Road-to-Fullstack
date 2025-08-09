@@ -7,6 +7,7 @@ package com.pos.backend.service.base;
 /**
  * @author 04dkh
  */
+
 import com.pos.backend.dto.discount.DiscountRequest;
 import com.pos.backend.dto.discount.DiscountResponse;
 

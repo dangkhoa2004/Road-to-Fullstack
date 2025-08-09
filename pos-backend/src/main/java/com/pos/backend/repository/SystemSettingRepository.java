@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author 04dkh
  */
 @Repository
-public interface  SystemSettingRepository extends JpaRepository<SystemSetting, Long>{
+public interface SystemSettingRepository extends JpaRepository<SystemSetting, Long> {
 
 }

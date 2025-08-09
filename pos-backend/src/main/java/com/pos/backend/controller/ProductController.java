@@ -7,26 +7,18 @@ package com.pos.backend.controller;
 /**
  * @author 04dkh
  */
-import java.util.List; // Import ApiResponse
-import java.util.NoSuchElementException;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody; // Import này để xử lý Not Found
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.product.ProductRequest;
 import com.pos.backend.dto.product.ProductResponse;
 import com.pos.backend.service.base.ProductService;
-
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/product")
@@ -88,7 +80,7 @@ public class ProductController {
     // Update an existing product
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<ProductResponse>> updateProduct(@PathVariable Long id,
-            @Valid @RequestBody ProductRequest productRequest) {
+                                                                      @Valid @RequestBody ProductRequest productRequest) {
         try {
             ProductResponse updatedProduct = productService.updateProduct(id, productRequest);
             ApiResponse<ProductResponse> apiResponse = new ApiResponse<>("Cập nhật sản phẩm thành công", "200",

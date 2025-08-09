@@ -7,6 +7,7 @@ package com.pos.backend.controller;
 /**
  * @author 04dkh
  */
+
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.discount.DiscountRequest;
 import com.pos.backend.dto.discount.DiscountResponse;
@@ -82,7 +83,7 @@ public class DiscountController {
     // Vẫn giữ update theo ID, vì ID là định danh ổn định cho một bản ghi
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<DiscountResponse>> updateDiscount(@PathVariable Long id,
-            @Valid @RequestBody DiscountRequest discountRequest) {
+                                                                        @Valid @RequestBody DiscountRequest discountRequest) {
         try {
             DiscountResponse updatedDiscount = discountService.updateDiscount(id, discountRequest);
             ApiResponse<DiscountResponse> apiResponse = new ApiResponse<>("Cập nhật khuyến mãi thành công", "200",

@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author 04dkh
  */
 @Repository
-public interface AuditLogRepository extends JpaRepository<AuditLog, Long>{
+public interface AuditLogRepository extends JpaRepository<AuditLog, Long> {
 
 }

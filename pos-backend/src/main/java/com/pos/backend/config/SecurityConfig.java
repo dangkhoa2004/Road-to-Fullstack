@@ -8,9 +8,9 @@ package com.pos.backend.config;
  * @author 04dkh
  */
 
-import java.util.Arrays;
-import java.util.List;
-
+import com.pos.backend.security.CustomUserDetailsService;
+import com.pos.backend.security.JwtAuthenticationFilter;
+import com.pos.backend.security.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,9 +28,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.pos.backend.security.CustomUserDetailsService;
-import com.pos.backend.security.JwtAuthenticationFilter;
-import com.pos.backend.security.JwtTokenProvider;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -57,8 +56,10 @@ public class SecurityConfig {
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(customUserDetailsService);
+        // ✅ SỬA LỖI: Truyền customUserDetailsService vào hàm khởi tạo.
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(customUserDetailsService);
+
+        // Dòng authProvider.setUserDetailsService(...) không còn cần thiết nữa.
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
@@ -78,9 +79,7 @@ public class SecurityConfig {
                     // .authenticationEntryPoint(jwtAuthenticationEntryPoint) // Xử lý lỗi xác thực
                     // .accessDeniedHandler(customAccessDeniedHandler) // Xử lý lỗi phân quyền
                 })
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Không
-                                                                                                              // tạo
-                                                                                                              // session
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Không tạo session
                 .authorizeHttpRequests(authorize -> {
                     authorize
                             .requestMatchers("/api/auth/**").permitAll()

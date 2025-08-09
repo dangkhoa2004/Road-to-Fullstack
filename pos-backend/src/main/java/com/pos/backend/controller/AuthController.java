@@ -39,7 +39,7 @@ public class AuthController {
     private final PasswordResetService passwordResetService;
 
     public AuthController(AuthService authService, EmployeeService employeeService,
-            PasswordResetService passwordResetService) {
+                          PasswordResetService passwordResetService) {
         this.authService = authService;
         this.employeeService = employeeService;
         this.passwordResetService = passwordResetService;
@@ -125,7 +125,7 @@ public class AuthController {
 
     @PostMapping("/reset-password")
     public ResponseEntity<ApiResponse<ResetPasswordResponse>> resetPassword(@RequestParam("token") String token,
-            @Valid @RequestBody ResetPasswordRequest requestBody) {
+                                                                            @Valid @RequestBody ResetPasswordRequest requestBody) {
         if (token == null || token.isBlank()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ApiResponse<>("Token không được để trống.", "400",

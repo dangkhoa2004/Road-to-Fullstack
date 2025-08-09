@@ -7,6 +7,7 @@ package com.pos.backend.dto.discount;
 /**
  * @author 04dkh
  */
+
 import com.pos.backend.dto.common.DiscountTypeDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;

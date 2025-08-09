@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author 04dkh
  */
 @Repository
-public interface PaymentMedthodRepository extends JpaRepository<PaymentMethod, Long>{
+public interface PaymentMethodRepository extends JpaRepository<PaymentMethod, Long> {
 
 }

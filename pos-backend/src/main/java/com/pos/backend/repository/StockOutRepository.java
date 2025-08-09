@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author 04dkh
  */
 @Repository
-public interface StockOutRepository extends JpaRepository<StockOut, Long>{
+public interface StockOutRepository extends JpaRepository<StockOut, Long> {
 
 }

@@ -1,16 +1,5 @@
 package com.pos.backend.service.base;
 
-import java.util.Set;
-
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.pos.backend.dto.auth.AuthResponse;
 import com.pos.backend.dto.auth.LoginRequest;
 import com.pos.backend.dto.auth.RegisterRequest;
@@ -20,6 +9,16 @@ import com.pos.backend.model.Role;
 import com.pos.backend.repository.EmployeeRepository;
 import com.pos.backend.repository.RoleRepository;
 import com.pos.backend.security.JwtTokenProvider;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Set;
 
 @Service
 public class AuthService {
@@ -32,11 +31,11 @@ public class AuthService {
     private final EmployeeService employeeService; // 👈 Thêm EmployeeService
 
     public AuthService(AuthenticationManager authenticationManager,
-            JwtTokenProvider jwtTokenProvider,
-            EmployeeRepository employeeRepository,
-            RoleRepository roleRepository,
-            PasswordEncoder passwordEncoder,
-            EmployeeService employeeService) { // 👈 Thêm EmployeeService
+                       JwtTokenProvider jwtTokenProvider,
+                       EmployeeRepository employeeRepository,
+                       RoleRepository roleRepository,
+                       PasswordEncoder passwordEncoder,
+                       EmployeeService employeeService) { // 👈 Thêm EmployeeService
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.employeeRepository = employeeRepository;

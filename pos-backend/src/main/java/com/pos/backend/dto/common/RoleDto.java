@@ -5,9 +5,9 @@
 package com.pos.backend.dto.common;
 
 /**
- *
  * @author 04dkh
  */
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

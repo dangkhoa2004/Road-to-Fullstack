@@ -5,19 +5,19 @@
 package com.pos.backend.dto.common;
 
 /**
- *
  * @author 04dkh
  */
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({ "status", "string", "data" })
+@JsonPropertyOrder({"status", "string", "data"})
 public class ApiResponse<T> {
 
     @JsonProperty("string")

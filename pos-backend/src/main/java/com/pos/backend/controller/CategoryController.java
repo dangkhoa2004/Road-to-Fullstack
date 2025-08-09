@@ -81,7 +81,7 @@ public class CategoryController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<CategoryResponse>> updateCategory(@PathVariable Long id,
-            @Valid @RequestBody CategoryRequest categoryRequest) {
+                                                                        @Valid @RequestBody CategoryRequest categoryRequest) {
         try {
             CategoryResponse updatedCategory = categoryService.updateCategory(id, categoryRequest);
             ApiResponse<CategoryResponse> apiResponse = new ApiResponse<>("Cập nhật danh mục thành công", "200",

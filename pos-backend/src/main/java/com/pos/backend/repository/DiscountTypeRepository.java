@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author 04dkh
  */
 @Repository
-public interface DiscountTypeRepository extends JpaRepository<DiscountType, Long>{
+public interface DiscountTypeRepository extends JpaRepository<DiscountType, Long> {
 
 }

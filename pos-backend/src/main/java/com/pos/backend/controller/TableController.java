@@ -1,30 +1,19 @@
 package com.pos.backend.controller;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.tables.TableRequest;
 import com.pos.backend.dto.tables.TableResponse;
 import com.pos.backend.model.Tables;
 import com.pos.backend.service.base.TableService;
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/tables")
@@ -105,7 +94,7 @@ public class TableController {
     // Update an existing table
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<TableResponse>> updateTable(@PathVariable Long id,
-            @Valid @RequestBody TableRequest request) {
+                                                                  @Valid @RequestBody TableRequest request) {
         try {
             TableResponse updatedTable = tableService.update(id, request);
             ApiResponse<TableResponse> apiResponse = new ApiResponse<>("Cập nhật bàn thành công", "200", updatedTable);
@@ -131,7 +120,7 @@ public class TableController {
     // Update table status
     @PatchMapping("/{id}/status")
     public ResponseEntity<ApiResponse<TableResponse>> updateTableStatus(@PathVariable Long id,
-            @RequestParam Tables.TableStatus status) {
+                                                                        @RequestParam Tables.TableStatus status) {
         try {
             TableResponse updatedTable = tableService.updateStatus(id, status);
             ApiResponse<TableResponse> apiResponse = new ApiResponse<>("Cập nhật trạng thái bàn thành công", "200",

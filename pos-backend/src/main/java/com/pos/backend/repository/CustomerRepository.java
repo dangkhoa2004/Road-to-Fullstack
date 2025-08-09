@@ -5,9 +5,10 @@
 package com.pos.backend.repository;
 
 import com.pos.backend.model.Customer;
-import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * @author 04dkh
@@ -16,5 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     Optional<Customer> findByPhone(String phone);
+
     Optional<Customer> findByEmail(String emmail);
 }

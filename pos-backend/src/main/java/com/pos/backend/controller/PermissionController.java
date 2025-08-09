@@ -1,26 +1,17 @@
 package com.pos.backend.controller;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.permission.PermissionRequest;
 import com.pos.backend.dto.permission.PermissionResponse;
 import com.pos.backend.service.base.PermissionService;
-
 import jakarta.validation.Valid;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/permission")
@@ -82,7 +73,7 @@ public class PermissionController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<PermissionResponse>> updatePermission(@PathVariable Long id,
-            @Valid @RequestBody PermissionRequest permissionRequest) {
+                                                                            @Valid @RequestBody PermissionRequest permissionRequest) {
         try {
             PermissionResponse updatedPermission = permissionService.updatePermission(id, permissionRequest);
             ApiResponse<PermissionResponse> apiResponse = new ApiResponse<>("Cập nhật quyền thành công", "200",

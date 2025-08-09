@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author 04dkh
  */
 @Repository
-public interface TableRepository extends JpaRepository<Tables, Long>{
+public interface TableRepository extends JpaRepository<Tables, Long> {
 
 }

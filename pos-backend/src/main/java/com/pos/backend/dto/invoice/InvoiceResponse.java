@@ -1,17 +1,15 @@
 package com.pos.backend.dto.invoice;
 
-import lombok.AllArgsConstructor;
+import com.pos.backend.dto.payment.PaymentResponse;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class InvoiceResponse {
     private Long id;
     private Long customerId;
@@ -25,4 +23,9 @@ public class InvoiceResponse {
     private String status;
     private String note;
     private List<InvoiceItemResponse> items;
+    private List<PaymentResponse> payments;
+
+    // THÊM 2 TRƯỜNG NÀY VÀO
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

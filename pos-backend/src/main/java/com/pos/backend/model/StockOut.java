@@ -7,6 +7,7 @@ package com.pos.backend.model;
 /**
  * @author 04dkh
  */
+
 import com.pos.backend.model.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

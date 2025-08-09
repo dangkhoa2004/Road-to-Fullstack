@@ -1,6 +1,7 @@
 # POS Backend - Java Spring Boot 🏬
 
-Đây là **phần backend** của dự án **ROAD-TO-FULLSTACK**, phục vụ quản lý **POS (Point of Sale)** – hệ thống bán hàng với các tính năng quản lý **sản phẩm, hóa đơn, khách hàng, nhân viên, tồn kho, ...**
+Đây là **phần backend** của dự án **ROAD-TO-FULLSTACK**, phục vụ quản lý **POS (Point of Sale)** – hệ thống bán hàng với
+các tính năng quản lý **sản phẩm, hóa đơn, khách hàng, nhân viên, tồn kho, ...**
 
 👉 Mục tiêu:
 ✅ Xây dựng RESTful API ổn định, bảo mật và dễ mở rộng
@@ -12,7 +13,7 @@
 ## 🌟 Công Nghệ Chính
 
 | Công Nghệ       | Mục Đích                              |
-| --------------- | ------------------------------------- |
+|-----------------|---------------------------------------|
 | Java 17+        | Ngôn ngữ chính                        |
 | Spring Boot 3   | Framework backend chính               |
 | Spring Data JPA | ORM (MySQL/PostgreSQL)                |
@@ -126,7 +127,7 @@ mvn spring-boot:run
 ## ⚡ Các Lớp Chính
 
 | Layer          | Mục Đích                             |
-| -------------- | ------------------------------------ |
+|----------------|--------------------------------------|
 | **Controller** | Xử lý request/response               |
 | **Service**    | Logic nghiệp vụ chính                |
 | **Repository** | Giao tiếp với DB                     |
@@ -158,4 +159,5 @@ mvn spring-boot:run
 ---
 
 **🔥 Đây chỉ là phần backend trong hành trình “ROAD-TO-FULLSTACK”.**
-Bạn muốn mình viết tiếp phần **CI/CD (Docker, GitHub Actions)** hay **hướng dẫn triển khai production (AWS, GCP)** không? 🚀✨
+Bạn muốn mình viết tiếp phần **CI/CD (Docker, GitHub Actions)** hay **hướng dẫn triển khai production (AWS, GCP)**
+không? 🚀✨
