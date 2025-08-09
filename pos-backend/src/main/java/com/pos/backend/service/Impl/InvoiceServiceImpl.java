@@ -1,40 +1,28 @@
 package com.pos.backend.service.Impl;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.pos.backend.dto.invoice.InvoiceItemResponse;
 import com.pos.backend.dto.invoice.InvoiceRequest;
 import com.pos.backend.dto.invoice.InvoiceResponse;
 import com.pos.backend.dto.payment.PaymentCreationResponse;
 import com.pos.backend.dto.payment.PaymentRequest;
 import com.pos.backend.dto.payment.PaymentResponse;
-import com.pos.backend.model.Invoice;
-import com.pos.backend.model.InvoiceItem;
-import com.pos.backend.model.Payment;
-import com.pos.backend.model.PaymentMethod;
-import com.pos.backend.model.Product;
-import com.pos.backend.repository.CustomerRepository;
-import com.pos.backend.repository.DiscountRepository;
-import com.pos.backend.repository.EmployeeRepository;
-import com.pos.backend.repository.InvoiceRepository;
-import com.pos.backend.repository.PaymentMethodRepository;
-import com.pos.backend.repository.ProductRepository;
-import com.pos.backend.repository.TablesRepository;
+import com.pos.backend.model.*;
+import com.pos.backend.repository.*;
 import com.pos.backend.service.base.InvoiceService;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.payos.PayOS;
 import vn.payos.type.ItemData;
 import vn.payos.type.PaymentData;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -130,7 +118,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         // --- BƯỚC 2: TẠO ĐỐI TƯỢNG THANH TOÁN ---
         PaymentMethod paymentMethod = paymentMethodRepository.findById(paymentReq.getPaymentMethodId())
                 .orElseThrow(() -> new NoSuchElementException("Payment Method not found with ID: " + paymentReq.getPaymentMethodId()));
-        
+
         Payment payment = new Payment();
         payment.setAmount(paymentReq.getAmount());
         payment.setPaymentMethod(paymentMethod);
@@ -151,7 +139,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                 throw new RuntimeException("Failed to create PayOS payment link: " + e.getMessage(), e);
             }
         }
-        
+
         // --- BƯỚC 4: LƯU THÔNG TIN VÀ TRẢ VỀ ---
         if (invoice.getPayments() == null) {
             invoice.setPayments(new ArrayList<>());
@@ -171,16 +159,16 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void updatePaymentSuccess(Long invoiceId) {
         Invoice invoice = invoiceRepository.findById(invoiceId)
                 .orElseThrow(() -> new NoSuchElementException("Invoice not found with ID: " + invoiceId));
-        
+
         invoice.setStatus(Invoice.InvoiceStatus.completed);
 
         invoice.getPayments().stream()
-               .filter(p -> p.getStatus() == Payment.PaymentStatus.PENDING) // Cập nhật payment PENDING gần nhất
-               .findFirst()
-               .ifPresent(p -> {
-                   p.setStatus(Payment.PaymentStatus.COMPLETED);
-                   p.setPaidAt(java.time.LocalDateTime.now(java.time.ZoneId.systemDefault()));
-               });
+                .filter(p -> p.getStatus() == Payment.PaymentStatus.PENDING) // Cập nhật payment PENDING gần nhất
+                .findFirst()
+                .ifPresent(p -> {
+                    p.setStatus(Payment.PaymentStatus.COMPLETED);
+                    p.setPaidAt(java.time.LocalDateTime.now(java.time.ZoneId.systemDefault()));
+                });
 
         invoiceRepository.save(invoice);
     }
@@ -195,10 +183,10 @@ public class InvoiceServiceImpl implements InvoiceService {
             // Không thay đổi trạng thái hóa đơn, chỉ cập nhật payment
             // Hóa đơn vẫn là "pending" để có thể thử thanh toán lại
             invoice.getPayments().stream()
-                   .filter(p -> p.getStatus() == Payment.PaymentStatus.PENDING)
-                   .findFirst()
-                   .ifPresent(p -> p.setStatus(Payment.PaymentStatus.FAILED));
-            
+                    .filter(p -> p.getStatus() == Payment.PaymentStatus.PENDING)
+                    .findFirst()
+                    .ifPresent(p -> p.setStatus(Payment.PaymentStatus.FAILED));
+
             // Lưu ý: Không hoàn kho ở đây nữa vì người dùng có thể muốn thử lại ngay
             // Logic hoàn kho nên được xử lý khi hủy toàn bộ hóa đơn.
             invoiceRepository.save(invoice);
@@ -216,13 +204,13 @@ public class InvoiceServiceImpl implements InvoiceService {
                 .collect(Collectors.toList());
 
         return PaymentData.builder()
-            .orderCode(invoice.getId())
-            .amount(invoice.getTotalAmount().intValue())
-            .description(description)
-            .items(items)
-            .cancelUrl(frontendUrl + "/payment/cancel/" + invoice.getId())
-            .returnUrl(frontendUrl + "/payment/success/" + invoice.getId())
-            .build();
+                .orderCode(invoice.getId())
+                .amount(invoice.getTotalAmount().intValue())
+                .description(description)
+                .items(items)
+                .cancelUrl(frontendUrl + "/payment/cancel/" + invoice.getId())
+                .returnUrl(frontendUrl + "/payment/success/" + invoice.getId())
+                .build();
     }
 
     // =================================================================
@@ -257,7 +245,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public InvoiceResponse updateStatus(Long id, Invoice.InvoiceStatus status) {
         Invoice invoice = invoiceRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Invoice not found with ID: " + id));
-        
+
         // Logic hoàn kho khi huỷ hoá đơn
         if (status == Invoice.InvoiceStatus.cancelled && invoice.getStatus() == Invoice.InvoiceStatus.pending) {
             for (InvoiceItem item : invoice.getInvoiceItems()) {
@@ -266,7 +254,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                 productRepository.save(product);
             }
         }
-        
+
         invoice.setStatus(status);
         return mapToResponse(invoiceRepository.save(invoice));
     }
@@ -275,8 +263,8 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Transactional
     public void delete(Long id) {
         Invoice invoice = invoiceRepository.findById(id)
-            .orElseThrow(() -> new NoSuchElementException("Invoice not found with ID: " + id));
-        
+                .orElseThrow(() -> new NoSuchElementException("Invoice not found with ID: " + id));
+
         // Logic hoàn kho khi xoá hoá đơn nếu nó chưa hoàn thành
         if (invoice.getStatus() != Invoice.InvoiceStatus.completed) {
             for (InvoiceItem item : invoice.getInvoiceItems()) {

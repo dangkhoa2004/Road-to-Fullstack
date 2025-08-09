@@ -1,5 +1,5 @@
-import { get, post, put, deleteApi } from '../api'
-import type { AxiosError } from 'axios'
+import {get, post, put, deleteApi} from '../api'
+import type {AxiosError} from 'axios'
 
 export interface InvoiceItem {
   id: number

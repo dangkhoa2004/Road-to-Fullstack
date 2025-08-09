@@ -1,6 +1,6 @@
 <template>
   <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
+    <PageBreadcrumb :pageTitle="currentPageTitle"/>
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="With Light Background">
         <div class="flex flex-wrap gap-4 sm:items-center sm:justify-center">
@@ -25,7 +25,8 @@
       </ComponentCard>
       <ComponentCard title="Solid Background with Left Icon">
         <div class="flex flex-wrap gap-4 sm:items-center sm:justify-center">
-          <Badge v-for="color in colors" :key="color" :color="color" variant="solid" :startIcon="PlusIcon">
+          <Badge v-for="color in colors" :key="color" :color="color" :startIcon="PlusIcon"
+                 variant="solid">
             {{ color }}
           </Badge>
         </div>
@@ -39,7 +40,8 @@
       </ComponentCard>
       <ComponentCard title="Solid Background with Right Icon">
         <div class="flex flex-wrap gap-4 sm:items-center sm:justify-center">
-          <Badge v-for="color in colors" :key="color" :color="color" variant="solid" :endIcon="PlusIcon">
+          <Badge v-for="color in colors" :key="color" :color="color" :endIcon="PlusIcon"
+                 variant="solid">
             {{ color }}
           </Badge>
         </div>
@@ -48,13 +50,14 @@
   </AdminLayout>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script lang="ts" setup>
+import {ref} from 'vue'
 import Badge from '../../components/ui/Badge.vue'
 import PageBreadcrumb from '../../components/common/PageBreadcrumb.vue'
 import AdminLayout from '../../components/layout/AdminLayout.vue'
 import ComponentCard from '../../components/common/ComponentCard.vue'
-import { PlusIcon } from '@/icons'
+import {PlusIcon} from '@/icons'
+
 const currentPageTitle = ref('Badge')
 
 const colors = ['primary', 'success', 'error', 'warning', 'info', 'light', 'dark'] as const

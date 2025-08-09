@@ -1,17 +1,17 @@
 <template>
   <span :class="[baseStyles, sizeClass, colorStyles]">
     <span v-if="startIcon" class="mr-1">
-      <component :is="startIcon" />
+      <component :is="startIcon"/>
     </span>
     <slot></slot>
     <span v-if="endIcon" class="ml-1">
-      <component :is="endIcon" />
+      <component :is="endIcon"/>
     </span>
   </span>
 </template>
 
-<script setup lang="ts">
-import { computed } from 'vue'
+<script lang="ts" setup>
+import {computed} from 'vue'
 
 type BadgeVariant = 'light' | 'solid'
 type BadgeSize = 'sm' | 'md'

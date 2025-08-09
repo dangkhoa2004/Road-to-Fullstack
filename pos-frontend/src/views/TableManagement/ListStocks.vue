@@ -1,12 +1,13 @@
 <template>
   <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
+    <PageBreadcrumb :pageTitle="currentPageTitle"/>
 
     <div class="space-y-5 sm:space-y-6">
       <!-- Bảng Hàng Nhập Kho -->
       <ComponentCard title="Hàng Nhập Kho">
-        <BasicTableOne :columns="stockColumns" :rows="stockIns || []" modalHeaderTitle="Chi tiết hàng nhập kho"
-          modalHeaderDescription="Xem và chỉnh sửa thông tin hàng nhập kho tại đây.">
+        <BasicTableOne :columns="stockColumns" :rows="stockIns || []"
+                       modalHeaderDescription="Xem và chỉnh sửa thông tin hàng nhập kho tại đây."
+                       modalHeaderTitle="Chi tiết hàng nhập kho">
           <template #cell-quantity="{ row }">
             <span>{{ row.quantity }}</span>
           </template>
@@ -15,8 +16,9 @@
 
       <!-- Bảng Hàng Xuất Kho -->
       <ComponentCard title="Hàng Xuất Kho">
-        <BasicTableOne :columns="stockColumns" :rows="stockOuts || []" modalHeaderTitle="Chi tiết hàng xuất kho"
-          modalHeaderDescription="Xem và chỉnh sửa thông tin hàng xuất kho tại đây.">
+        <BasicTableOne :columns="stockColumns" :rows="stockOuts || []"
+                       modalHeaderDescription="Xem và chỉnh sửa thông tin hàng xuất kho tại đây."
+                       modalHeaderTitle="Chi tiết hàng xuất kho">
           <template #cell-quantity="{ row }">
             <span>{{ row.quantity }}</span>
           </template>
@@ -27,8 +29,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { mapActions, mapGetters } from 'vuex'
+import {defineComponent} from 'vue'
+import {mapActions, mapGetters} from 'vuex'
 import * as types from '@/store/types.ts'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
@@ -46,12 +48,12 @@ export default defineComponent({
     return {
       currentPageTitle: 'Bảng hàng tồn kho',
       stockColumns: [
-        { key: 'id', label: 'ID' },
-        { key: 'productId', label: 'Mã Sản Phẩm' },
-        { key: 'productName', label: 'Tên Sản Phẩm' },
-        { key: 'quantity', label: 'Số Lượng' },
-        { key: 'note', label: 'Ghi Chú' },
-        { key: 'employeeName', label: 'Nhân Viên' },
+        {key: 'id', label: 'ID'},
+        {key: 'productId', label: 'Mã Sản Phẩm'},
+        {key: 'productName', label: 'Tên Sản Phẩm'},
+        {key: 'quantity', label: 'Số Lượng'},
+        {key: 'note', label: 'Ghi Chú'},
+        {key: 'employeeName', label: 'Nhân Viên'},
       ],
     }
   },

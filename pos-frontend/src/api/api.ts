@@ -1,6 +1,6 @@
 // api.ts
 import axios from './index';
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import type {AxiosRequestConfig, AxiosResponse} from 'axios';
 
 // Interface cho response data chuẩn
 interface ApiResponse<T = any> {
@@ -11,7 +11,7 @@ interface ApiResponse<T = any> {
 
 // Hàm chuẩn hoá response
 export const handleResponse = <T>(response: AxiosResponse<ApiResponse<T>>): T => {
-  const { status, data, string } = response.data;
+  const {status, data, string} = response.data;
   if (status === "200" && data !== undefined) {
     return data;
   } else {

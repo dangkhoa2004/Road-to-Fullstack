@@ -1,8 +1,12 @@
 # TailAdmin Vue - Phần Của Dự Án “ROAD-TO-FULLSTACK: Hành Trình Chinh Phục Lập Trình Fullstack Từ Zero Đến Hero 🚀”
 
-TailAdmin Vue là một **mảnh ghép** trong dự án **ROAD-TO-FULLSTACK**, một tài liệu sống phản ánh toàn bộ hành trình tự học và thực hành của tôi trong lĩnh vực lập trình Fullstack. Đây không chỉ là một **admin dashboard template** mạnh mẽ, mà còn là **minh chứng** cho khả năng áp dụng lý thuyết vào thực tiễn, cũng như quá trình học hỏi, cải thiện và làm chủ công nghệ.
+TailAdmin Vue là một **mảnh ghép** trong dự án **ROAD-TO-FULLSTACK**, một tài liệu sống phản ánh toàn bộ hành trình tự
+học và thực hành của tôi trong lĩnh vực lập trình Fullstack. Đây không chỉ là một **admin dashboard template** mạnh mẽ,
+mà còn là **minh chứng** cho khả năng áp dụng lý thuyết vào thực tiễn, cũng như quá trình học hỏi, cải thiện và làm chủ
+công nghệ.
 
-TailAdmin Vue là **một dự án con** dựa trên **Vue.js 3** – một framework JavaScript hiện đại – kết hợp cùng **Tailwind CSS** để xây dựng một hệ thống quản trị (admin panel) mạnh mẽ, dễ tùy biến và tối ưu cho các ứng dụng web.
+TailAdmin Vue là **một dự án con** dựa trên **Vue.js 3** – một framework JavaScript hiện đại – kết hợp cùng **Tailwind
+CSS** để xây dựng một hệ thống quản trị (admin panel) mạnh mẽ, dễ tùy biến và tối ưu cho các ứng dụng web.
 
 ![TailAdmin Vue.js Dashboard Preview](./banner.png)
 
@@ -14,7 +18,8 @@ TailAdmin Vue được xây dựng trên các công nghệ tiên tiến:
 * **TypeScript**: Mang lại sự an toàn và dễ bảo trì cho dự án.
 * **Tailwind CSS**: Framework CSS tiện lợi giúp phát triển UI nhanh chóng và chuẩn responsive.
 
-Mục tiêu là cung cấp **một điểm khởi đầu chất lượng** cho việc xây dựng các dashboard dữ liệu phong phú, phù hợp với nhu cầu của bất kỳ dự án web nào.
+Mục tiêu là cung cấp **một điểm khởi đầu chất lượng** cho việc xây dựng các dashboard dữ liệu phong phú, phù hợp với nhu
+cầu của bất kỳ dự án web nào.
 
 ## Các Liên Kết Nhanh
 
@@ -42,9 +47,11 @@ Mục tiêu là cung cấp **một điểm khởi đầu chất lượng** cho v
 Trước khi bắt đầu, đảm bảo bạn đã cài đặt:
 
 * **Node.js 18.x hoặc mới hơn** (Khuyến nghị: Node.js 20.x)
-* IDE: **[VSCode](https://code.visualstudio.com/)** + **[Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)** (và tắt Vetur)
+* IDE: **[VSCode](https://code.visualstudio.com/)** + *
+  *[Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)** (và tắt Vetur)
 
-**Lưu ý:** TypeScript không xử lý tốt file `.vue` mặc định – cần dùng `vue-tsc` và cài đặt Volar để có hỗ trợ TypeScript tốt hơn.
+**Lưu ý:** TypeScript không xử lý tốt file `.vue` mặc định – cần dùng `vue-tsc` và cài đặt Volar để có hỗ trợ TypeScript
+tốt hơn.
 
 ### Các Bước
 
@@ -81,7 +88,7 @@ yarn build
 ## So Sánh Phiên Bản
 
 | Tính năng            | Free Version | Pro Version                                           |
-| -------------------- | ------------ | ----------------------------------------------------- |
+|----------------------|--------------|-------------------------------------------------------|
 | Dashboard độc đáo    | 1            | 5 (Analytics, Ecommerce, CRM, Marketing, Stocks, ...) |
 | Thành phần dashboard | 30+          | 400+                                                  |
 | UI Elements          | 50+          | 400+                                                  |
@@ -139,4 +146,5 @@ Mọi thành phần đều được xây dựng **với Vue.js** và **Tailwind 
 
 ---
 
-**Lưu ý:** Đây chỉ là một phần của **ROAD-TO-FULLSTACK**, tập hợp toàn bộ những bài học, kỹ năng và nỗ lực của tôi trên hành trình làm chủ lập trình fullstack. Hãy cùng khám phá, học hỏi và phát triển! 🚀
+**Lưu ý:** Đây chỉ là một phần của **ROAD-TO-FULLSTACK**, tập hợp toàn bộ những bài học, kỹ năng và nỗ lực của tôi trên
+hành trình làm chủ lập trình fullstack. Hãy cùng khám phá, học hỏi và phát triển! 🚀

@@ -1,7 +1,7 @@
 <template>
   <ThemeProvider>
     <SidebarProvider>
-      <RouterView />
+      <RouterView/>
     </SidebarProvider>
   </ThemeProvider>
 </template>

@@ -2,7 +2,7 @@
   <div :class="['rounded-xl border p-4', variantClasses[variant].container]">
     <div class="flex items-start gap-3">
       <div :class="['-mt-0.5', variantClasses[variant].icon]">
-        <component :is="icons[variant]" />
+        <component :is="icons[variant]"/>
       </div>
 
       <div>
@@ -13,7 +13,7 @@
         <p class="text-sm text-gray-500 dark:text-gray-400">{{ message }}</p>
 
         <router-link v-if="showLink" :to="linkHref"
-          class="inline-block mt-3 text-sm font-medium text-gray-500 underline dark:text-gray-400">
+                     class="inline-block mt-3 text-sm font-medium text-gray-500 underline dark:text-gray-400">
           {{ linkText }}
         </router-link>
       </div>
@@ -21,9 +21,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { SuccessIcon, ErrorIcon, WarningIcon, InfoCircleIcon } from '@/icons'
-import { computed } from 'vue'
+<script lang="ts" setup>
+import {SuccessIcon, ErrorIcon, WarningIcon, InfoCircleIcon} from '@/icons'
+import {computed} from 'vue'
 
 interface AlertProps {
   variant: 'success' | 'error' | 'warning' | 'info'

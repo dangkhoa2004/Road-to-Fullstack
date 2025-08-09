@@ -1,13 +1,14 @@
 <template>
   <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
-    <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+    <PageBreadcrumb :pageTitle="currentPageTitle"/>
+    <div
+      class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="custom-calendar">
-        <FullCalendar ref="calendarRef" class="min-h-screen" :options="calendarOptions" />
+        <FullCalendar ref="calendarRef" :options="calendarOptions" class="min-h-screen"/>
       </div>
       <!-- Modal -->
-      <Modal v-if="popupDetail" @close="closeModal" :headerTitle="modalHeaderTitle"
-        :headerDescription="modalHeaderDescription">
+      <Modal v-if="popupDetail" :headerDescription="modalHeaderDescription" :headerTitle="modalHeaderTitle"
+             @close="closeModal">
         <template #body>
           <div
             class="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900">
@@ -16,8 +17,8 @@
                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                   Tiêu đề sự kiện
                 </label>
-                <input v-model="eventTitle" type="text"
-                  class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+                <input v-model="eventTitle" class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                       type="text"/>
               </div>
 
               <div class="mt-6">
@@ -27,11 +28,12 @@
                 <div class="flex flex-wrap items-center gap-4 sm:gap-5">
                   <div v-for="(value, key) in calendarsEvents" :key="key" class="n-chk">
                     <div :class="`form-check form-check-${value} form-check-inline`">
-                      <label class="flex items-center text-sm text-gray-700 form-check-label dark:text-gray-400"
-                        :for="`modal${key}`">
+                      <label
+                        :for="`modal${key}`"
+                        class="flex items-center text-sm text-gray-700 form-check-label dark:text-gray-400">
                         <span class="relative">
-                          <input type="radio" :name="'event-level'" :value="key" :id="`modal${key}`"
-                            v-model="eventLevel" class="sr-only form-check-input" />
+                          <input :id="`modal${key}`" v-model="eventLevel" :name="'event-level'" :value="key"
+                                 class="sr-only form-check-input" type="radio"/>
                           <span
                             class="flex items-center justify-center w-5 h-5 mr-2 border border-gray-300 rounded-full box dark:border-gray-700">
                             <span class="w-2 h-2 bg-white rounded-full dark:bg-transparent"></span>
@@ -48,26 +50,26 @@
                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                   Nhập ngày bắt đầu
                 </label>
-                <input v-model="eventStartDate" type="date"
-                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+                <input v-model="eventStartDate" class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                       type="date"/>
               </div>
 
               <div class="mt-6">
                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                   Nhập ngày kết thúc
                 </label>
-                <input v-model="eventEndDate" type="date"
-                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+                <input v-model="eventEndDate" class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                       type="date"/>
               </div>
             </div>
 
             <div class="flex items-center gap-3 mt-6 modal-footer sm:justify-end">
-              <button v-if="selectedEvent" @click="handleDeleteEvent"
-                class="flex w-full justify-center rounded-lg border border-error-500 bg-error-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-error-600 sm:w-auto">
+              <button v-if="selectedEvent" class="flex w-full justify-center rounded-lg border border-error-500 bg-error-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-error-600 sm:w-auto"
+                      @click="handleDeleteEvent">
                 Xóa sự kiện
               </button>
-              <button @click="handleAddOrUpdateEvent"
-                class="btn btn-success btn-update-event flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
+              <button class="btn btn-success btn-update-event flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto"
+                      @click="handleAddOrUpdateEvent">
                 {{ selectedEvent ? 'Cập nhập' : 'Thêm mới' }}
               </button>
             </div>
@@ -79,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import {ref, reactive, onMounted} from 'vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import FullCalendar from '@fullcalendar/vue3'
@@ -106,9 +108,25 @@ const calendarsEvents = reactive({
 
 onMounted(() => {
   events.value = [
-    { id: '1', title: 'Sự kiện Hội nghị', start: new Date().toISOString().split('T')[0], extendedProps: { calendar: 'Danger' } },
-    { id: '2', title: 'Gặp mặt', start: new Date(Date.now() + 86400000).toISOString().split('T')[0], extendedProps: { calendar: 'Success' } },
-    { id: '3', title: 'Xưởng', start: new Date(Date.now() + 172800000).toISOString().split('T')[0], end: new Date(Date.now() + 259200000).toISOString().split('T')[0], extendedProps: { calendar: 'Primary' } },
+    {
+      id: '1',
+      title: 'Sự kiện Hội nghị',
+      start: new Date().toISOString().split('T')[0],
+      extendedProps: {calendar: 'Danger'}
+    },
+    {
+      id: '2',
+      title: 'Gặp mặt',
+      start: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+      extendedProps: {calendar: 'Success'}
+    },
+    {
+      id: '3',
+      title: 'Xưởng',
+      start: new Date(Date.now() + 172800000).toISOString().split('T')[0],
+      end: new Date(Date.now() + 259200000).toISOString().split('T')[0],
+      extendedProps: {calendar: 'Primary'}
+    },
   ]
 })
 
@@ -150,7 +168,13 @@ const handleAddOrUpdateEvent = () => {
   if (selectedEvent.value) {
     events.value = events.value.map(event =>
       event.id === selectedEvent.value.id
-        ? { ...event, title: eventTitle.value, start: eventStartDate.value, end: eventEndDate.value, extendedProps: { calendar: eventLevel.value } }
+        ? {
+          ...event,
+          title: eventTitle.value,
+          start: eventStartDate.value,
+          end: eventEndDate.value,
+          extendedProps: {calendar: eventLevel.value}
+        }
         : event
     )
   } else {
@@ -160,7 +184,7 @@ const handleAddOrUpdateEvent = () => {
       start: eventStartDate.value,
       end: eventEndDate.value,
       allDay: true,
-      extendedProps: { calendar: eventLevel.value },
+      extendedProps: {calendar: eventLevel.value},
     }
     events.value.push(newEvent)
   }
@@ -188,14 +212,18 @@ const renderEventContent = (eventInfo) => {
 const calendarOptions = reactive({
   plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
   initialView: 'dayGridMonth',
-  headerToolbar: { left: 'prev,next addEventButton', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' },
+  headerToolbar: {
+    left: 'prev,next addEventButton',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+  },
   events: events,
   selectable: true,
   select: handleDateSelect,
   eventClick: handleEventClick,
   eventContent: renderEventContent,
   customButtons: {
-    addEventButton: { text: 'Thêm sự kiện', click: openModal },
+    addEventButton: {text: 'Thêm sự kiện', click: openModal},
   },
 })
 

@@ -1,6 +1,6 @@
-import { getAllStockIns, getAllStockOuts } from '@/api/modules/stocks'
-import type { Stock } from '@/api/modules/stocks'
-import type { ActionContext } from 'vuex'
+import {getAllStockIns, getAllStockOuts} from '@/api/modules/stocks'
+import type {Stock} from '@/api/modules/stocks'
+import type {ActionContext} from 'vuex'
 
 export interface StockState {
   stockIns: Stock[]
@@ -45,7 +45,7 @@ const mutations = {
 }
 
 const actions = {
-  async FETCH_STOCK_INS({ commit }: ActionContext<StockState, unknown>) {
+  async FETCH_STOCK_INS({commit}: ActionContext<StockState, unknown>) {
     commit('SET_STOCK_LOADING', true)
     commit('SET_STOCK_ERROR', null)
     try {
@@ -64,7 +64,7 @@ const actions = {
     }
   },
 
-  async FETCH_STOCK_OUTS({ commit }: ActionContext<StockState, unknown>) {
+  async FETCH_STOCK_OUTS({commit}: ActionContext<StockState, unknown>) {
     commit('SET_STOCK_LOADING', true)
     commit('SET_STOCK_ERROR', null)
     try {

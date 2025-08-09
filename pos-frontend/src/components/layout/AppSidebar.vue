@@ -11,14 +11,16 @@
   ]">
     <!-- Logo + Tên app -->
     <div :class="['py-8 flex', isExpanded ? 'justify-start' : 'lg:justify-center']">
-      <router-link to="/" class="flex items-center gap-2">
-        <img v-if="isExpanded" class="dark:hidden rounded" src="/images/logo/logo.png" alt="Logo" width="40"
-          height="40" />
-        <img v-if="isExpanded" class="hidden dark:block rounded" src="/images/logo/logo.png" alt="Logo" width="40"
-          height="40" />
-        <img v-else src="/images/logo/logo.png" alt="Logo" width="32" height="32" class="rounded" />
+      <router-link class="flex items-center gap-2" to="/">
+        <img v-if="isExpanded" alt="Logo" class="dark:hidden rounded" height="40"
+             src="/images/logo/logo.png"
+             width="40"/>
+        <img v-if="isExpanded" alt="Logo" class="hidden dark:block rounded"
+             height="40" src="/images/logo/logo.png"
+             width="40"/>
+        <img v-else alt="Logo" class="rounded" height="32" src="/images/logo/logo.png" width="32"/>
         <h1 v-show="isExpanded && !isMobileOpen"
-          class="text-lg font-semibold text-gray-800 dark:text-white tracking-wide">
+            class="text-lg font-semibold text-gray-800 dark:text-white tracking-wide">
           POS-APPLICATION
         </h1>
       </router-link>
@@ -36,26 +38,26 @@
               <template v-if="isExpanded || isMobileOpen">
                 {{ menuGroup.title }}
               </template>
-              <HorizontalDots v-else />
+              <HorizontalDots v-else/>
             </h2>
 
             <ul class="flex flex-col gap-4">
               <li v-for="(item, index) in menuGroup.items" :key="item.name">
                 <!-- Có submenu -->
-                <button v-if="item.subItems" @click="toggleSubmenu(groupIndex, index)" :class="[
+                <button v-if="item.subItems" :class="[
                   'menu-item group w-full',
                   {
                     'menu-item-active': isSubmenuOpen(groupIndex, index),
                     'menu-item-inactive': !isSubmenuOpen(groupIndex, index),
                   },
                   isExpanded ? 'lg:justify-start' : 'lg:justify-center',
-                ]">
+                ]" @click="toggleSubmenu(groupIndex, index)">
                   <span :class="[
                     isSubmenuOpen(groupIndex, index)
                       ? 'menu-item-icon-active'
                       : 'menu-item-icon-inactive',
                   ]">
-                    <component :is="item.icon" />
+                    <component :is="item.icon"/>
                   </span>
                   <span v-if="isExpanded || isMobileOpen" class="menu-item-text">
                     {{ item.name }}
@@ -65,23 +67,23 @@
                     {
                       'rotate-180 text-brand-500': isSubmenuOpen(groupIndex, index),
                     },
-                  ]" />
+                  ]"/>
                 </button>
 
                 <!-- Không có submenu -->
-                <router-link v-else-if="item.path" :to="item.path" :class="[
+                <router-link v-else-if="item.path" :class="[
                   'menu-item group',
                   {
                     'menu-item-active': isActive(item.path),
                     'menu-item-inactive': !isActive(item.path),
                   },
-                ]">
+                ]" :to="item.path">
                   <span :class="[
                     isActive(item.path)
                       ? 'menu-item-icon-active'
                       : 'menu-item-icon-inactive',
                   ]">
-                    <component :is="item.icon" />
+                    <component :is="item.icon"/>
                   </span>
                   <span v-if="isExpanded || isMobileOpen" class="menu-item-text">
                     {{ item.name }}
@@ -89,30 +91,31 @@
                 </router-link>
 
                 <!-- Submenu -->
-                <transition @enter="startTransition" @after-enter="endTransition" @before-leave="startTransition"
-                  @after-leave="endTransition">
+                <transition @enter="startTransition" @after-enter="endTransition"
+                            @before-leave="startTransition"
+                            @after-leave="endTransition">
                   <div v-show="isSubmenuOpen(groupIndex, index) && (isExpanded || isMobileOpen)">
                     <ul class="mt-2 space-y-1 ml-9">
                       <li v-for="subItem in item.subItems" :key="subItem.name">
-                        <router-link :to="subItem.path" :class="[
+                        <router-link :class="[
                           'menu-dropdown-item',
                           {
                             'menu-dropdown-item-active': isActive(subItem.path),
                             'menu-dropdown-item-inactive': !isActive(subItem.path),
                           },
-                        ]">
+                        ]" :to="subItem.path">
                           {{ subItem.name }}
                           <span class="flex items-center gap-1 ml-auto">
-                            <span v-if="subItem.new" class="menu-dropdown-badge" :class="{
+                            <span v-if="subItem.new" :class="{
                               'menu-dropdown-badge-active': isActive(subItem.path),
                               'menu-dropdown-badge-inactive': !isActive(subItem.path),
-                            }">
+                            }" class="menu-dropdown-badge">
                               Mới
                             </span>
-                            <span v-if="subItem.pro" class="menu-dropdown-badge" :class="{
+                            <span v-if="subItem.pro" :class="{
                               'menu-dropdown-badge-active': isActive(subItem.path),
                               'menu-dropdown-badge-inactive': !isActive(subItem.path),
-                            }">
+                            }" class="menu-dropdown-badge">
                               Pro
                             </span>
                           </span>
@@ -131,8 +134,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useRoute } from "vue-router";
+import {ref, computed} from "vue";
+import {useRoute} from "vue-router";
 import {
   SettingsIcon,
   GridIcon,
@@ -146,10 +149,10 @@ import {
   PieChartIcon,
 } from "../../icons";
 import BoxCubeIcon from "@/icons/BoxCubeIcon.vue";
-import { useSidebar } from "@/composables/useSidebar";
+import {useSidebar} from "@/composables/useSidebar";
 
 const route = useRoute();
-const { isExpanded, isMobileOpen, openSubmenu } = useSidebar();
+const {isExpanded, isMobileOpen, openSubmenu} = useSidebar();
 
 const menuGroups = [
   {
@@ -159,8 +162,8 @@ const menuGroups = [
         icon: GridIcon,
         name: "Trang chủ",
         subItems: [
-          { name: "Thương mại điện tử", path: "/", pro: false },
-          { name: "Điểm bán hàng", path: "/pos", pro: false },
+          {name: "Thương mại điện tử", path: "/", pro: false},
+          {name: "Điểm bán hàng", path: "/pos", pro: false},
         ],
       },
       // {
@@ -175,11 +178,11 @@ const menuGroups = [
         name: "Bảng",
         icon: TableIcon,
         subItems: [
-          { name: "Sản phẩm", path: "/products", pro: false },
-          { name: "Danh mục", path: "/categorys", pro: false },
-          { name: "Giảm giá", path: "/discounts", pro: false },
-          { name: "Hóa đơn", path: "/invoices", pro: false },
-          { name: "Nhập / Xuất kho", path: "/stocks", pro: false },
+          {name: "Sản phẩm", path: "/products", pro: false},
+          {name: "Danh mục", path: "/categorys", pro: false},
+          {name: "Giảm giá", path: "/discounts", pro: false},
+          {name: "Hóa đơn", path: "/invoices", pro: false},
+          {name: "Nhập / Xuất kho", path: "/stocks", pro: false},
         ]
       },
       // {
@@ -209,10 +212,10 @@ const menuGroups = [
         icon: SettingsIcon,
         name: "Hệ thống",
         subItems: [
-          { name: "Khách hàng", path: "/customers", pro: false },
-          { name: "Nhân viên", path: "/employees", pro: false },
-          { name: "Phân quyền", path: "/permissions", pro: false },
-          { name: "Code mới", path: "/developer", pro: false },
+          {name: "Khách hàng", path: "/customers", pro: false},
+          {name: "Nhân viên", path: "/employees", pro: false},
+          {name: "Phân quyền", path: "/permissions", pro: false},
+          {name: "Code mới", path: "/developer", pro: false},
         ],
       },
       // {

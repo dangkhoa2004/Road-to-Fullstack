@@ -1,5 +1,5 @@
 <script>
-import { onMounted, onUnmounted } from 'vue'
+import {onMounted, onUnmounted} from 'vue'
 
 export default {
   created(el, binding) {

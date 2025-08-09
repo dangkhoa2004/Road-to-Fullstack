@@ -1,19 +1,20 @@
 <template>
   <div class="file-uploader">
-    <form ref="dropzoneForm" :id="dropzoneId" :action="uploadUrl"
-      class="border-gray-300 border-dashed dropzone rounded-xl bg-gray-50 p-7 hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500 lg:p-10">
+    <form :id="dropzoneId" ref="dropzoneForm" :action="uploadUrl"
+          class="border-gray-300 border-dashed dropzone rounded-xl bg-gray-50 p-7 hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500 lg:p-10">
       <div class="dz-message m-0!">
         <div class="mb-[22px] flex justify-center">
           <div
             class="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
-            <EditbuttonSvg />
+            <EditbuttonSvg/>
           </div>
         </div>
 
         <h4 class="mb-3 font-semibold text-gray-800 text-theme-xl dark:text-white/90">
           Drag & Drop File Here
         </h4>
-        <span class="mx-auto mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400">
+        <span
+          class="mx-auto mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400">
           Drag and drop your PNG, JPG, WebP, SVG images here or browse
         </span>
 
@@ -26,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import {ref, onMounted, onBeforeUnmount} from 'vue'
 import Dropzone from 'dropzone'
 import 'dropzone/dist/dropzone.css'
 import EditbuttonSvg from '@/assets/svg-icon/upload-svg.vue'
@@ -50,7 +51,7 @@ onMounted(() => {
     thumbnailWidth: 150,
     maxFilesize: 0.5,
     acceptedFiles: 'image/jpeg,image/png,image/gif,image/webp,image/svg+xml',
-    headers: { 'My-Awesome-Header': 'header value' },
+    headers: {'My-Awesome-Header': 'header value'},
     dictDefaultMessage: '',
     init: function () {
       this.on('addedfile', (file) => {

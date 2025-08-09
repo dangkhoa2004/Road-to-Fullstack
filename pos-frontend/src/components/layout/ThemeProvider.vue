@@ -2,8 +2,8 @@
   <slot></slot>
 </template>
 
-<script setup lang="ts">
-import { ref, provide, onMounted, watch, computed } from 'vue'
+<script lang="ts" setup>
+import {ref, provide, onMounted, watch, computed} from 'vue'
 
 type Theme = 'light' | 'dark'
 
@@ -42,7 +42,7 @@ provide('theme', {
 </script>
 
 <script lang="ts">
-import { inject } from 'vue'
+import {inject} from 'vue'
 
 export function useTheme() {
   const theme = inject('theme')

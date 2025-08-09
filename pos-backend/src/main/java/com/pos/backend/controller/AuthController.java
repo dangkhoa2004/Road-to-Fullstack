@@ -1,18 +1,5 @@
 package com.pos.backend.controller;
 
-import java.util.Optional;
-
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.pos.backend.dto.auth.AuthResponse;
 import com.pos.backend.dto.auth.LoginRequest;
 import com.pos.backend.dto.auth.RegisterRequest;
@@ -25,10 +12,17 @@ import com.pos.backend.model.Employee;
 import com.pos.backend.service.base.AuthService;
 import com.pos.backend.service.base.EmployeeService;
 import com.pos.backend.service.base.PasswordResetService;
-
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")

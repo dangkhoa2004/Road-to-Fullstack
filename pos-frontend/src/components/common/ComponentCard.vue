@@ -21,8 +21,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue'
+<script lang="ts" setup>
+import {defineProps} from 'vue'
 
 interface Props {
   title: string

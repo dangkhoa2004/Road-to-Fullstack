@@ -5,19 +5,19 @@
     variantClasses[variant],
     className,
     { 'cursor-not-allowed opacity-50': disabled },
-  ]" @click="onClick" :disabled="disabled">
+  ]" :disabled="disabled" @click="onClick">
     <span v-if="startIcon" class="flex items-center">
-      <component :is="startIcon" />
+      <component :is="startIcon"/>
     </span>
     <slot></slot>
     <span v-if="endIcon" class="flex items-center">
-      <component :is="endIcon" />
+      <component :is="endIcon"/>
     </span>
   </button>
 </template>
 
-<script setup lang="ts">
-import { computed } from 'vue'
+<script lang="ts" setup>
+import {computed} from 'vue'
 
 interface ButtonProps {
   size?: 'sm' | 'md'

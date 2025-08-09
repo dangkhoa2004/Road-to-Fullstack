@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type {AxiosError, AxiosResponse, InternalAxiosRequestConfig} from 'axios';
 import router from '../router';
 
 const hostname = window.location.hostname;

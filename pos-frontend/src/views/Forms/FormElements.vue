@@ -1,33 +1,33 @@
 <template>
   <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
+    <PageBreadcrumb :pageTitle="currentPageTitle"/>
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <div class="space-y-6">
         <ComponentCard title="Default Inputs">
-          <DefaultInputs />
+          <DefaultInputs/>
         </ComponentCard>
         <ComponentCard title="Select Inputs">
-          <SelectInput />
+          <SelectInput/>
         </ComponentCard>
         <ComponentCard title="Inputs States">
-          <TextArea />
+          <TextArea/>
         </ComponentCard>
         <ComponentCard title="Inputs States">
-          <InputState />
+          <InputState/>
         </ComponentCard>
       </div>
       <div class="space-y-6">
         <ComponentCard title="Inputs Group">
-          <InputGroup />
+          <InputGroup/>
         </ComponentCard>
         <ComponentCard title="File Input">
-          <FileInput />
+          <FileInput/>
         </ComponentCard>
         <ComponentCard title="Checkboxes">
-          <CheckboxInput />
+          <CheckboxInput/>
         </ComponentCard>
         <ComponentCard title="Dropzone">
-          <Dropzone />
+          <Dropzone/>
         </ComponentCard>
       </div>
     </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import DefaultInputs from '@/components/forms/FormElements/DefaultInputs.vue'

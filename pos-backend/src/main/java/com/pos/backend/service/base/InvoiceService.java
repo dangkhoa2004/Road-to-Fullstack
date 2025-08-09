@@ -5,6 +5,7 @@ import com.pos.backend.dto.invoice.InvoiceResponse;
 import com.pos.backend.dto.payment.PaymentCreationResponse;
 import com.pos.backend.dto.payment.PaymentRequest;
 import com.pos.backend.model.Invoice;
+
 import java.util.List;
 
 public interface InvoiceService {
@@ -33,8 +34,12 @@ public interface InvoiceService {
 
     // --- Các phương thức khác ---
     List<InvoiceResponse> getAllInvoices();
+
     InvoiceResponse getById(Long id);
+
     List<InvoiceResponse> getByStatus(Invoice.InvoiceStatus status);
+
     InvoiceResponse updateStatus(Long id, Invoice.InvoiceStatus status);
+
     void delete(Long id);
 }

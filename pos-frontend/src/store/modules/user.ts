@@ -1,6 +1,6 @@
 import axios from '@/api';
 import * as types from '../types';
-import type { ActionContext } from 'vuex';
+import type {ActionContext} from 'vuex';
 
 // --- User State ---
 export interface UserState {
@@ -42,7 +42,7 @@ const mutations = {
 
 // --- Actions ---
 const actions = {
-  async [types.FETCH_USER_PROFILE]({ commit }: ActionContext<UserState, unknown>) {
+  async [types.FETCH_USER_PROFILE]({commit}: ActionContext<UserState, unknown>) {
     commit(types.SET_USER_LOADING, true);
     try {
       const response = await axios.get('/user/profile');
@@ -58,7 +58,7 @@ const actions = {
   },
 
   async [types.UPDATE_USER_PROFILE](
-    { commit }: ActionContext<UserState, unknown>,
+    {commit}: ActionContext<UserState, unknown>,
     userData: Record<string, any>
   ) {
     commit(types.SET_USER_LOADING, true);

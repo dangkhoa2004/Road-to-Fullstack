@@ -11,12 +11,13 @@
 
       <div class="relative">
         <div class="inline-flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900">
-          <button v-for="option in options" :key="option.value" @click="selected = option.value" :class="[
+          <button v-for="option in options" :key="option.value" :class="[
             selected === option.value
               ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800'
               : 'text-gray-500 dark:text-gray-400',
             'px-3 py-2 font-medium rounded-md text-theme-sm hover:text-gray-900 hover:shadow-theme-xs dark:hover:bg-gray-800 dark:hover:text-white',
-          ]">
+          ]"
+                  @click="selected = option.value">
             {{ option.label }}
           </button>
         </div>
@@ -24,20 +25,20 @@
     </div>
     <div class="max-w-full overflow-x-auto custom-scrollbar">
       <div id="chartThree" class="-ml-4 min-w-[1000px] xl:min-w-full pl-2">
-        <VueApexCharts type="area" height="310" :options="chartOptions" :series="series" />
+        <VueApexCharts :options="chartOptions" :series="series" height="310" type="area"/>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script lang="ts" setup>
+import {ref} from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
 const options = [
-  { value: 'optionOne', label: 'Tháng' },
-  { value: 'optionTwo', label: 'Quý' },
-  { value: 'optionThree', label: 'Năm' },
+  {value: 'optionOne', label: 'Tháng'},
+  {value: 'optionTwo', label: 'Quý'},
+  {value: 'optionThree', label: 'Năm'},
 ]
 
 const selected = ref('optionOne')

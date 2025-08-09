@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import {ref, onMounted, onUnmounted} from 'vue'
 
 const daysArray = ref([])
 const hoursArray = ref([])
@@ -124,10 +124,10 @@ const calcOverlayHeight = () => {
 }
 
 const resetTimeArrays = () => {
-  daysArray.value = [{ value: '0', visible: true }]
-  hoursArray.value = [{ value: '0', visible: true }]
-  minutesArray.value = [{ value: '0', visible: true }]
-  secondsArray.value = [{ value: '0', visible: true }]
+  daysArray.value = [{value: '0', visible: true}]
+  hoursArray.value = [{value: '0', visible: true}]
+  minutesArray.value = [{value: '0', visible: true}]
+  secondsArray.value = [{value: '0', visible: true}]
 }
 
 onMounted(() => {

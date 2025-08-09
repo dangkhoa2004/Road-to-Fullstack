@@ -1,7 +1,7 @@
 // src/router/index.ts
-import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
-import { authGuard } from '@/composables/authGuard'
+import {createRouter, createWebHistory} from 'vue-router'
+import type {RouteRecordRaw} from 'vue-router'
+import {authGuard} from '@/composables/authGuard'
 
 import authRoutes from './modules/auth'
 import dashboardRoutes from './modules/dashboard'
@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
-    return savedPosition || { left: 0, top: 0 }
+    return savedPosition || {left: 0, top: 0}
   },
   routes,
 })

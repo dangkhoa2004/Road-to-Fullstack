@@ -1,5 +1,5 @@
 import axios from '../index';
-import type { AxiosResponse, AxiosError } from 'axios';
+import type {AxiosResponse, AxiosError} from 'axios';
 
 // --- Interface User ---
 export interface User {
@@ -41,8 +41,8 @@ export interface ResetPasswordResponse {
 export const login = async (credentials: Record<string, any>): Promise<AuthResponse> => {
   try {
     const response: AxiosResponse<AuthApiResponse> = await axios.post('/auth/login', credentials);
-    const { token, employeeId } = response.data.data;
-    return { token, employeeId };
+    const {token, employeeId} = response.data.data;
+    return {token, employeeId};
   } catch (error: unknown) {
     const axiosError = error as AxiosError;
     console.error('Login error:', axiosError.response?.data || axiosError.message);
@@ -54,8 +54,8 @@ export const login = async (credentials: Record<string, any>): Promise<AuthRespo
 export const register = async (userData: Record<string, any>): Promise<AuthResponse> => {
   try {
     const response: AxiosResponse<AuthApiResponse> = await axios.post('/auth/register', userData);
-    const { token, employeeId } = response.data.data;
-    return { token, employeeId };
+    const {token, employeeId} = response.data.data;
+    return {token, employeeId};
   } catch (error: unknown) {
     const axiosError = error as AxiosError;
     console.error('Register error:', axiosError.response?.data || axiosError.message);
@@ -64,7 +64,9 @@ export const register = async (userData: Record<string, any>): Promise<AuthRespo
 };
 
 // --- Hàm forgot password ---
-export const forgotPassword = async (payload: { email: string }): Promise<ResetPasswordResponse> => {
+export const forgotPassword = async (payload: {
+  email: string
+}): Promise<ResetPasswordResponse> => {
   try {
     const response: AxiosResponse<{
       message: string;

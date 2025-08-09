@@ -5,10 +5,9 @@
 package com.pos.backend.dto.invoice;
 
 /**
- *
  * @author caodangkhoa
  */
-import com.pos.backend.dto.invoice.InvoiceResponse;
+
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,6 +1,12 @@
-import { getAllInvoices, getInvoiceById, addInvoice, updateInvoice, deleteInvoice } from '@/api/modules/invoice'
-import type { Invoice } from '@/api/modules/invoice'
-import type { ActionContext } from 'vuex'
+import {
+  getAllInvoices,
+  getInvoiceById,
+  addInvoice,
+  updateInvoice,
+  deleteInvoice
+} from '@/api/modules/invoice'
+import type {Invoice} from '@/api/modules/invoice'
+import type {ActionContext} from 'vuex'
 
 export interface InvoiceState {
   invoices: Invoice[]
@@ -43,7 +49,7 @@ const mutations = {
 }
 
 const actions = {
-  async FETCH_INVOICES({ commit }: ActionContext<InvoiceState, unknown>) {
+  async FETCH_INVOICES({commit}: ActionContext<InvoiceState, unknown>) {
     try {
       const data = await getAllInvoices()
       commit('SET_INVOICES', data)
@@ -57,7 +63,7 @@ const actions = {
     }
   },
 
-  async FETCH_INVOICE_BY_ID({ commit }: ActionContext<InvoiceState, unknown>, invoiceId: number) {
+  async FETCH_INVOICE_BY_ID({commit}: ActionContext<InvoiceState, unknown>, invoiceId: number) {
     commit('SET_INVOICE_LOADING', true)
     commit('SET_INVOICE_ERROR', null)
     try {
@@ -88,7 +94,7 @@ const actions = {
 
   async UPDATE_INVOICE(
     _: ActionContext<InvoiceState, unknown>,
-    { invoiceId, invoiceData }: { invoiceId: number; invoiceData: Partial<Invoice> }
+    {invoiceId, invoiceData}: { invoiceId: number; invoiceData: Partial<Invoice> }
   ) {
     try {
       return await updateInvoice(invoiceId, invoiceData)

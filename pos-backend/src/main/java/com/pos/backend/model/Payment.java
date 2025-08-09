@@ -41,7 +41,7 @@ public class Payment extends BaseEntity {
     private PaymentStatus status; // QUAN TRỌNG: KHÔNG CÓ "= PaymentStatus.COMPLETED"
     @Column(name = "note", columnDefinition = "TEXT")
     private String note;
-    
+
     @Column(name = "transaction_code") // Mã giao dịch của payOS
     private String transactionCode;
 

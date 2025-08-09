@@ -1,12 +1,14 @@
 <template>
   <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
+    <PageBreadcrumb :pageTitle="currentPageTitle"/>
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="Bảng sản phẩm">
-        <BasicTableOne :columns="productColumns" :rows="products" modalHeaderTitle="Chỉnh sửa sản phẩm"
-          modalHeaderDescription="Cập nhật thông tin sản phẩm tại đây.">
+        <BasicTableOne :columns="productColumns" :rows="products"
+                       modalHeaderDescription="Cập nhật thông tin sản phẩm tại đây."
+                       modalHeaderTitle="Chỉnh sửa sản phẩm">
           <template #cell-imagePath="{ row }">
-            <img :src="row.imagePath" alt="Hình ảnh sản phẩm" class="w-12 h-12 object-cover rounded" />
+            <img :src="row.imagePath" alt="Hình ảnh sản phẩm"
+                 class="w-12 h-12 object-cover rounded"/>
           </template>
         </BasicTableOne>
       </ComponentCard>
@@ -15,8 +17,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { mapActions, mapGetters } from 'vuex'
+import {defineComponent} from 'vue'
+import {mapActions, mapGetters} from 'vuex'
 import * as types from '@/store/types.ts'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
@@ -34,13 +36,13 @@ export default defineComponent({
     return {
       currentPageTitle: 'Bảng sản phẩm',
       productColumns: [
-        { key: 'id', label: 'ID' },
-        { key: 'barcode', label: 'Mã vạch' },
-        { key: 'name', label: 'Tên sản phẩm' },
-        { key: 'price', label: 'Giá' },
-        { key: 'quantity', label: 'Số lượng' },
-        { key: 'imagePath', label: 'Hình ảnh' },
-        { key: 'categoryName', label: 'Danh mục' },
+        {key: 'id', label: 'ID'},
+        {key: 'barcode', label: 'Mã vạch'},
+        {key: 'name', label: 'Tên sản phẩm'},
+        {key: 'price', label: 'Giá'},
+        {key: 'quantity', label: 'Số lượng'},
+        {key: 'imagePath', label: 'Hình ảnh'},
+        {key: 'categoryName', label: 'Danh mục'},
       ],
     }
   },

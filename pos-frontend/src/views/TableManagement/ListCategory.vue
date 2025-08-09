@@ -1,10 +1,11 @@
 <template>
   <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
+    <PageBreadcrumb :pageTitle="currentPageTitle"/>
     <div class="space-y-5 sm:space-y-6">
       <ComponentCard title="Bảng danh mục">
-        <BasicTableOne :columns="categoryColumns" :rows="categories" modalHeaderTitle="Chỉnh sửa danh mục"
-          modalHeaderDescription="Cập nhật chi tiết danh mục ở đây.">
+        <BasicTableOne :columns="categoryColumns" :rows="categories"
+                       modalHeaderDescription="Cập nhật chi tiết danh mục ở đây."
+                       modalHeaderTitle="Chỉnh sửa danh mục">
           <template #cell-description="{ row }">
             <span>{{ row.description }}</span>
           </template>
@@ -15,14 +16,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { mapActions, mapGetters } from 'vuex'
+import {defineComponent} from 'vue'
+import {mapActions, mapGetters} from 'vuex'
 import * as types from '@/store/types.ts'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import BasicTableOne from '@/components/tables/basic-tables/MyTable.vue'
-import type { Category } from '@/api/modules/category'
+import type {Category} from '@/api/modules/category'
 
 export default defineComponent({
   components: {
@@ -35,9 +36,9 @@ export default defineComponent({
     return {
       currentPageTitle: 'Bảng danh mục',
       categoryColumns: [
-        { key: 'id', label: 'ID' },
-        { key: 'name', label: 'Tên danh mục' },
-        { key: 'description', label: 'Mô tả' },
+        {key: 'id', label: 'ID'},
+        {key: 'name', label: 'Tên danh mục'},
+        {key: 'description', label: 'Mô tả'},
         // { key: 'created_at', label: 'Ngày tạo' },
         // { key: 'updated_at', label: 'Ngày cập nhật' },
         // { key: 'version', label: 'Phiên bản' },

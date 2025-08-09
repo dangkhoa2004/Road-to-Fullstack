@@ -1,6 +1,6 @@
-import { getAllEmployees, getEmployeeById } from '@/api/modules/employee'
-import type { Employee } from '@/api/modules/employee'
-import type { ActionContext } from 'vuex'
+import {getAllEmployees, getEmployeeById} from '@/api/modules/employee'
+import type {Employee} from '@/api/modules/employee'
+import type {ActionContext} from 'vuex'
 
 // --- State ---
 export interface EmployeeState {
@@ -47,7 +47,7 @@ const mutations = {
 
 // --- Actions ---
 const actions = {
-  async FETCH_EMPLOYEES({ commit }: ActionContext<EmployeeState, unknown>) {
+  async FETCH_EMPLOYEES({commit}: ActionContext<EmployeeState, unknown>) {
     try {
       const data = await getAllEmployees()
       commit('SET_EMPLOYEES', data)
@@ -62,7 +62,7 @@ const actions = {
   },
 
   async FETCH_EMPLOYEE_BY_ID(
-    { commit }: ActionContext<EmployeeState, unknown>,
+    {commit}: ActionContext<EmployeeState, unknown>,
     employeeId: number
   ) {
     commit('SET_EMPLOYEE_LOADING', true)

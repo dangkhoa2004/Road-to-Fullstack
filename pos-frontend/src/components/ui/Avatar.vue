@@ -1,6 +1,6 @@
 <template>
   <div :class="['relative rounded-full', sizeClasses[size]]">
-    <img :src="src" :alt="alt" class="object-cover rounded-full" />
+    <img :alt="alt" :src="src" class="object-cover rounded-full"/>
     <span v-if="status !== 'none'" :class="[
       'absolute bottom-0 right-0 rounded-full border-[1.5px] border-white dark:border-gray-900',
       statusSizeClasses[size],
@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 interface AvatarProps {
   src: string
   alt?: string

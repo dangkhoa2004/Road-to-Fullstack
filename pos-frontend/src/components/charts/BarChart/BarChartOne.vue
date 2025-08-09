@@ -1,13 +1,13 @@
 <template>
   <div class="max-w-full overflow-x-auto custom-scrollbar">
     <div id="chartOne" class="-ml-5 min-w-[650px] xl:min-w-full pl-2">
-      <VueApexCharts type="bar" height="180" :options="chartOptions" :series="series" />
+      <VueApexCharts :options="chartOptions" :series="series" height="180" type="bar"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import {ref, onMounted} from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
 const series = ref([

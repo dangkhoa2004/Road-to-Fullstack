@@ -1,7 +1,7 @@
-import { login, register, forgotPassword, getEmployeeById, type User } from '@/api/modules/auth';
+import {login, register, forgotPassword, getEmployeeById, type User} from '@/api/modules/auth';
 import router from '@/router';
 import * as types from '../types';
-import type { ActionContext } from 'vuex';
+import type {ActionContext} from 'vuex';
 
 export interface AuthState {
   token: string | null;
@@ -48,9 +48,9 @@ const mutations = {
 };
 
 const actions = {
-  async [types.LOGIN]({ commit }: ActionContext<AuthState, unknown>, credentials: Record<string, any>) {
+  async [types.LOGIN]({commit}: ActionContext<AuthState, unknown>, credentials: Record<string, any>) {
     try {
-      const { token, employeeId } = await login(credentials);
+      const {token, employeeId} = await login(credentials);
 
 
       commit(types.SET_AUTH_TOKEN, token);
@@ -72,9 +72,9 @@ const actions = {
     }
   },
 
-  async [types.REGISTER]({ commit }: ActionContext<AuthState, unknown>, userData: Record<string, any>) {
+  async [types.REGISTER]({commit}: ActionContext<AuthState, unknown>, userData: Record<string, any>) {
     try {
-      const { token, employeeId } = await register(userData);
+      const {token, employeeId} = await register(userData);
       const user = await getEmployeeById(employeeId);
 
       commit(types.SET_AUTH_TOKEN, token);
@@ -95,7 +95,7 @@ const actions = {
   },
 
   async [types.RESET_PASSWORD](
-    { commit }: ActionContext<AuthState, unknown>,
+    {commit}: ActionContext<AuthState, unknown>,
     payload: { email: string }
   ) {
     try {
@@ -113,7 +113,7 @@ const actions = {
     }
   },
 
-  [types.LOGOUT]({ commit }: ActionContext<AuthState, unknown>) {
+  [types.LOGOUT]({commit}: ActionContext<AuthState, unknown>) {
     commit(types.CLEAR_AUTH_DATA);
     router.push('/dang-nhap');
   },

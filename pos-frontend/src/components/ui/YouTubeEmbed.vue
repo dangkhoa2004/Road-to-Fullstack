@@ -1,13 +1,14 @@
 <template>
   <div :class="['overflow-hidden rounded-lg', aspectRatioClass, className]">
-    <iframe :src="`https://www.youtube.com/embed/${videoId}`" :title="title" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-      class="w-full h-full"></iframe>
+    <iframe :src="`https://www.youtube.com/embed/${videoId}`" :title="title" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="w-full h-full"
+            frameborder="0"></iframe>
   </div>
 </template>
 
-<script setup lang="ts">
-import { computed } from 'vue'
+<script lang="ts" setup>
+import {computed} from 'vue'
 
 type AspectRatio = '16:9' | '4:3' | '21:9' | '1:1'
 
