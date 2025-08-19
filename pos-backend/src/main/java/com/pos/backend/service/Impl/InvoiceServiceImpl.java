@@ -1,28 +1,40 @@
 package com.pos.backend.service.Impl;
 
-import com.pos.backend.dto.invoice.InvoiceItemResponse;
-import com.pos.backend.dto.invoice.InvoiceRequest;
-import com.pos.backend.dto.invoice.InvoiceResponse;
-import com.pos.backend.dto.payment.PaymentCreationResponse;
-import com.pos.backend.dto.payment.PaymentRequest;
-import com.pos.backend.dto.payment.PaymentResponse;
-import com.pos.backend.model.*;
-import com.pos.backend.repository.*;
-import com.pos.backend.service.base.InvoiceService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import vn.payos.PayOS;
-import vn.payos.type.ItemData;
-import vn.payos.type.PaymentData;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.pos.backend.dto.invoice.InvoiceItemResponse;
+import com.pos.backend.dto.invoice.InvoiceRequest;
+import com.pos.backend.dto.invoice.InvoiceResponse;
+import com.pos.backend.dto.payment.PaymentCreationResponse;
+import com.pos.backend.dto.payment.PaymentRequest;
+import com.pos.backend.dto.payment.PaymentResponse;
+import com.pos.backend.model.Invoice;
+import com.pos.backend.model.InvoiceItem;
+import com.pos.backend.model.Payment;
+import com.pos.backend.model.PaymentMethod;
+import com.pos.backend.model.Product;
+import com.pos.backend.repository.CustomerRepository;
+import com.pos.backend.repository.DiscountRepository;
+import com.pos.backend.repository.EmployeeRepository;
+import com.pos.backend.repository.InvoiceRepository;
+import com.pos.backend.repository.PaymentMethodRepository;
+import com.pos.backend.repository.ProductRepository;
+import com.pos.backend.repository.TablesRepository;
+import com.pos.backend.service.base.InvoiceService;
+
+import lombok.RequiredArgsConstructor;
+import vn.payos.PayOS;
+import vn.payos.type.ItemData;
+import vn.payos.type.PaymentData;
 
 @Service
 @RequiredArgsConstructor
@@ -163,7 +175,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         invoice.setStatus(Invoice.InvoiceStatus.completed);
 
         invoice.getPayments().stream()
-                .filter(p -> p.getStatus() == Payment.PaymentStatus.PENDING) // Cập nhật payment PENDING gần nhất
+                .filter(p -> p.getStatus() == Payment.PaymentStatus.PENDING)
                 .findFirst()
                 .ifPresent(p -> {
                     p.setStatus(Payment.PaymentStatus.COMPLETED);
