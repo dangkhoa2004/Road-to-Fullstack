@@ -8,12 +8,12 @@ package com.pos.backend.service.base;
  * @author 04dkh
  */
 
+import java.util.List;
+
 import com.pos.backend.dto.stock_in.StockInRequest;
 import com.pos.backend.dto.stock_in.StockInResponse;
 import com.pos.backend.dto.stock_out.StockOutRequest;
 import com.pos.backend.dto.stock_out.StockOutResponse;
-
-import java.util.List;
 
 public interface StockService {
     StockInResponse createStockIn(StockInRequest request);

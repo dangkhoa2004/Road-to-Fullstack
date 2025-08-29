@@ -8,18 +8,24 @@ package com.pos.backend.controller;
  * @author 04dkh
  */
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.pos.backend.dto.common.ApiResponse;
 import com.pos.backend.dto.stock_in.StockInRequest;
 import com.pos.backend.dto.stock_in.StockInResponse;
 import com.pos.backend.dto.stock_out.StockOutRequest;
 import com.pos.backend.dto.stock_out.StockOutResponse;
 import com.pos.backend.service.base.StockService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/stock")

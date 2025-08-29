@@ -8,11 +8,11 @@ package com.pos.backend.service.base;
  * @author 04dkh
  */
 
+import java.util.List;
+
 import com.pos.backend.dto.tables.TableRequest;
 import com.pos.backend.dto.tables.TableResponse;
 import com.pos.backend.model.Tables;
-
-import java.util.List;
 
 public interface TableService {
     TableResponse create(TableRequest request);

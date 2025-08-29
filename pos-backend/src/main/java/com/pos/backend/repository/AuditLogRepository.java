@@ -4,9 +4,10 @@
  */
 package com.pos.backend.repository;
 
-import com.pos.backend.model.AuditLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.pos.backend.model.AuditLog;
 
 /**
  * @author 04dkh

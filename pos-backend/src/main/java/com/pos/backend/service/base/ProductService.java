@@ -8,10 +8,10 @@ package com.pos.backend.service.base;
  * @author 04dkh
  */
 
+import java.util.List;
+
 import com.pos.backend.dto.product.ProductRequest;
 import com.pos.backend.dto.product.ProductResponse;
-
-import java.util.List;
 
 public interface ProductService {
 

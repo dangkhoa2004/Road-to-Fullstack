@@ -8,10 +8,10 @@ package com.pos.backend.config;
  * @author 04dkh
  */
 
+import java.util.Base64;
+
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-
-import java.util.Base64;
 
 public class KeyGenerator {
 

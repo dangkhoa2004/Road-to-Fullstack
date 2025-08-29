@@ -11,7 +11,6 @@ import com.pos.backend.dto.reset_password.ResetPasswordResponse;
 import com.pos.backend.model.Employee;
 import com.pos.backend.service.base.AuthService;
 import com.pos.backend.service.base.EmployeeService;
-import com.pos.backend.service.base.PasswordResetService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -30,13 +29,10 @@ public class AuthController {
 
     private final AuthService authService;
     private final EmployeeService employeeService;
-    private final PasswordResetService passwordResetService;
 
-    public AuthController(AuthService authService, EmployeeService employeeService,
-                          PasswordResetService passwordResetService) {
+    public AuthController(AuthService authService, EmployeeService employeeService) {
         this.authService = authService;
         this.employeeService = employeeService;
-        this.passwordResetService = passwordResetService;
     }
 
     @PostMapping("/login")
@@ -99,13 +95,13 @@ public class AuthController {
                     new ResetPasswordResponse("Email not found, but generic message sent.", true)));
         }
         Employee employee = employeeOptional.get();
-        String token = passwordResetService.createPasswordResetTokenForEmployee(employee);
+        String token = authService.createPasswordResetTokenForEmployee(employee);
         String appUrl = request.getScheme() + "://" + request.getServerName();
         if (request.getServerPort() != 80 && request.getServerPort() != 443) {
             appUrl += ":" + request.getServerPort();
         }
         try {
-            passwordResetService.sendPasswordResetEmail(employee, token, appUrl);
+            authService.sendPasswordResetEmail(employee, token, appUrl);
         } catch (MessagingException e) {
             System.err.println("Error sending password reset email: " + e.getMessage());
             return ResponseEntity.status(500)
@@ -132,14 +128,14 @@ public class AuthController {
                             new ResetPasswordResponse("New password and confirm password do not match.", false)));
         }
 
-        String validationResult = passwordResetService.validatePasswordResetToken(token);
+        String validationResult = authService.validatePasswordResetToken(token);
         if (validationResult != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ApiResponse<>("Token không hợp lệ hoặc đã hết hạn: " + validationResult, "400",
                             new ResetPasswordResponse("Invalid or expired token.", false)));
         }
 
-        Employee employee = passwordResetService.getEmployeeByPasswordResetToken(token);
+        Employee employee = authService.getEmployeeByPasswordResetToken(token);
         if (employee == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ApiResponse<>("Không tìm thấy người dùng cho token này.", "404",
@@ -147,7 +143,7 @@ public class AuthController {
         }
 
         employeeService.changeEmployeePassword(employee, requestBody.getNewPassword());
-        passwordResetService.deleteToken(token);
+        authService.deleteToken(token);
 
         return ResponseEntity.ok(new ApiResponse<>("Mật khẩu của bạn đã được đặt lại thành công.", "200",
                 new ResetPasswordResponse("Password reset successfully.", true)));

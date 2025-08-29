@@ -8,9 +8,9 @@ package com.pos.backend.service.base;
  * @author 04dkh
  */
 
-import com.pos.backend.model.Role;
-
 import java.util.Optional;
+
+import com.pos.backend.model.Role;
 
 public interface RoleService {
     Optional<Role> findRoleById(Long id);

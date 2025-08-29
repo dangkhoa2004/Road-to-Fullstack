@@ -1,10 +1,11 @@
 package com.pos.backend.config;
 
-import com.pos.backend.model.Role;
-import com.pos.backend.repository.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.pos.backend.model.Role;
+import com.pos.backend.repository.RoleRepository;
 
 @Configuration
 public class DataInitializer {
